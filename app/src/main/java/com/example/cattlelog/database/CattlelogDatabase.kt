@@ -1,12 +1,15 @@
 package com.example.cattlelog.database
 
 import android.content.Context
+import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.cattlelog.dao.CattleDao
+import com.example.cattlelog.entities.Cattle
 
+@Database(entities = arrayOf(Cattle::class), version = 1)
 public abstract class CattlelogDatabase : RoomDatabase() {
 
     abstract fun cattleDao(): CattleDao
