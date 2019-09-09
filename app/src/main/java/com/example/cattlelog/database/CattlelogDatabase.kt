@@ -5,8 +5,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.cattlelog.dao.CattleDao
 
 public abstract class CattlelogDatabase : RoomDatabase() {
+
+    abstract fun cattleDao(): CattleDao
 
     // Singleton pattern to prevent multiple instances of DB being open concurrently
     // Credit: https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#6
