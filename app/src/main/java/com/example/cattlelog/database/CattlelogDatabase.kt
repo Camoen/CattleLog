@@ -37,7 +37,7 @@ public abstract class CattlelogDatabase : RoomDatabase() {
                     context.applicationContext,
                     CattlelogDatabase::class.java,
                     DATABASE_NAME
-                ).build()
+                ).allowMainThreadQueries().build()
                 INSTANCE = instance
                 return instance
             }

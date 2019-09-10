@@ -22,7 +22,7 @@ class DatabaseToRoomConverter private constructor() {
         roomDatabase = Room.databaseBuilder(
             appContext!!,
             CattlelogDatabase::class.java, DATABASE_NAME
-        ).addMigrations(CattlelogDatabase.MIGRATION_1_to_2).build()
+        ).allowMainThreadQueries().addMigrations(CattlelogDatabase.MIGRATION_1_to_2).build()
     }
 
 
