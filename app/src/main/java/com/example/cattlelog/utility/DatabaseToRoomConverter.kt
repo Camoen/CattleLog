@@ -69,6 +69,7 @@ class DatabaseToRoomConverter private constructor() {
         private var INSTANCE: DatabaseToRoomConverter? = null
 
         fun getDatabase(context: Context): DatabaseToRoomConverter {
+            appContext = context
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
