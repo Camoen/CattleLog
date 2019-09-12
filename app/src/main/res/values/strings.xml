@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CattleLog</string>
+    <string name="db_URL">https://github.com/Camoen/CattleLog-Database/raw/master/cattlelog_database.db</string>
 </resources>
