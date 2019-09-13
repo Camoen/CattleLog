@@ -3,7 +3,7 @@ package com.example.cattlelog.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 
-@Entity (tableName = "Cattle", primaryKeys = ["TagNumber", "BirthDate"])
+@Entity (tableName = "cattle", primaryKeys = ["TagNumber", "BirthDate"])
 data class Cattle(@ColumnInfo(name = "TagNumber") val TagNumber: Int,
                   @ColumnInfo(name = "BirthDate") val BirthDate: String,
                   @ColumnInfo(name = "DaysSinceBredHeat") val DaysSinceBredHeat: Int? = null,

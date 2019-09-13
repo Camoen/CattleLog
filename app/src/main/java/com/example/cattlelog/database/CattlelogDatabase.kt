@@ -5,12 +5,15 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.cattlelog.dao.CattleDao
+import com.example.cattlelog.dao.HealthDao
 import com.example.cattlelog.entities.Cattle
+import com.example.cattlelog.entities.Health
 
-@Database(entities = arrayOf(Cattle::class), version = 1)
+@Database(entities = [Cattle::class, Health::class], version = 1)
 public abstract class CattlelogDatabase : RoomDatabase() {
 
     abstract fun cattleDao(): CattleDao
+    abstract fun healthDao(): HealthDao
 
     // Singleton pattern to prevent multiple instances of DB being open concurrently
     companion object {

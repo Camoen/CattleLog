@@ -29,12 +29,6 @@ class CattleDaoInstrumentedTest {
         cattleDao = db.cattleDao()
     }
 
-    @After
-    @Throws(IOException::class)
-    fun closeDb() {
-        db.close()
-    }
-
     @Test
     @Throws(Exception::class)
     fun invalidTagNumberReturnsNullCattle() {
@@ -50,6 +44,6 @@ class CattleDaoInstrumentedTest {
     @Test
     @Throws(Exception::class)
     fun allCattleAreReturned() {
-        assertEquals(765, cattleDao.getAllCattle().size)
+        assertEquals(767, cattleDao.getAllCattle().size)
     }
 }
