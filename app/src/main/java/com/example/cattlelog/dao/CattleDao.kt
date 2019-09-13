@@ -6,6 +6,9 @@ import com.example.cattlelog.entities.Cattle
 
 @Dao
 interface CattleDao {
-    @Query("SELECT * from Cattle")
+    @Query("SELECT * FROM Cattle")
     fun getAllCattle(): List<Cattle>
+
+    @Query("SELECT * FROM Cattle WHERE TagNumber = :tagNumber")
+    fun getCattleWithTagNumber(tagNumber: Int): Cattle?
 }
