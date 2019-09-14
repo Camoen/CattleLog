@@ -13,10 +13,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Example usage of the DB, uncomment to see logs. Prefer to use tests, though.
+        /* // Example usage of the DB, uncomment to see logs. Prefer to use tests, though.
         AsyncTask.execute {
             val allHealthReports = CattlelogDatabase.getDatabase(this).healthDao().getAllHealthReports()
             Log.d("All Cattle", allHealthReports.toString())
         }
+         */
     }
 }
