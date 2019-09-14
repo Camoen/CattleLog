@@ -7,16 +7,19 @@ import androidx.room.RoomDatabase
 import com.example.cattlelog.dao.CattleDao
 import com.example.cattlelog.dao.HealthDao
 import com.example.cattlelog.dao.TreatmentDao
+import com.example.cattlelog.dao.UserFieldsDao
 import com.example.cattlelog.entities.Cattle
 import com.example.cattlelog.entities.Health
 import com.example.cattlelog.entities.Treatment
+import com.example.cattlelog.entities.UserFields
 
-@Database(entities = [Cattle::class, Health::class, Treatment::class], version = 1)
+@Database(entities = [Cattle::class, Health::class, Treatment::class, UserFields::class], version = 1)
 public abstract class CattlelogDatabase : RoomDatabase() {
 
     abstract fun cattleDao(): CattleDao
     abstract fun healthDao(): HealthDao
     abstract fun treatmentDao(): TreatmentDao
+    abstract fun userFieldsDao(): UserFieldsDao
 
     // Singleton pattern to prevent multiple instances of DB being open concurrently
     companion object {
