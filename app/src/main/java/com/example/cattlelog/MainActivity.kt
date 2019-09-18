@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
+    // Handles file download
     private fun startDownload() {
         val request = DownloadManager.Request(Uri.parse(getString(R.string.db_URL)))
         val time = System.currentTimeMillis()
@@ -87,73 +87,35 @@ class MainActivity : AppCompatActivity() {
         request.setDescription("CattleLog database is downloading.")
         request.allowScanningByMediaScanner()
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-//        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "${System.currentTimeMillis()}") // Working
         request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,"cattlelogdb_$time.db")
-        //request.setDestinationInExternalFilesDir()
 
         val manager =  getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         manager.enqueue(request)
-
-//        val srcFile = File(Environment.getExternalStorageDirectory(), "cattlelog_database.db")
-//        val dstFile = File(this.filesDir.toString() + "/cattlelog_database.db")
-
-        //val instrumentFileList = this.fileList()
-//        Log.d("outputs", "filesDir: $filesDir")
-//        val instrumentFileList = filesDir.list()
-//
-//        Log.d("outputs", "File List Internal: ")
-//        for (i in instrumentFileList){
-//            Log.d("outputs", i.toString())
-//        }
-//
-//        Log.d("outputs", "File List External: ")
-//        for (i in getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).listFiles()){
-//            Log.d("outputs", i.toString())
-//        }
-//
-//        Log.d("outputs", "File List External 2: ")
-//        for (i in Environment.getExternalStorageDirectory().listFiles()){
-//            Log.d("outputs", i.toString())
-//        }
-
-        //getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
-
-//        val path = Environment.getExternalStorageDirectory().toString()+ File.separator + Environment.DIRECTORY_DOWNLOADS
-//        val filepath = File(path)
-//        val mRootPath = filepath.absoluteFile.path;
-//        Log.d("outputs", "filepath: $filepath")
-//        Log.d("outputs","rootpath: $mRootPath")
-//        Log.d("outputs", "File List External 3: ")
-//        for (i in filepath.listFiles()){
-//            Log.d("outputs", i.toString())
-//        }
-
         val dbpath = Environment.getExternalStorageDirectory().toString()+ File.separator + Environment.DIRECTORY_DOWNLOADS + File.separator + "cattlelogdb_$time.db"
         Log.d("outputs", "dbpath: $dbpath")
+
         Log.d("outputs", "Entering installDatabaseFromDownloads")
+        // Copies database file into CattleLog's internal data
         installDatabaseFromDownloads(dbpath)
 
-
+        // Sample database setup and query
         val dbFile = File(filesDir, "cattlelog_database.db")
         Log.d("outputs", "dstFile: $dbFile")
-
         val db = SQLiteDatabase.openOrCreateDatabase(dbFile, null)
-        //val db = SQLiteDatabase.openOrCreateDatabase("/storage/emulated/0/Download/cattlelogdb_1568318165945.db", null)
         Log.d("outputs", db.toString())
-
 
         var c: Cursor
         /* get cursor on it */
         try
         {
             c = db.query("cattle", null,null, null, null, null, null);
-            Log.d("outputs"+"cursor", "cattle exists! :)))")
+            Log.d("outputs"+"cursor", "cattle exists!")
             c = db.query("treatment", null,null, null, null, null, null);
-            Log.d("outputs"+"cursor", "treatment exists! :)))")
+            Log.d("outputs"+"cursor", "treatment exists!")
             c = db.query("health", null,null, null, null, null, null);
-            Log.d("outputs"+"cursor", "health exists! :)))")
+            Log.d("outputs"+"cursor", "health exists!")
             c = db.query("userFields", null,null, null, null, null, null);
-            Log.d("outputs"+"cursor", "userFields exists! :)))")
+            Log.d("outputs"+"cursor", "userFields exists!")
             // set limit to 5 to dump first 5 records
             c = db.query("cattle", null,null, null, null, null, null, "5");
 //            Log.v("outputs"+"cursor", DatabaseUtils.dumpCursorToString(c))
@@ -163,12 +125,11 @@ class MainActivity : AppCompatActivity() {
             c.close()
         }
         catch (e: java.lang.Exception) {
-            /* fail */
             Log.e("outputs", "exception", e)
-            Log.d("outputs"+"cursor", "cattle doesn't exist :(((")
+            Log.d("outputs"+"cursor", "Error in database setup or test query.")
         }
 
-        Log.d("outputs", "Time to check if this database has data")
+        Log.d("outputs", "Check if the database (created from the downloaded and copied .db file) has data.")
         val tableName = "cattle"
         val columnNames: Array<String> = arrayOf("TagNumber", "BirthDate", "FarmID")
         val whereClause = "TagNumber < ?"
@@ -178,51 +139,35 @@ class MainActivity : AppCompatActivity() {
         val orderBy = null
         val limit = "5"
 
-        Log.d("outputs", "check if cursor crashes here")
         try {
-            val c1: Cursor = db.query(tableName, columnNames, whereClause, whereArgs, groupBy, having, orderBy)
+            val c1: Cursor = db.query(tableName, columnNames, whereClause, whereArgs, groupBy, having, orderBy, limit)
             Log.v("outputs" + "cursor", DatabaseUtils.dumpCursorToString(c1))
             c1.close()
         }
         catch (e: java.lang.Exception) {
             /* fail */
             Log.e("outputs", "exception", e)
-            Log.d("outputs"+"cursor", "why does cursor break this send help")
+            Log.d("outputs"+"cursor", "Cursor caused an exception.")
         }
-        Log.d("outputs", "oof ouch we made it")
+        Log.d("outputs", "Database setup and query completed successfully.")
 
-
-
-//        try {
-//            while (c1.moveToNext()) {
-//                Log.d("outputs", c1.toString())
-//            }
-//        } finally {
-//            c1.close()
-//        }
-
-
-//        Log.d("outputs", "Entering copyFile")
-//        copyFile(srcFile, dstFile)
     }
 
 
     private fun installDatabaseFromDownloads(srcPath: String) {
         Log.d("outputs", "We have not broken and dbPath: $srcPath")
-
-        //val toDB_PATH2 = "/data/data/" + this.packageName + "/files/"
-        //Log.d("outputs", "We have not broken and toDB_PATH2: $toDB_PATH2")
-
-        //val source = File("/storage/emulated/0/Download/cattlelogdb_1568324605776.db")
         val source = File(srcPath)
 
         val startTime = System.currentTimeMillis()
         while (!source.exists() && System.currentTimeMillis()-startTime < 60000){
-            Log.d("outputs", "waiting on file to download")
+            Log.d("outputs", "Waiting on file to download.")
             Thread.sleep(1000)
         }
+        // Ensure that the file is completely ready to be copied
+        // TODO: set up an alert from DownloadManager instead of a thread.sleep.
         Thread.sleep(3000)
 
+        // Copy the downloaded file to CattleLog's internal storage.
         if (source.exists()){
             val destination = File(filesDir, "cattlelog_database.db")
             Log.d("outputs", "We have not broken and source: $source")
@@ -230,21 +175,21 @@ class MainActivity : AppCompatActivity() {
 
             try {
                 File(source.toURI()).copyTo(File(destination.toURI()), overwrite = true)
-                Log.d("outputs", "We have not broken")
+                Log.d("outputs", "File has been copied successfully.")
             } catch (e: Exception) {
-                Log.d("outputs", "We have certainly broken")
+                Log.d("outputs", "Error copying file.")
                 Log.e("outputs", "exception", e)
             }
 
-            Log.d("outputs", "We may continue")
         } else{
             // Handle case where file is not downloaded
+            Log.d("outputs", "Source file doesn't exist.")
         }
 
 
     }
 
-    // I'd like to remove unneeded files from the Downloads folder if possible (not important)
+    // TODO: Remove unneeded files from the Downloads folder if possible (not important)
     fun removeFile(){
         //val root = Environment.getExternalStorageDirectory().toString()
         val root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
