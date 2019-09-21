@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         val time = System.currentTimeMillis()
         Log.d(LOG_TAG, "time = $time")
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
-        request.setTitle("cattlelog_database.db")
+        request.setTitle("${CattlelogDatabase.DATABASE_NAME}.db")
         request.setDescription("CattleLog database is downloading.")
         request.allowScanningByMediaScanner()
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
         installDatabaseFromDownloads(dbpath)
 
         // Sample database setup and query
-        val dbFile = File(filesDir, "cattlelog_database.db")
+        val dbFile = File(filesDir, "${CattlelogDatabase.DATABASE_NAME}.db")
         Log.d(LOG_TAG, "dstFile: $dbFile")
 
         AsyncTask.execute {
@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
 
         // Copy the downloaded file to CattleLog's internal storage.
         if (source.exists()){
-            val destination = File(filesDir, "cattlelog_database.db")
+            val destination = File(filesDir, "${CattlelogDatabase.DATABASE_NAME}.db")
             Log.d(LOG_TAG, "We have not broken and source: $source")
             Log.d(LOG_TAG, "We have not broken and destination: $destination")
 
@@ -132,7 +132,7 @@ class MainActivity : AppCompatActivity() {
     fun removeFile(){
         //val root = Environment.getExternalStorageDirectory().toString()
         val root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-        val file = File("$root/cattlelog_database.db")
+        val file = File("$root/${CattlelogDatabase.DATABASE_NAME}.db")
         val fdelete = File(file.toURI())
         Log.d(LOG_TAG, "file: $file")
         Log.d(LOG_TAG, "fdelete: $fdelete")
