@@ -26,14 +26,15 @@ class DownloadDatabase : AppCompatActivity() {
 
     private lateinit var databaseDownloader: Downloader
     private lateinit var databaseDownloadTempName: String
-    private lateinit var taretFileName: String
+    private lateinit var targetFile: File
     private var cachedDownloadID: Long = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_download_database)
 
-        taretFileName = intent.getStringExtra(DESIRED_FILE_NAME_KEY)
+        targetFile = intent.getExtras().get(TARGET_FILE_KEY) as File
+        Log.d(LOG_TAG, targetFile.toString())
         databaseDownloader = Downloader(applicationContext, getString(R.string.db_URL))
         registerReceiver(onDownloadComplete, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
         startDownload()
@@ -47,7 +48,6 @@ class DownloadDatabase : AppCompatActivity() {
     private fun startDownload() {
         Toast.makeText(applicationContext, "Downloading...", Toast.LENGTH_SHORT).show()
         databaseDownloadTempName = "cattlelogdb_${System.currentTimeMillis()}.db"
-        Log.d("DownloadDatabase", databaseDownloadTempName)
         cachedDownloadID = databaseDownloader.downloadAs(databaseDownloadTempName)
     }
 
@@ -57,35 +57,39 @@ class DownloadDatabase : AppCompatActivity() {
 
             if (incomingDownloadID == cachedDownloadID) {
                 Toast.makeText(applicationContext, "Download completed.", Toast.LENGTH_SHORT).show()
-
-                val tempDownloadFile = File(
-                    Environment.getExternalStorageDirectory().toString() +
-                            File.separator + Environment.DIRECTORY_DOWNLOADS +
-                            File.separator + databaseDownloadTempName)
-
-                Log.d("DownloadDatabase", tempDownloadFile.absolutePath)
-
-                val dbFile = File(filesDir, "${CattlelogDatabase.DATABASE_NAME}.db")
-
-                try {
-                    tempDownloadFile.copyTo(dbFile, overwrite = true)
-                    Log.d(LOG_TAG, "File has been copied successfully.")
-
-                    // TODO replace later, this is only here for rough testing
-                    AsyncTask.execute {
-                        Log.d(
-                            LOG_TAG,
-                            "" + CattlelogDatabase.getDatabase(applicationContext, dbFile)
-                                .cattleDao().getAllCattle()
-                        )
-                    }
-                } catch (e: Exception) {
-                    Log.d(LOG_TAG, "Error copying file.")
-                    Log.e(LOG_TAG, "exception", e)
-                }
+                buildRoomDatabase()
             }
 
             finish()
         }
+    }
+
+    fun buildRoomDatabase() {
+        val tempDownloadFile = File(
+            Environment.getExternalStorageDirectory().toString() +
+                    File.separator + Environment.DIRECTORY_DOWNLOADS +
+                    File.separator + databaseDownloadTempName)
+
+        Log.d("DownloadDatabase", tempDownloadFile.toString())
+
+        try {
+            tempDownloadFile.copyTo(targetFile, overwrite = true)
+            Log.d(LOG_TAG, "File has been copied successfully.")
+
+            // TODO replace later, this is only here for rough testing
+            AsyncTask.execute {
+                Log.d(
+                    LOG_TAG,
+                    "" + CattlelogDatabase.getDatabase(applicationContext, targetFile)
+                        .cattleDao().getAllCattle()
+                )
+            }
+        } catch (e: Exception) {
+            Log.d(LOG_TAG, "Error copying file.")
+            Log.e(LOG_TAG, "exception", e)
+        }
+
+        // Once we've loaded everything into Room, we no longer need this file
+        tempDownloadFile.delete()
     }
 }

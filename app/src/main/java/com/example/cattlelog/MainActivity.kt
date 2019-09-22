@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import android.view.View
@@ -15,26 +14,25 @@ import com.example.cattlelog.database.CattlelogDatabase
 import java.io.*
 
 private const val PERMISSION_CODE = 1000
-const val DESIRED_FILE_NAME_KEY = "DESIRED FILE NAME"
-const val DESIRED_FILE_NAME_VALUE = "${CattlelogDatabase.DATABASE_NAME}.db"
+const val TARGET_FILE_KEY = "DESIRED FILE NAME"
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var downloadFileIntent: Intent
     private lateinit var databaseStatusTextView: TextView
-    private lateinit var dbFile: File
+    private lateinit var targetDatabaseFile: File
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         databaseStatusTextView = findViewById<TextView>(R.id.databaseStatusTextView)
-        dbFile = File(filesDir, DESIRED_FILE_NAME_VALUE)
+        targetDatabaseFile = File(filesDir, "${CattlelogDatabase.DATABASE_NAME}.db")
         updateDatabaseAvailabilityStatus()
 
         downloadButton.setOnClickListener {
             downloadFileIntent = Intent(this@MainActivity, DownloadDatabase::class.java)
-            downloadFileIntent.putExtra(DESIRED_FILE_NAME_KEY, DESIRED_FILE_NAME_VALUE)
+            downloadFileIntent.putExtra(TARGET_FILE_KEY, targetDatabaseFile)
             startIntentWithPermission(it, downloadFileIntent)
         }
     }
@@ -45,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateDatabaseAvailabilityStatus() {
-        if (dbFile.exists()) {
+        if (targetDatabaseFile.exists()) {
             databaseStatusTextView.setText(getString(R.string.already_have_database))
         } else {
             databaseStatusTextView.setText(getString(R.string.dont_have_database_yet))
