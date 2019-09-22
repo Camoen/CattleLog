@@ -30,28 +30,19 @@ public abstract class CattlelogDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: CattlelogDatabase? = null
 
-        fun getDatabase(context: Context, databaseFile: File? = null): CattlelogDatabase {
+        fun getDatabase(context: Context): CattlelogDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
             }
 
             synchronized(this) {
-                val instance: CattlelogDatabase
-
-                if (databaseFile !== null) {
-                    instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        CattlelogDatabase::class.java,
-                        DATABASE_NAME
-                    ).createFromFile(databaseFile).build()
-                } else {
-                    instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        CattlelogDatabase::class.java,
-                        DATABASE_NAME
-                    ).createFromAsset("databases/$DATABASE_NAME.db").build()
-                }
+                val databaseFile = File(context.filesDir, "$DATABASE_NAME.db")
+                val instance: CattlelogDatabase = Room.databaseBuilder(
+                    context.applicationContext,
+                    CattlelogDatabase::class.java,
+                    DATABASE_NAME
+                ).createFromFile(databaseFile).build()
 
                 INSTANCE = instance
                 return instance

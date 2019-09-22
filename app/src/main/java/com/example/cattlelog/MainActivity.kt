@@ -3,9 +3,11 @@ package com.example.cattlelog
 import android.content.pm.PackageManager
 import android.Manifest
 import android.content.Intent
+import android.os.AsyncTask
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import android.view.View
@@ -14,6 +16,7 @@ import com.example.cattlelog.database.CattlelogDatabase
 import java.io.*
 
 private const val PERMISSION_CODE = 1000
+private const val LOG_TAG = "MainActivity"
 const val TARGET_FILE_KEY = "DESIRED FILE NAME"
 
 class MainActivity : AppCompatActivity() {
@@ -40,6 +43,15 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         updateDatabaseAvailabilityStatus()
+
+        // TODO replace later, this is only here for rough testing
+        AsyncTask.execute {
+            Log.d(
+                LOG_TAG,
+                "" + CattlelogDatabase.getDatabase(applicationContext)
+                    .cattleDao().getAllCattle()
+            )
+        }
     }
 
     private fun updateDatabaseAvailabilityStatus() {
