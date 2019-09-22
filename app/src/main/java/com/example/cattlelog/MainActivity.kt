@@ -2,46 +2,48 @@ package com.example.cattlelog
 
 import android.content.pm.PackageManager
 import android.Manifest
-import android.app.DownloadManager
-import android.content.BroadcastReceiver
-import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
-import android.os.AsyncTask
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
+import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
-import android.util.Log
 import android.view.View
+import android.widget.TextView
 import com.example.cattlelog.database.CattlelogDatabase
-import com.example.cattlelog.utility.Downloader
 import java.io.*
 
-
 private const val PERMISSION_CODE = 1000
-private const val LOG_TAG = "outputs"
-
+const val DESIRED_FILE_NAME_KEY = "DESIRED FILE NAME"
+const val DESIRED_FILE_NAME_VALUE = "${CattlelogDatabase.DATABASE_NAME}.db"
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var databaseDownloader: Downloader
-    private lateinit var databaseDownloadFileName: String
-    private var cachedDownloadID: Long = -1
+
+    private lateinit var downloadFileIntent: Intent
+    private lateinit var databaseStatusTextView: TextView
+    private lateinit var dbFile: File
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        databaseStatusTextView = findViewById<TextView>(R.id.databaseStatusTextView)
+        dbFile = File(filesDir, DESIRED_FILE_NAME_VALUE)
 
-        databaseDownloader = Downloader(applicationContext, getString(R.string.db_URL))
-        registerReceiver(onDownloadComplete, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+        if (dbFile.exists()) {
+            databaseStatusTextView.setText(getString(R.string.already_have_database))
+        } else {
+            databaseStatusTextView.setText(getString(R.string.dont_have_database_yet))
+        }
 
-        downloadButton.setOnClickListener { takeActionWithPermission(it, ::startDownload) }
-        deleteButton.setOnClickListener { takeActionWithPermission(it, ::removeFile) }
+        downloadButton.setOnClickListener {
+            downloadFileIntent = Intent(this@MainActivity, DownloadDatabase::class.java)
+            downloadFileIntent.putExtra(DESIRED_FILE_NAME_KEY, DESIRED_FILE_NAME_VALUE)
+            startIntentWithPermission(it, downloadFileIntent)
+        }
     }
 
-    private fun takeActionWithPermission(view: View, actionToTake: () -> Unit ) {
+    private fun startIntentWithPermission(view: View, intent: Intent) {
         // Checks if version of Android is >= Marshmallow
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
@@ -50,66 +52,11 @@ class MainActivity : AppCompatActivity() {
                 // requestPermissions(arrayOf(Manifest.permission_group.STORAGE), PERMISSION_CODE)
             } else {
                 // If user allows apps to write to external storage (i.e., we don't need explicit permission)
-                actionToTake()
+                startActivity(intent)
             }
         } else {
             // OS is out of date, no permissions are needed
-            actionToTake()
-        }
-    }
-
-    private fun startDownload() {
-        Toast.makeText(applicationContext, "Downloading...", Toast.LENGTH_SHORT).show()
-        databaseDownloadFileName = "cattlelogdb_${System.currentTimeMillis()}.db"
-        cachedDownloadID = databaseDownloader.downloadAs(databaseDownloadFileName)
-    }
-
-    private val onDownloadComplete = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            val incomingDownloadID = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
-
-            if (incomingDownloadID == cachedDownloadID) {
-                Toast.makeText(applicationContext, "Download completed.", Toast.LENGTH_SHORT).show()
-
-                val downloadFile = File(Environment.getExternalStorageDirectory().toString() +
-                                        File.separator + Environment.DIRECTORY_DOWNLOADS +
-                                        File.separator + databaseDownloadFileName)
-
-                val dbFile = File(filesDir, "${CattlelogDatabase.DATABASE_NAME}.db")
-
-                try {
-                    downloadFile.copyTo(dbFile, overwrite = true)
-                    Log.d(LOG_TAG, "File has been copied successfully.")
-
-                    // TODO replace later, this is only here for rough testing
-                    AsyncTask.execute {
-                        Log.d(
-                            LOG_TAG,
-                            "" + CattlelogDatabase.getDatabase(applicationContext, dbFile)
-                                .cattleDao().getAllCattle()
-                        )
-                    }
-                } catch (e: Exception) {
-                    Log.d(LOG_TAG, "Error copying file.")
-                    Log.e(LOG_TAG, "exception", e)
-                }
-            }
-        }
-    }
-
-    // TODO: Remove unneeded files from the Downloads folder if possible (not important)
-    // TODO: Maybe have removeFile() take the file to remove as its argument
-    fun removeFile(){
-        val fileToDelete = File(filesDir, "${CattlelogDatabase.DATABASE_NAME}.db")
-
-        if (fileToDelete.exists()) {
-            if (fileToDelete.delete()) {
-                Toast.makeText(applicationContext, "Deleted ${fileToDelete.path}.", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(applicationContext, "Unable to delete ${fileToDelete.path}.", Toast.LENGTH_LONG).show()
-            }
-        } else {
-            Toast.makeText(applicationContext, "${fileToDelete.path} does not exist.", Toast.LENGTH_LONG).show()
+            startActivity(intent)
         }
     }
 
@@ -121,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         when (requestCode) {
             PERMISSION_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    startDownload()
+                    startActivity(downloadFileIntent)
                 } else {
                     Toast.makeText(this, "Permission denied.", Toast.LENGTH_LONG).show()
                 }
