@@ -27,19 +27,28 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         databaseStatusTextView = findViewById<TextView>(R.id.databaseStatusTextView)
         dbFile = File(filesDir, DESIRED_FILE_NAME_VALUE)
-
-        if (dbFile.exists()) {
-            databaseStatusTextView.setText(getString(R.string.already_have_database))
-        } else {
-            databaseStatusTextView.setText(getString(R.string.dont_have_database_yet))
-        }
+        updateDatabaseAvailabilityStatus()
 
         downloadButton.setOnClickListener {
             downloadFileIntent = Intent(this@MainActivity, DownloadDatabase::class.java)
             downloadFileIntent.putExtra(DESIRED_FILE_NAME_KEY, DESIRED_FILE_NAME_VALUE)
             startIntentWithPermission(it, downloadFileIntent)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateDatabaseAvailabilityStatus()
+    }
+
+    private fun updateDatabaseAvailabilityStatus() {
+        if (dbFile.exists()) {
+            databaseStatusTextView.setText(getString(R.string.already_have_database))
+        } else {
+            databaseStatusTextView.setText(getString(R.string.dont_have_database_yet))
         }
     }
 
