@@ -5,14 +5,12 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.cattlelog.dao.CattleDao
 import com.example.cattlelog.database.CattlelogDatabase
-import org.junit.After
 
 import org.junit.Test
 import org.junit.runner.RunWith
 
 import org.junit.Assert.*
 import org.junit.Before
-import java.io.IOException
 
 /**
  * All unit tests related to the CattleDao class.

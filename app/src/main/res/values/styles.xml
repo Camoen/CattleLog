@@ -5,7 +5,12 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorSecondary</item>
+    </style>
+
+    <style name="StartEndMargins">
+        <item name="android:layout_marginStart">@dimen/font_small</item>
+        <item name="android:layout_marginEnd">@dimen/font_small</item>
     </style>
 
 </resources>

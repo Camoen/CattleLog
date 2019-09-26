@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">CattleLog</string>
     <string name="db_URL">https://github.com/Camoen/CattleLog-Database/raw/master/cattlelog_database.db</string>
+    <string name="already_have_database">Great news! You\'ve already got a local copy of the database.</string>
+    <string name="dont_have_database_yet">Looks like you don\'t have a database yet. You can download it:</string>
+    <string name="download">Download</string>
+    <string name="welcome_let_s_get_you_started">Welcome! Let\'s get you started.</string>
+    <string name="hang_tight_almost_there">Hang tight! Almost there.</string>
 </resources>
