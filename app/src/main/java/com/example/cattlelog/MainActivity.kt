@@ -38,21 +38,43 @@ class MainActivity : AppCompatActivity() {
             downloadFileIntent.putExtra(TARGET_FILE_KEY, targetDatabaseFile)
             startIntentWithPermission(it, downloadFileIntent)
         }
-    }
 
-    override fun onResume() {
-        super.onResume()
-        updateDatabaseAvailabilityStatus()
-
-        // TODO replace later, this is only here for rough testing
-        AsyncTask.execute {
-            Log.d(
-                LOG_TAG,
-                "" + CattlelogDatabase.getDatabase(applicationContext)
-                    .cattleDao().getAllCattle()
-            )
+        // Testing button, logs query results.
+        testsqlquery.setOnClickListener {
+            AsyncTask.execute{
+                Log.d(
+                    LOG_TAG,
+                    "Test Query: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getCattleWithTagNumber(888888)
+                )
+                Log.d(
+                    LOG_TAG,
+                    "Test Query 2: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getNextExpectedHeatsTEST()
+                )
+                // Note that preset will probably not yield any results currently (need updated input files)
+                Log.d(
+                    LOG_TAG,
+                    "Test Query 3: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getNextExpectedHeatsPreset()
+                )
+            }
         }
     }
+
+//    override fun onResume() {
+//        super.onResume()
+//        updateDatabaseAvailabilityStatus()
+//
+//        // TODO replace later, this is only here for rough testing
+//        AsyncTask.execute {
+//            Log.d(
+//                LOG_TAG,
+//                "Test Query: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getCattleWithTagNumber(888888)
+//            )
+//            Log.d(
+//                LOG_TAG,
+//                "Test Query 2: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getNextExpectedHeats()
+//            )
+//        }
+//    }
 
     private fun updateDatabaseAvailabilityStatus() {
         if (targetDatabaseFile.exists()) {

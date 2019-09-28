@@ -43,4 +43,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/testsqlquery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TEST SQL QUERY"
+        app:layout_constraintBottom_toTopOf="@+id/downloadButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/databaseStatusTextView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
