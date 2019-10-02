@@ -12,8 +12,19 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import android.view.View
 import android.widget.TextView
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.cattlelog.database.CattlelogDatabase
 import java.io.*
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import java.security.AccessController.getContext
+
 
 private const val PERMISSION_CODE = 1000
 private const val LOG_TAG = "MainActivity"
@@ -24,6 +35,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var downloadFileIntent: Intent
     private lateinit var databaseStatusTextView: TextView
     private lateinit var targetDatabaseFile: File
+//    private lateinit var recyclerView: RecyclerView
+//    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+//    private lateinit var viewManager: RecyclerView.LayoutManager
+    private lateinit var cattleViewModel: CattleViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +73,26 @@ class MainActivity : AppCompatActivity() {
                 )
             }
         }
+
+        val recyclerView = findViewById<RecyclerView>(R.id.herdList)
+        val adapter = CattleListAdapter(this)
+        recyclerView.setHasFixedSize(true)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
+
+        cattleViewModel = ViewModelProvider(this).get(CattleViewModel::class.java)
+        cattleViewModel.allCattle.observe(this, Observer { cattleList ->
+            cattleList?.let { adapter.setCattleList(it) }
+        })
+
+
+//        recyclerView = findViewById<RecyclerView>(R.id.herdList).apply {
+//            setHasFixedSize(true)
+//            layoutManager = viewManager
+//            adapter = viewAdapter
+//        }
+
     }
 
 //    override fun onResume() {

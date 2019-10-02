@@ -63,4 +63,10 @@ dependencies {
     // Coroutines
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    // RecyclerView and CardView for query result lists
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
 }
