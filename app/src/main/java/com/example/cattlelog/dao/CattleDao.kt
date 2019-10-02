@@ -1,15 +1,16 @@
 package com.example.cattlelog.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import com.example.cattlelog.entities.Cattle
 
 @Dao
 interface CattleDao {
-    @Query("SELECT * FROM cattle")
-    fun getAllCattle(): List<Cattle>
+    @Query("SELECT * FROM cattle ORDER BY TagNumber ASC")
+    fun getAllCattle(): LiveData<List<Cattle>>
 
-    @Query("SELECT * FROM cattle WHERE TagNumber = :tagNumber")
+    @Query("SELECT * FROM cattle WHERE TagNumber = :tagNumber  ORDER BY BirthDate ASC")
     fun getCattleWithTagNumber(tagNumber: Int): Cattle?
 //    fun getCattleWithTagNumber(tagNumber: Int): List<Cattle>?
 
@@ -23,11 +24,12 @@ interface CattleDao {
 //    fun getNextExpectedHeats(): Cattle?
 
     // For Testing Only (returns a result)
-    @Query("select * from cattle where DATE(NextExpHeat) BETWEEN DATE(datetime('now','localtime', '-365 day')) AND DATE(datetime('now','localtime', '365 day'))")
-    fun getNextExpectedHeatsTEST(): Cattle?
+    //@Query("select * from cattle where DATE(NextExpHeat) BETWEEN DATE(datetime('2020-08-29')) AND DATE(datetime('2020-09-16'))")
+    @Query("select * from cattle where DATE(NextExpHeat) BETWEEN DATE(datetime('now','localtime', '+0 day')) AND DATE(datetime('now','localtime', '+365 day'))")
+    fun getNextExpectedHeatsTEST(): List<Cattle>?
 
     @Query("select * from cattle where DATE(NextExpHeat) BETWEEN DATE(datetime('now','localtime', '-3 day')) AND DATE(datetime('now','localtime', '3 day'))\n" +
             "UNION\n" +
             "select * from cattle where DATE(NextExpHeat) BETWEEN DATE(datetime('now','localtime', '18 day')) AND DATE(datetime('now','localtime', '21 day'));")
-    fun getNextExpectedHeatsPreset(): Cattle?
+    fun getNextExpectedHeatsPreset(): List<Cattle>?
 }

@@ -23,16 +23,17 @@
         android:id="@+id/downloadButton"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:text="@string/download"
-        android:textSize="@dimen/font_medium"
-        android:textColor="@color/neutral_1"
         android:backgroundTint="@color/colorSecondary"
+        android:text="@string/download"
+        android:textColor="@color/neutral_1"
+        android:textSize="@dimen/font_medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView style="@style/StartEndMargins"
+    <TextView
         android:id="@+id/welcomeTextView"
+        style="@style/StartEndMargins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -50,7 +51,23 @@
         android:text="TEST SQL QUERY"
         app:layout_constraintBottom_toTopOf="@+id/downloadButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/databaseStatusTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/databaseStatusTextView"
+        app:layout_constraintVertical_bias="0.044" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/herdList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#071107"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/downloadButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/testsqlquery"
+        app:layout_constraintVertical_bias="1.0"
+        tools:itemCount="11" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
