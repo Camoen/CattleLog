@@ -14,16 +14,13 @@ import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cattlelog.database.CattlelogDatabase
+import com.example.cattlelog.adapter.CattleListAdapter
+import com.example.cattlelog.view.CattleViewModel
+import com.example.cattlelog.model.database.CattlelogDatabase
 import java.io.*
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import java.security.AccessController.getContext
 
 
 private const val PERMISSION_CODE = 1000
@@ -125,7 +122,9 @@ class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
                 // request permission if denied
-                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), PERMISSION_CODE)
+                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    PERMISSION_CODE
+                )
                 // requestPermissions(arrayOf(Manifest.permission_group.STORAGE), PERMISSION_CODE)
             } else {
                 // If user allows apps to write to external storage (i.e., we don't need explicit permission)

@@ -10,7 +10,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.util.Log
 import android.widget.Toast
-import com.example.cattlelog.database.CattlelogDatabase.Companion.DATABASE_NAME
+import com.example.cattlelog.model.database.CattlelogDatabase.Companion.DATABASE_NAME
 import com.example.cattlelog.utility.Downloader
 import java.io.File
 

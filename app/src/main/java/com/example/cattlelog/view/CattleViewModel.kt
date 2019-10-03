@@ -1,10 +1,11 @@
-package com.example.cattlelog
+package com.example.cattlelog.view
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.cattlelog.database.CattlelogDatabase
-import com.example.cattlelog.entities.Cattle
+import com.example.cattlelog.model.database.CattlelogDatabase
+import com.example.cattlelog.model.entities.Cattle
+import com.example.cattlelog.model.repository.CattleRepository
 
 
 // Class extends AndroidViewModel and requires application as a parameter.

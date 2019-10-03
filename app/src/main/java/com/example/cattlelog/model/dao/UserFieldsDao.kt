@@ -1,8 +1,8 @@
-package com.example.cattlelog.dao
+package com.example.cattlelog.model.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.example.cattlelog.entities.UserFields
+import com.example.cattlelog.model.entities.UserFields
 
 @Dao
 interface UserFieldsDao {
