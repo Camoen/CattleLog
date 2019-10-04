@@ -12,24 +12,24 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="@dimen/font_base"
-        app:layout_constraintBottom_toTopOf="@+id/downloadButton"
+        app:layout_constraintBottom_toTopOf="@+id/herdList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
-        app:layout_constraintVertical_bias="0.077" />
+        app:layout_constraintVertical_bias="0.019" />
 
     <Button
         android:id="@+id/downloadButton"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_width="219dp"
+        android:layout_height="59dp"
         android:backgroundTint="@color/colorSecondary"
         android:text="@string/download"
         android:textColor="@color/neutral_1"
         android:textSize="@dimen/font_medium"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/herdList" />
 
     <TextView
         android:id="@+id/welcomeTextView"
@@ -39,6 +39,7 @@
         android:layout_marginTop="50dp"
         android:text="@string/welcome_let_s_get_you_started"
         android:textSize="@dimen/font_h1"
+        app:layout_constraintBottom_toTopOf="@id/databaseStatusTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,28 +47,35 @@
 
     <Button
         android:id="@+id/testsqlquery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="219dp"
+        android:layout_height="59dp"
         android:text="TEST SQL QUERY"
-        app:layout_constraintBottom_toTopOf="@+id/downloadButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/databaseStatusTextView"
-        app:layout_constraintVertical_bias="0.044" />
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/downloadButton"
+        app:layout_constraintTop_toBottomOf="@+id/herdList" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/herdList"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="411dp"
+        android:layout_height="425dp"
         android:background="#071107"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/downloadButton"
+        app:layout_constraintBottom_toTopOf="@id/downloadButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testsqlquery"
-        app:layout_constraintVertical_bias="1.0"
-        tools:itemCount="11" />
+        app:layout_constraintTop_toBottomOf="@id/databaseStatusTextView"
+        tools:itemCount="11"
+        tools:layout_editor_absoluteY="218dp" />
+
+    <SearchView
+        android:id="@+id/cattleSearchView"
+        android:layout_width="405dp"
+        android:layout_height="51dp"
+        app:layout_constraintBottom_toTopOf="@+id/herdList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

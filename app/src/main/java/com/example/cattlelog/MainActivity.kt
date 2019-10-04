@@ -11,6 +11,7 @@ import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import android.view.View
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -32,11 +33,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var downloadFileIntent: Intent
     private lateinit var databaseStatusTextView: TextView
     private lateinit var targetDatabaseFile: File
-//    private lateinit var recyclerView: RecyclerView
-//    private lateinit var viewAdapter: RecyclerView.Adapter<*>
-//    private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var cattleViewModel: CattleViewModel
+    private lateinit var cattleSearchView: SearchView
 
+    private lateinit var cattleRecyclerView: RecyclerView
+    private lateinit var cattleAdapter: CattleListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,68 +47,65 @@ class MainActivity : AppCompatActivity() {
         targetDatabaseFile = File(filesDir, "${CattlelogDatabase.DATABASE_NAME}.db")
         updateDatabaseAvailabilityStatus()
 
-        downloadButton.setOnClickListener {
-            downloadFileIntent = Intent(this@MainActivity, DownloadDatabase::class.java)
-            downloadFileIntent.putExtra(TARGET_FILE_KEY, targetDatabaseFile)
-            startIntentWithPermission(it, downloadFileIntent)
-        }
+        downloadButton.setOnClickListener {download(it)}
+        testsqlquery.setOnClickListener {testQuery(it)}
 
-        // Testing button, logs query results.
-        testsqlquery.setOnClickListener {
-            AsyncTask.execute{
-                Log.d(
-                    LOG_TAG,
-                    "Test Query: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getCattleWithTagNumber(888888)
-                )
-                Log.d(
-                    LOG_TAG,
-                    "Test Query 2: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getNextExpectedHeatsTEST()
-                )
-                // Note that preset will probably not yield any results currently (need updated input files)
-                Log.d(
-                    LOG_TAG,
-                    "Test Query 3: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getNextExpectedHeatsPreset()
-                )
-            }
-        }
-
-        val recyclerView = findViewById<RecyclerView>(R.id.herdList)
-        val adapter = CattleListAdapter(this)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
+        cattleRecyclerView = findViewById<RecyclerView>(R.id.herdList)
+        cattleAdapter = CattleListAdapter(this)
+        cattleRecyclerView.setHasFixedSize(true)
+        cattleRecyclerView.adapter = cattleAdapter
+        cattleRecyclerView.layoutManager = LinearLayoutManager(this)
+        cattleRecyclerView.addItemDecoration(
+            DividerItemDecoration(
+                cattleRecyclerView.context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
 
         cattleViewModel = ViewModelProvider(this).get(CattleViewModel::class.java)
         cattleViewModel.allCattle.observe(this, Observer { cattleList ->
-            cattleList?.let { adapter.setCattleList(it) }
+            cattleList?.let { cattleAdapter.setCattleList(it) }
         })
 
+        cattleSearchView = findViewById<SearchView>(R.id.cattleSearchView)
+        cattleSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
-//        recyclerView = findViewById<RecyclerView>(R.id.herdList).apply {
-//            setHasFixedSize(true)
-//            layoutManager = viewManager
-//            adapter = viewAdapter
-//        }
+            override fun onQueryTextChange(newText: String): Boolean {
+                cattleAdapter.filter.filter(newText)
+                return false
+            }
 
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+        })
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//        updateDatabaseAvailabilityStatus()
-//
-//        // TODO replace later, this is only here for rough testing
-//        AsyncTask.execute {
-//            Log.d(
-//                LOG_TAG,
-//                "Test Query: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getCattleWithTagNumber(888888)
-//            )
-//            Log.d(
-//                LOG_TAG,
-//                "Test Query 2: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getNextExpectedHeats()
-//            )
-//        }
-//    }
+    private fun testQuery(it: View) {
+        AsyncTask.execute {
+            Log.d(
+                LOG_TAG,
+                "Test Query: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getCattleWithTagNumber(
+                    888888
+                )
+            )
+            Log.d(
+                LOG_TAG,
+                "Test Query 2: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getNextExpectedHeatsTEST()
+            )
+            // Note that preset will probably not yield any results currently (need updated input files)
+            Log.d(
+                LOG_TAG,
+                "Test Query 3: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getNextExpectedHeatsPreset()
+            )
+        }
+    }
+
+    private fun download(it: View) {
+        downloadFileIntent = Intent(this@MainActivity, DownloadDatabase::class.java)
+        downloadFileIntent.putExtra(TARGET_FILE_KEY, targetDatabaseFile)
+        startIntentWithPermission(it, downloadFileIntent)
+    }
 
     private fun updateDatabaseAvailabilityStatus() {
         if (targetDatabaseFile.exists()) {
