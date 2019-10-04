@@ -8,11 +8,13 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import android.view.View
-import android.widget.SearchView
-import android.widget.TextView
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -29,28 +31,23 @@ private const val LOG_TAG = "MainActivity"
 const val TARGET_FILE_KEY = "DESIRED FILE NAME"
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var downloadFileIntent: Intent
-    private lateinit var databaseStatusTextView: TextView
     private lateinit var targetDatabaseFile: File
     private lateinit var cattleViewModel: CattleViewModel
-    private lateinit var cattleSearchView: SearchView
-
     private lateinit var cattleRecyclerView: RecyclerView
     private lateinit var cattleAdapter: CattleListAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        databaseStatusTextView = findViewById<TextView>(R.id.databaseStatusTextView)
         targetDatabaseFile = File(filesDir, "${CattlelogDatabase.DATABASE_NAME}.db")
-        updateDatabaseAvailabilityStatus()
 
         downloadButton.setOnClickListener {download(it)}
         testsqlquery.setOnClickListener {testQuery(it)}
 
-        cattleRecyclerView = findViewById<RecyclerView>(R.id.herdList)
+        cattleRecyclerView = findViewById(R.id.herdList)
         cattleAdapter = CattleListAdapter(this)
         cattleRecyclerView.setHasFixedSize(true)
         cattleRecyclerView.adapter = cattleAdapter
@@ -66,21 +63,9 @@ class MainActivity : AppCompatActivity() {
         cattleViewModel.allCattle.observe(this, Observer { cattleList ->
             cattleList?.let { cattleAdapter.setCattleList(it) }
         })
-
-        cattleSearchView = findViewById<SearchView>(R.id.cattleSearchView)
-        cattleSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                cattleAdapter.filter.filter(newText)
-                return false
-            }
-
-            override fun onQueryTextSubmit(query: String): Boolean {
-                return false
-            }
-        })
     }
 
+    // TODO get rid of this later, we shouldn't need it
     private fun testQuery(it: View) {
         AsyncTask.execute {
             Log.d(
@@ -105,14 +90,6 @@ class MainActivity : AppCompatActivity() {
         downloadFileIntent = Intent(this@MainActivity, DownloadDatabase::class.java)
         downloadFileIntent.putExtra(TARGET_FILE_KEY, targetDatabaseFile)
         startIntentWithPermission(it, downloadFileIntent)
-    }
-
-    private fun updateDatabaseAvailabilityStatus() {
-        if (targetDatabaseFile.exists()) {
-            databaseStatusTextView.setText(getString(R.string.already_have_database))
-        } else {
-            databaseStatusTextView.setText(getString(R.string.dont_have_database_yet))
-        }
     }
 
     private fun startIntentWithPermission(view: View, intent: Intent) {
@@ -148,5 +125,32 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    /**
+     * Builds the menu for this activity. See res/menu/cattlelog_menu.xml for all Items that this menu renders.
+     */
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.cattlelog_menu, menu)
+
+        val searchItem: MenuItem? = menu?.findItem(R.id.action_search)
+        val searchView: SearchView = searchItem?.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            // Whenever the user types something in the search bar, we apply the filter.
+            // See CattleListAdapter.kt's cattleFilter for how the filtering is actually done.
+            override fun onQueryTextChange(newText: String): Boolean {
+                cattleAdapter.filter.filter(newText)
+                return false
+            }
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+        })
+
+        return true
     }
 }

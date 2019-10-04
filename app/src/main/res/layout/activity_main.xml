@@ -6,76 +6,67 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/databaseStatusTextView"
-        style="@style/StartEndMargins"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/font_base"
-        app:layout_constraintBottom_toTopOf="@+id/herdList"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
-        app:layout_constraintVertical_bias="0.019" />
-
     <Button
         android:id="@+id/downloadButton"
-        android:layout_width="219dp"
+        android:layout_width="0dp"
         android:layout_height="59dp"
         android:backgroundTint="@color/colorSecondary"
         android:text="@string/download"
         android:textColor="@color/neutral_1"
-        android:textSize="@dimen/font_medium"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="@dimen/font_base"
+        app:layout_constraintBaseline_toBaselineOf="@+id/testsqlquery"
+        app:layout_constraintEnd_toStartOf="@+id/testsqlquery"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/herdList" />
+        app:layout_constraintStart_toStartOf="@+id/welcomeTextView" />
 
     <TextView
         android:id="@+id/welcomeTextView"
-        style="@style/StartEndMargins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="@dimen/font_small"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="@dimen/font_small"
         android:text="@string/welcome_let_s_get_you_started"
         android:textSize="@dimen/font_h1"
-        app:layout_constraintBottom_toTopOf="@id/databaseStatusTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/testsqlquery"
-        android:layout_width="219dp"
+        android:layout_width="0dp"
         android:layout_height="59dp"
         android:text="TEST SQL QUERY"
+        android:textSize="@dimen/font_base"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/welcomeTextView"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/downloadButton"
-        app:layout_constraintTop_toBottomOf="@+id/herdList" />
+        app:layout_constraintStart_toEndOf="@+id/downloadButton" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/herdList"
-        android:layout_width="411dp"
-        android:layout_height="425dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
         android:background="#071107"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@id/downloadButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/databaseStatusTextView"
-        tools:itemCount="11"
-        tools:layout_editor_absoluteY="218dp" />
+        app:layout_constraintBottom_toTopOf="@+id/downloadButton"
+        app:layout_constraintEnd_toEndOf="@+id/welcomeTextView"
+        app:layout_constraintStart_toStartOf="@+id/welcomeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/tapRecordHintTextView"
+        tools:itemCount="11" />
 
-    <SearchView
-        android:id="@+id/cattleSearchView"
-        android:layout_width="405dp"
-        android:layout_height="51dp"
-        app:layout_constraintBottom_toTopOf="@+id/herdList"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tapRecordHintTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/font_small"
+        android:text="@string/tap_any_record_hint"
+        app:layout_constraintEnd_toEndOf="@+id/welcomeTextView"
+        app:layout_constraintStart_toStartOf="@+id/welcomeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

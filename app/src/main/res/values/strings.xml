@@ -6,4 +6,5 @@
     <string name="download">Download</string>
     <string name="welcome_let_s_get_you_started">Welcome! Let\'s get you started.</string>
     <string name="hang_tight_almost_there">Hang tight! Almost there.</string>
+    <string name="tap_any_record_hint">Tap any record to view detailed information:</string>
 </resources>
