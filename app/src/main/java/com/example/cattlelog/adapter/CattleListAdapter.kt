@@ -62,11 +62,7 @@ class CattleListAdapter internal constructor(
                 val filterPattern = constraint.toString().trim()
 
                 for (cattle in cattleListUnfiltered) {
-                    // == true may seem silly, but it's required because the BarnName expression technically
-                    // returns Boolean? (nullable) instead of Boolean, which is what an if statement expects
-                    if (cattle.BarnName?.contains(filterPattern, true) == true ||
-                        cattle.BirthDate.contains(filterPattern, true) ||
-                        cattle.TagNumber.toString().contains(filterPattern)) {
+                    if (cattle.TagNumber.toString().contains(filterPattern)) {
                         filteredList.add(cattle)
                     }
                 }
