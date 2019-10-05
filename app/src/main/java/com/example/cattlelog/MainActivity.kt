@@ -17,6 +17,7 @@ import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +25,29 @@ import com.example.cattlelog.adapter.CattleListAdapter
 import com.example.cattlelog.view.CattleViewModel
 import com.example.cattlelog.model.database.CattlelogDatabase
 import java.io.*
+import androidx.core.app.ComponentActivity.ExtraData
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import java.security.AccessController.getContext
+import org.json.JSONObject
+import org.json.JSONException
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.widget.TextView
+import androidx.core.app.ActivityCompat.requestPermissions
+import androidx.core.content.ContextCompat.*
+import kotlinx.android.synthetic.main.activity_download_database.*
+import java.net.HttpURLConnection
+import java.net.URL
+
+
+import com.android.volley.DefaultRetryPolicy
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.cfsuman.jetpack.VolleySingleton
+import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.reflect.Method
 
 
 private const val PERMISSION_CODE = 1000
@@ -31,8 +55,13 @@ private const val LOG_TAG = "MainActivity"
 const val TARGET_FILE_KEY = "DESIRED FILE NAME"
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var downloadFileIntent: Intent
+    private lateinit var databaseStatusTextView: TextView
     private lateinit var targetDatabaseFile: File
+//    private lateinit var recyclerView: RecyclerView
+//    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+//    private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var cattleViewModel: CattleViewModel
     private lateinit var cattleRecyclerView: RecyclerView
     private lateinit var cattleAdapter: CattleListAdapter
@@ -42,6 +71,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        databaseStatusTextView = findViewById<TextView>(R.id.databaseStatusTextView)
         targetDatabaseFile = File(filesDir, "${CattlelogDatabase.DATABASE_NAME}.db")
 
         downloadButton.setOnClickListener {download(it)}
@@ -75,15 +105,16 @@ class MainActivity : AppCompatActivity() {
                 )
             )
             Log.d(
-                LOG_TAG,
-                "Test Query 2: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getNextExpectedHeatsTEST()
-            )
-            // Note that preset will probably not yield any results currently (need updated input files)
+                    LOG_TAG,
+                    "Test Query 2: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getNextExpectedHeatsTEST()
+                )
+                // Note that preset will probably not yield any results currently (need updated input files)
             Log.d(
                 LOG_TAG,
                 "Test Query 3: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getNextExpectedHeatsPreset()
             )
         }
+        getDatabaseVersion()
     }
 
     private fun download(it: View) {
@@ -153,4 +184,55 @@ class MainActivity : AppCompatActivity() {
 
         return true
     }
+
+    private fun getDatabaseVersion() {
+        var newestDBVersion = ""
+        Log.d("dropboxAPI", "entered check file function.")
+        Log.d("dropboxAPI", resources.getString(R.string.CattleLog_DropboxAPIKey))
+
+
+        val url = "https://api.dropboxapi.com/2/files/get_metadata"
+        val params = HashMap<String,String>()
+        params["path"] = "/cattlelog_database.db"
+        val jsonObject = JSONObject(params)
+
+        // Some help from https://android--code.blogspot.com/2019/02/android-kotlin-volley-post-request-with.html
+        // Volley post request with parameters
+        val request = object: JsonObjectRequest(
+            Method.POST,url,jsonObject,
+            Response.Listener { response ->
+                // Process the json
+                try {
+                    Log.d("dropboxAPI", "Response: $response")
+                    newestDBVersion = response["server_modified"].toString()
+                    Log.d("dropboxAPI", "Last Modification of CattleLog DB: $newestDBVersion")
+                }catch (e:Exception){
+                    Log.d("dropboxAPI", "Exception: $e")
+                }
+
+            }, Response.ErrorListener{
+                // Error in request
+                Log.d("dropboxAPI", "Volley error: $it")
+            }){
+
+            override fun getHeaders(): HashMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers["Authorization"] = "Bearer " + resources.getString(R.string.CattleLog_DropboxAPIKey)
+                return headers
+            }
+
+        }
+
+        // Volley request policy, only one time request to avoid duplicate transaction
+        request.retryPolicy = DefaultRetryPolicy(
+            DefaultRetryPolicy.DEFAULT_TIMEOUT_MS,
+            // 0 means no retry
+            0, // DefaultRetryPolicy.DEFAULT_MAX_RETRIES = 2
+            1f // DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        )
+
+        // Add the volley post request to the request queue
+        VolleySingleton.getInstance(this).addToRequestQueue(request)
+    }
+
 }
