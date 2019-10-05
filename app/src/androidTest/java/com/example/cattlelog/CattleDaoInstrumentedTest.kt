@@ -3,8 +3,8 @@ package com.example.cattlelog
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.cattlelog.dao.CattleDao
-import com.example.cattlelog.database.CattlelogDatabase
+import com.example.cattlelog.model.dao.CattleDao
+import com.example.cattlelog.model.database.CattlelogDatabase
 
 import org.junit.Test
 import org.junit.runner.RunWith

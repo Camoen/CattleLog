@@ -3,9 +3,7 @@ package com.example.cattlelog.utility
 import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
-import android.os.Environment
 import androidx.core.net.toUri
-import com.example.cattlelog.database.CattlelogDatabase
 import java.io.File
 
 class Downloader(private val context: Context, private val url: String) {

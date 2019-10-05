@@ -8,9 +8,4 @@
         <item name="colorAccent">@color/colorSecondary</item>
     </style>
 
-    <style name="StartEndMargins">
-        <item name="android:layout_marginStart">@dimen/font_small</item>
-        <item name="android:layout_marginEnd">@dimen/font_small</item>
-    </style>
-
 </resources>

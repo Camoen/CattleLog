@@ -1,18 +1,17 @@
-package com.example.cattlelog.database
+package com.example.cattlelog.model.database
 
 import android.content.Context
-import android.graphics.Typeface.createFromAsset
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.cattlelog.dao.CattleDao
-import com.example.cattlelog.dao.HealthDao
-import com.example.cattlelog.dao.TreatmentDao
-import com.example.cattlelog.dao.UserFieldsDao
-import com.example.cattlelog.entities.Cattle
-import com.example.cattlelog.entities.Health
-import com.example.cattlelog.entities.Treatment
-import com.example.cattlelog.entities.UserFields
+import com.example.cattlelog.model.dao.CattleDao
+import com.example.cattlelog.model.dao.HealthDao
+import com.example.cattlelog.model.dao.TreatmentDao
+import com.example.cattlelog.model.dao.UserFieldsDao
+import com.example.cattlelog.model.entities.Cattle
+import com.example.cattlelog.model.entities.Health
+import com.example.cattlelog.model.entities.Treatment
+import com.example.cattlelog.model.entities.UserFields
 import java.io.File
 
 @Database(entities = [Cattle::class, Health::class, Treatment::class, UserFields::class], version = 1)

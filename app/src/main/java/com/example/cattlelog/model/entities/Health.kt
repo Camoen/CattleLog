@@ -1,4 +1,4 @@
-package com.example.cattlelog.entities
+package com.example.cattlelog.model.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

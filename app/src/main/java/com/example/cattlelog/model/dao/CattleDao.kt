@@ -1,9 +1,9 @@
-package com.example.cattlelog.dao
+package com.example.cattlelog.model.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
-import com.example.cattlelog.entities.Cattle
+import com.example.cattlelog.model.entities.Cattle
 
 @Dao
 interface CattleDao {
