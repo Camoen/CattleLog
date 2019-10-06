@@ -71,7 +71,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        databaseStatusTextView = findViewById<TextView>(R.id.databaseStatusTextView)
         targetDatabaseFile = File(filesDir, "${CattlelogDatabase.DATABASE_NAME}.db")
 
         downloadButton.setOnClickListener {download(it)}
@@ -190,7 +189,6 @@ class MainActivity : AppCompatActivity() {
         Log.d("dropboxAPI", "entered check file function.")
         Log.d("dropboxAPI", resources.getString(R.string.CattleLog_DropboxAPIKey))
 
-
         val url = "https://api.dropboxapi.com/2/files/get_metadata"
         val params = HashMap<String,String>()
         params["path"] = "/cattlelog_database.db"
@@ -226,9 +224,9 @@ class MainActivity : AppCompatActivity() {
         // Volley request policy, only one time request to avoid duplicate transaction
         request.retryPolicy = DefaultRetryPolicy(
             DefaultRetryPolicy.DEFAULT_TIMEOUT_MS,
-            // 0 means no retry
-            0, // DefaultRetryPolicy.DEFAULT_MAX_RETRIES = 2
-            1f // DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+            // Use 0 to prevent retries
+            0,
+            1f
         )
 
         // Add the volley post request to the request queue
