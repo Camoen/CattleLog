@@ -3,6 +3,7 @@ package com.example.cattlelog
 import android.content.pm.PackageManager
 import android.Manifest
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.AsyncTask
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -33,6 +34,7 @@ import org.json.JSONException
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.widget.TextView
 import androidx.core.app.ActivityCompat.requestPermissions
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.*
 import kotlinx.android.synthetic.main.activity_download_database.*
 import java.net.HttpURLConnection
@@ -81,12 +83,9 @@ class MainActivity : AppCompatActivity() {
         cattleRecyclerView.setHasFixedSize(true)
         cattleRecyclerView.adapter = cattleAdapter
         cattleRecyclerView.layoutManager = LinearLayoutManager(this)
-        cattleRecyclerView.addItemDecoration(
-            DividerItemDecoration(
-                cattleRecyclerView.context,
-                DividerItemDecoration.VERTICAL
-            )
-        )
+        val divider = DividerItemDecoration(cattleRecyclerView.context,DividerItemDecoration.VERTICAL)
+        divider.setDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.divider) as Drawable)
+        cattleRecyclerView.addItemDecoration(divider)
 
         cattleViewModel = ViewModelProvider(this).get(CattleViewModel::class.java)
         cattleViewModel.allCattle.observe(this, Observer { cattleList ->
