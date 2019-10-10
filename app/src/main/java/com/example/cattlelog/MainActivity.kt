@@ -2,7 +2,10 @@ package com.example.cattlelog
 
 import android.content.pm.PackageManager
 import android.Manifest
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.AsyncTask
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -48,11 +51,15 @@ import com.android.volley.toolbox.Volley
 import com.cfsuman.jetpack.VolleySingleton
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.reflect.Method
+import kotlin.reflect.jvm.internal.impl.resolve.constants.NullValue
 
 
 private const val PERMISSION_CODE = 1000
 private const val LOG_TAG = "MainActivity"
 const val TARGET_FILE_KEY = "DESIRED FILE NAME"
+const val DB_DOWNLOAD_CODE = 50
+const val PREFS_FILENAME = "com.example.cattlelog.shared_preferences"
+const val DB_VERSION = "database_version"
 
 class MainActivity : AppCompatActivity() {
 
@@ -73,8 +80,8 @@ class MainActivity : AppCompatActivity() {
 
         targetDatabaseFile = File(filesDir, "${CattlelogDatabase.DATABASE_NAME}.db")
 
-        downloadButton.setOnClickListener {download(it)}
-        testsqlquery.setOnClickListener {testQuery(it)}
+        downloadButton.setOnClickListener {download()}
+        testsqlquery.setOnClickListener {testQuery()}
 
         cattleRecyclerView = findViewById(R.id.herdList)
         cattleAdapter = CattleListAdapter(this)
@@ -95,7 +102,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // TODO get rid of this later, we shouldn't need it
-    private fun testQuery(it: View) {
+    private fun testQuery() {
         AsyncTask.execute {
             Log.d(
                 LOG_TAG,
@@ -113,16 +120,19 @@ class MainActivity : AppCompatActivity() {
                 "Test Query 3: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getNextExpectedHeatsPreset()
             )
         }
-        getDatabaseVersion()
+
+//        val instDownloadDatabase = DownloadDatabase()
+//        DownloadDatabase::getDatabaseVersion.call(instDownloadDatabase, true)
+        getDatabaseVersion(false)
     }
 
-    private fun download(it: View) {
+    private fun download() {
         downloadFileIntent = Intent(this@MainActivity, DownloadDatabase::class.java)
         downloadFileIntent.putExtra(TARGET_FILE_KEY, targetDatabaseFile)
-        startIntentWithPermission(it, downloadFileIntent)
+        startIntentWithPermission(downloadFileIntent)
     }
 
-    private fun startIntentWithPermission(view: View, intent: Intent) {
+    private fun startIntentWithPermission(intent: Intent) {
         // Checks if version of Android is >= Marshmallow
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
@@ -133,11 +143,11 @@ class MainActivity : AppCompatActivity() {
                 // requestPermissions(arrayOf(Manifest.permission_group.STORAGE), PERMISSION_CODE)
             } else {
                 // If user allows apps to write to external storage (i.e., we don't need explicit permission)
-                startActivity(intent)
+                startActivityForResult(intent, DB_DOWNLOAD_CODE)
             }
         } else {
             // OS is out of date, no permissions are needed
-            startActivity(intent)
+            startActivityForResult(intent, DB_DOWNLOAD_CODE)
         }
     }
 
@@ -149,7 +159,7 @@ class MainActivity : AppCompatActivity() {
         when (requestCode) {
             PERMISSION_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    startActivity(downloadFileIntent)
+                    startActivityForResult(downloadFileIntent, DB_DOWNLOAD_CODE)
                 } else {
                     Toast.makeText(this, "Permission denied.", Toast.LENGTH_LONG).show()
                 }
@@ -184,14 +194,44 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    private fun getDatabaseVersion() {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        Log.d("onActResult", "reqCode: $requestCode,  resultCode: $resultCode, data: $data")
+        if (requestCode == DB_DOWNLOAD_CODE){
+            if (resultCode == Activity.RESULT_OK){
+                getDatabaseVersion(true)
+            }
+        }
+    }
+
+    fun setDatabaseVersion(newestDBVersion: String){
+        val prefs = this.getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
+        val editor = prefs!!.edit()
+        editor.putString(DB_VERSION, newestDBVersion)
+        editor.apply()
+        val localVersion = prefs.getString(DB_VERSION, "NONE")
+        Log.d("dropboxAPI", "The stored database version has been set to $localVersion")
+    }
+
+    fun checkDatabaseCurrent(newestDBVersion: String): Boolean{
+        val prefs = this.getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
+        val localVersion = prefs!!.getString(DB_VERSION, "NONE")
+        if (localVersion == newestDBVersion){
+            return true
+        }
+        return false
+    }
+
+    // Sets database version after database is successfully downloaded (call it with getDatabaseVersion(true) for this functionality)
+    // Triggers new database download if local database is out of date (call it with getDatabaseVersion(false) for this functionality)
+    fun getDatabaseVersion(download_finished: Boolean) {
         var newestDBVersion = ""
         Log.d("dropboxAPI", "entered check file function.")
         Log.d("dropboxAPI", resources.getString(R.string.CattleLog_DropboxAPIKey))
 
         val url = "https://api.dropboxapi.com/2/files/get_metadata"
         val params = HashMap<String,String>()
-        params["path"] = "/cattlelog_database.db"
+        params["path"] = "/${CattlelogDatabase.DATABASE_NAME}.db"
         val jsonObject = JSONObject(params)
 
         // Some help from https://android--code.blogspot.com/2019/02/android-kotlin-volley-post-request-with.html
@@ -204,6 +244,20 @@ class MainActivity : AppCompatActivity() {
                     Log.d("dropboxAPI", "Response: $response")
                     newestDBVersion = response["server_modified"].toString()
                     Log.d("dropboxAPI", "Last Modification of CattleLog DB: $newestDBVersion")
+                    if (download_finished){
+                        // The most recent version of the database has been downloaded
+                        setDatabaseVersion(newestDBVersion)
+                    } else {
+                        // Check that the local copy of the database is up to date
+                        if (!checkDatabaseCurrent(newestDBVersion)){
+                            // If local database version is out of date, download new version
+                            Log.d("dropboxAPI", "Local database is out of date, get new version.")
+                            download()
+
+                        } else {
+                            Log.d("dropboxAPI", "Local database is up to date.")
+                        }
+                    }
                 }catch (e:Exception){
                     Log.d("dropboxAPI", "Exception: $e")
                 }

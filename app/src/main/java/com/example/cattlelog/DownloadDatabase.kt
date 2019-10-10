@@ -1,5 +1,6 @@
 package com.example.cattlelog
 
+import android.app.Activity
 import android.app.DownloadManager
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -10,8 +11,14 @@ import android.os.Bundle
 import android.os.Environment
 import android.util.Log
 import android.widget.Toast
+import com.android.volley.DefaultRetryPolicy
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.cfsuman.jetpack.VolleySingleton
+import com.example.cattlelog.model.database.CattlelogDatabase
 import com.example.cattlelog.model.database.CattlelogDatabase.Companion.DATABASE_NAME
 import com.example.cattlelog.utility.Downloader
+import org.json.JSONObject
 import java.io.File
 
 
@@ -67,9 +74,13 @@ class DownloadDatabase : AppCompatActivity() {
             tempDownloadFile.copyTo(targetFile, overwrite = true)
             tempDownloadFile.delete()
             Log.d(LOG_TAG, "File has been copied successfully.")
+            // Activity result must be marked as OK, otherwise it default returns RESULT_CANCELED
+            setResult(Activity.RESULT_OK)
         } catch (e: Exception) {
             Log.d(LOG_TAG, "Error copying file.")
             Log.e(LOG_TAG, "exception", e)
         }
     }
+
+
 }
