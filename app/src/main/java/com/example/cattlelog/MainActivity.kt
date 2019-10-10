@@ -6,7 +6,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
-import android.content.SharedPreferences
 import android.os.AsyncTask
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -17,11 +16,9 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
-import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,30 +26,15 @@ import com.example.cattlelog.adapter.CattleListAdapter
 import com.example.cattlelog.view.CattleViewModel
 import com.example.cattlelog.model.database.CattlelogDatabase
 import java.io.*
-import androidx.core.app.ComponentActivity.ExtraData
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import java.security.AccessController.getContext
 import org.json.JSONObject
-import org.json.JSONException
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.widget.TextView
-import androidx.core.app.ActivityCompat.requestPermissions
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.*
-import kotlinx.android.synthetic.main.activity_download_database.*
-import java.net.HttpURLConnection
-import java.net.URL
 
 
 import com.android.volley.DefaultRetryPolicy
-import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import com.cfsuman.jetpack.VolleySingleton
-import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.reflect.Method
 import kotlin.reflect.jvm.internal.impl.resolve.constants.NullValue
 
 
@@ -63,7 +45,7 @@ const val DB_DOWNLOAD_CODE = 50
 const val PREFS_FILENAME = "com.example.cattlelog.shared_preferences"
 const val DB_VERSION = "database_version"
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : CattleListAdapter.RowListener, AppCompatActivity() {
 
     private lateinit var downloadFileIntent: Intent
     private lateinit var databaseStatusTextView: TextView
@@ -86,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         testsqlquery.setOnClickListener {testQuery()}
 
         cattleRecyclerView = findViewById(R.id.herdList)
-        cattleAdapter = CattleListAdapter(this)
+        cattleAdapter = CattleListAdapter(this, this)
         cattleRecyclerView.setHasFixedSize(true)
         cattleRecyclerView.adapter = cattleAdapter
         cattleRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -98,6 +80,11 @@ class MainActivity : AppCompatActivity() {
         cattleViewModel.allCattle.observe(this, Observer { cattleList ->
             cattleList?.let { cattleAdapter.setCattleList(it) }
         })
+    }
+
+    override fun onRowClicked(position: Int) {
+        val herdMember = cattleAdapter.getCattleList().get(position)
+        Log.d(LOG_TAG, herdMember.toString())
     }
 
     // TODO get rid of this later, we shouldn't need it
