@@ -27,7 +27,6 @@ import com.example.cattlelog.view.CattleViewModel
 import com.example.cattlelog.model.database.CattlelogDatabase
 import java.io.*
 import org.json.JSONObject
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 
 
@@ -35,7 +34,6 @@ import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.cfsuman.jetpack.VolleySingleton
-import kotlin.reflect.jvm.internal.impl.resolve.constants.NullValue
 
 
 private const val PERMISSION_CODE = 1000
@@ -48,11 +46,7 @@ const val DB_VERSION = "database_version"
 class MainActivity : CattleListAdapter.RowListener, AppCompatActivity() {
 
     private lateinit var downloadFileIntent: Intent
-    private lateinit var databaseStatusTextView: TextView
     private lateinit var targetDatabaseFile: File
-//    private lateinit var recyclerView: RecyclerView
-//    private lateinit var viewAdapter: RecyclerView.Adapter<*>
-//    private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var cattleViewModel: CattleViewModel
     private lateinit var cattleRecyclerView: RecyclerView
     private lateinit var cattleAdapter: CattleListAdapter
