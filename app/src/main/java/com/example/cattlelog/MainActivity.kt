@@ -78,7 +78,9 @@ class MainActivity : CattleListAdapter.RowListener, AppCompatActivity() {
 
     override fun onRowClicked(position: Int) {
         val herdMember = cattleAdapter.getCattleList().get(position)
-        Log.d(LOG_TAG, herdMember.toString())
+        val herdMemberDetailsIntent = Intent(this@MainActivity, HerdMemberDetails::class.java)
+        herdMemberDetailsIntent.putExtra(HERD_MEMBER_TAG, herdMember.TagNumber)
+        startActivity(herdMemberDetailsIntent)
     }
 
     // TODO get rid of this later, we shouldn't need it
@@ -156,6 +158,7 @@ class MainActivity : CattleListAdapter.RowListener, AppCompatActivity() {
 
         val searchItem: MenuItem? = menu?.findItem(R.id.action_search)
         val searchView: SearchView = searchItem?.actionView as SearchView
+        searchView.queryHint = getString(R.string.search_by_tag_number)
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 

@@ -7,4 +7,9 @@
     <string name="welcome_let_s_get_you_started">Welcome! Let\'s get you started.</string>
     <string name="hang_tight_almost_there">Hang tight! Almost there.</string>
     <string name="tap_any_record_hint">Tap any record to view detailed information:</string>
+    <string name="title_activity_herd_member_details">HerdMemberDetails</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="member_number">Member #%1$d</string>
+    <string name="search_by_tag_number">Search by tag number...</string>
 </resources>
