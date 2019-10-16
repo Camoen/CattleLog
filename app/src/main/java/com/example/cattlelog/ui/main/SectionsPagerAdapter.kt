@@ -5,10 +5,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.cattlelog.R
+import com.example.cattlelog.herd_member_details.HealthFragment
+import com.example.cattlelog.herd_member_details.OverviewFragment
+import com.example.cattlelog.herd_member_details.Tab
+import com.example.cattlelog.herd_member_details.TreatmentFragment
 
 private val TAB_TITLES = arrayOf(
-    R.string.tab_text_1,
-    R.string.tab_text_2
+    R.string.tab_overview,
+    R.string.tab_health,
+    R.string.tab_treatment
 )
 
 /**
@@ -19,17 +24,25 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1)
+        val fragment: Fragment
+
+        when (position) {
+            Tab.OVERVIEW.position -> fragment = OverviewFragment()
+            Tab.HEALTH.position -> fragment = HealthFragment()
+            Tab.TREATMENT.position -> fragment = TreatmentFragment()
+            // So Kotlin will stop complaining >:(
+            else -> fragment = OverviewFragment()
+        }
+
+        return fragment
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return context.resources.getString(TAB_TITLES[position])
+        return context.resources.getString(Tab[position]!!.title)
     }
 
+    // Return the number of tabs
     override fun getCount(): Int {
-        // Show 2 total pages.
-        return 2
+        return Tab.values().size
     }
 }

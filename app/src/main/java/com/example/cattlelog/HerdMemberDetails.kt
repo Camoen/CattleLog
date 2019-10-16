@@ -22,7 +22,7 @@ class HerdMemberDetails : AppCompatActivity() {
         val tabs: TabLayout = findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)
 
-        tagNumber = intent?.extras?.get(HERD_MEMBER_TAG) as Int
+        tagNumber = intent?.extras?.getInt(HERD_MEMBER_TAG) as Int
         findViewById<TextView>(R.id.title).text = String.format(getString(R.string.member_number), tagNumber)
     }
 }
