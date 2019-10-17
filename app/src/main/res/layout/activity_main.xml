@@ -10,7 +10,7 @@
         android:id="@+id/downloadButton"
         android:layout_width="0dp"
         android:layout_height="59dp"
-        android:backgroundTint="@color/colorSecondary"
+        android:backgroundTint="@color/colorPrimary"
         android:text="@string/download"
         android:textColor="@color/neutral_1"
         android:textSize="@dimen/font_base"

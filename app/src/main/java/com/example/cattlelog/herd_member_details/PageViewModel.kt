@@ -1,4 +1,4 @@
-package com.example.cattlelog.ui.main
+package com.example.cattlelog.herd_member_details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

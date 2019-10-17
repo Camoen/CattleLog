@@ -14,6 +14,13 @@ import com.example.cattlelog.R
  */
 class TreatmentFragment : Fragment() {
 
+    private var herdMemberTagNumber: Int = -1
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        herdMemberTagNumber = (activity as HerdMemberDetails).getTagNumber()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -21,6 +28,4 @@ class TreatmentFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_treatment, container, false)
     }
-
-
 }

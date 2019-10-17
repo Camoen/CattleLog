@@ -1,7 +1,6 @@
 package com.example.cattlelog.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,7 +47,7 @@ class CattleListAdapter internal constructor(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CattleViewHolder {
-        val itemView = inflater.inflate(R.layout.list_row, parent, false)
+        val itemView = inflater.inflate(R.layout.herd_overview_row, parent, false)
         return CattleViewHolder(itemView, rowClickListener)
     }
 

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#7D5C3B</color>
-    <color name="colorPrimaryDark">#3A2512</color>
-    <color name="colorSecondary">#589D7C</color>
+    <color name="colorPrimary">#2D5830</color>
+    <color name="colorAccent">#ACFFBA</color>
     <color name="recyclerBackground">#f0f5ef</color>
     <color name="neutral_1">#F7F7F7</color>
     <color name="neutral_2">#C9C9C9</color>

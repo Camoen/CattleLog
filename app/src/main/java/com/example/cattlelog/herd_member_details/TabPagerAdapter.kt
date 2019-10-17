@@ -1,4 +1,4 @@
-package com.example.cattlelog.ui.main
+package com.example.cattlelog.herd_member_details
 
 import android.content.Context
 import androidx.fragment.app.Fragment
@@ -10,17 +10,11 @@ import com.example.cattlelog.herd_member_details.OverviewFragment
 import com.example.cattlelog.herd_member_details.Tab
 import com.example.cattlelog.herd_member_details.TreatmentFragment
 
-private val TAB_TITLES = arrayOf(
-    R.string.tab_overview,
-    R.string.tab_health,
-    R.string.tab_treatment
-)
-
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
+class TabPagerAdapter(private val context: Context, fm: FragmentManager) :
     FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {

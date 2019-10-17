@@ -3,5 +3,4 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".herd_member_details.HealthFragment"
-    android:background="@color/colorSecondary"/>
+    tools:context=".herd_member_details.HealthFragment"/>

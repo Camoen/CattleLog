@@ -34,6 +34,8 @@ import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.cfsuman.jetpack.VolleySingleton
+import com.example.cattlelog.herd_member_details.HERD_MEMBER_TAG
+import com.example.cattlelog.herd_member_details.HerdMemberDetails
 
 
 private const val PERMISSION_CODE = 1000
