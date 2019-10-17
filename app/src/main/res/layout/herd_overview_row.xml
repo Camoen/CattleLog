@@ -3,33 +3,20 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:minHeight="60dp"
     android:layout_height="wrap_content"
-    android:background="@color/recyclerBackground">
+    android:background="@color/softGreen"
+    android:paddingTop="@dimen/font_large"
+    android:paddingBottom="@dimen/font_large">
 
     <TextView
         android:id="@+id/herdTagNumber"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1.0"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="@dimen/font_base" />
+        style="@style/RecyclerViewCell"/>
 
     <TextView
         android:id="@+id/herdBirthDate"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1.0"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="@dimen/font_base" />
+        style="@style/RecyclerViewCell"/>
 
     <TextView
         android:id="@+id/herdBarnName"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1.0"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="@dimen/font_base" />
+        style="@style/RecyclerViewCell"/>
 
 </LinearLayout>
