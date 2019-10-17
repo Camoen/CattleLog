@@ -1,4 +1,4 @@
-package com.example.cattlelog.view
+package com.example.cattlelog.herd
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -9,7 +9,7 @@ import com.example.cattlelog.model.repository.CattleRepository
 
 
 // Class extends AndroidViewModel and requires application as a parameter.
-class CattleViewModel(application: Application) : AndroidViewModel(application) {
+class HerdViewModel(application: Application) : AndroidViewModel(application) {
 
     // The ViewModel maintains a reference to the repository to get data.
     private val repository: CattleRepository

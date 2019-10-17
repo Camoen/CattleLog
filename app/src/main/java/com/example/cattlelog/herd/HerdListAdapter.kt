@@ -1,4 +1,4 @@
-package com.example.cattlelog.adapter
+package com.example.cattlelog.herd
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cattlelog.R
 import com.example.cattlelog.model.entities.Cattle
 
-class CattleListAdapter internal constructor(
+class HerdListAdapter internal constructor(
     context: Context,
     private var rowClickListener: RowListener
 ) :
-    RecyclerView.Adapter<CattleListAdapter.CattleViewHolder>(), Filterable {
+    RecyclerView.Adapter<HerdListAdapter.CattleViewHolder>(), Filterable {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var cattleListFiltered = mutableListOf<Cattle>()

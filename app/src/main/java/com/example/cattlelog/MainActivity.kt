@@ -23,8 +23,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cattlelog.adapter.CattleListAdapter
-import com.example.cattlelog.view.CattleViewModel
+import com.example.cattlelog.herd.HerdListAdapter
+import com.example.cattlelog.herd.HerdViewModel
 import com.example.cattlelog.model.database.CattlelogDatabase
 import java.io.*
 import org.json.JSONObject
@@ -46,13 +46,13 @@ const val DB_DOWNLOAD_CODE = 50
 const val PREFS_FILENAME = "com.example.cattlelog.shared_preferences"
 const val DB_VERSION = "database_version"
 
-class MainActivity : CattleListAdapter.RowListener, AppCompatActivity() {
+class MainActivity : HerdListAdapter.RowListener, AppCompatActivity() {
 
     private lateinit var downloadFileIntent: Intent
     private lateinit var targetDatabaseFile: File
-    private lateinit var cattleViewModel: CattleViewModel
+    private lateinit var herdViewModel: HerdViewModel
     private lateinit var cattleRecyclerView: RecyclerView
-    private lateinit var cattleAdapter: CattleListAdapter
+    private lateinit var herdAdapter: HerdListAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,22 +65,22 @@ class MainActivity : CattleListAdapter.RowListener, AppCompatActivity() {
         testsqlquery.setOnClickListener {testQuery()}
 
         cattleRecyclerView = findViewById(R.id.herdList)
-        cattleAdapter = CattleListAdapter(this, this)
+        herdAdapter = HerdListAdapter(this, this)
         cattleRecyclerView.setHasFixedSize(true)
-        cattleRecyclerView.adapter = cattleAdapter
+        cattleRecyclerView.adapter = herdAdapter
         cattleRecyclerView.layoutManager = LinearLayoutManager(this)
         val divider = DividerItemDecoration(cattleRecyclerView.context,DividerItemDecoration.VERTICAL)
         divider.setDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.divider) as Drawable)
         cattleRecyclerView.addItemDecoration(divider)
 
-        cattleViewModel = ViewModelProvider(this).get(CattleViewModel::class.java)
-        cattleViewModel.allCattle.observe(this, Observer { cattleList ->
-            cattleList?.let { cattleAdapter.setCattleList(it) }
+        herdViewModel = ViewModelProvider(this).get(HerdViewModel::class.java)
+        herdViewModel.allCattle.observe(this, Observer { cattleList ->
+            cattleList?.let { herdAdapter.setCattleList(it) }
         })
     }
 
     override fun onRowClicked(position: Int) {
-        val herdMember = cattleAdapter.getCattleList().get(position)
+        val herdMember = herdAdapter.getCattleList().get(position)
         val herdMemberDetailsIntent = Intent(this@MainActivity, HerdMemberDetails::class.java)
         herdMemberDetailsIntent.putExtra(HERD_MEMBER_TAG, herdMember.TagNumber)
         startActivity(herdMemberDetailsIntent)
@@ -167,9 +167,9 @@ class MainActivity : CattleListAdapter.RowListener, AppCompatActivity() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             // Whenever the user types something in the search bar, we apply the filter.
-            // See CattleListAdapter.kt's cattleFilter for how the filtering is actually done.
+            // See HerdListAdaptert's cattleFilter for how the filtering is actually done.
             override fun onQueryTextChange(newText: String): Boolean {
-                cattleAdapter.filter.filter(newText)
+                herdAdapter.filter.filter(newText)
                 return false
             }
 
