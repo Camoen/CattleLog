@@ -35,6 +35,7 @@ class DownloadDatabase : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_download_database)
+        title = "Database Download"
 
         targetFile = intent.getExtras().get(TARGET_FILE_KEY) as File
         Log.d(LOG_TAG, targetFile.toString())

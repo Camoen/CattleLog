@@ -10,6 +10,7 @@ import android.os.AsyncTask
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
@@ -161,6 +162,7 @@ class MainActivity : CattleListAdapter.RowListener, AppCompatActivity() {
         val searchItem: MenuItem? = menu?.findItem(R.id.action_search)
         val searchView: SearchView = searchItem?.actionView as SearchView
         searchView.queryHint = getString(R.string.search_by_tag_number)
+        searchView.inputType = InputType.TYPE_CLASS_NUMBER
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
