@@ -163,7 +163,7 @@ class MainActivity : HerdListAdapter.RowListener, AppCompatActivity() {
         val searchView: SearchView = searchItem?.actionView as SearchView
         searchView.queryHint = getString(R.string.search_by_tag_number)
         searchView.inputType = InputType.TYPE_CLASS_NUMBER
-
+        searchView.setIconifiedByDefault(false)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             // Whenever the user types something in the search bar, we apply the filter.
