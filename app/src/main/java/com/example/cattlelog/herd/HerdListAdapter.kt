@@ -1,7 +1,6 @@
-package com.example.cattlelog.adapter
+package com.example.cattlelog.herd
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cattlelog.R
 import com.example.cattlelog.model.entities.Cattle
 
-class CattleListAdapter internal constructor(
+class HerdListAdapter internal constructor(
     context: Context,
     private var rowClickListener: RowListener
 ) :
-    RecyclerView.Adapter<CattleListAdapter.CattleViewHolder>(), Filterable {
+    RecyclerView.Adapter<HerdListAdapter.CattleViewHolder>(), Filterable {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var cattleListFiltered = mutableListOf<Cattle>()
@@ -48,7 +47,7 @@ class CattleListAdapter internal constructor(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CattleViewHolder {
-        val itemView = inflater.inflate(R.layout.list_row, parent, false)
+        val itemView = inflater.inflate(R.layout.herd_overview_row, parent, false)
         return CattleViewHolder(itemView, rowClickListener)
     }
 

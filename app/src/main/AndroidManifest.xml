@@ -16,13 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".HerdMemberDetails"
+            android:name=".herd_member_details.HerdMemberDetails"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".DownloadDatabase" />
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustNothing"
-            android:label="@string/app_name">
+            android:label="@string/herd_members">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

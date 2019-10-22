@@ -1,15 +1,16 @@
 <resources>
     <string name="app_name">CattleLog</string>
     <string name="db_URL">https://www.dropbox.com/s/41kchqru8c1ehxi/cattlelog_database.db?dl=1</string>
-    <string name="already_have_database">Great news! You\'ve already got a local copy of the database.</string>
-    <string name="dont_have_database_yet">Looks like you don\'t have a database yet. You can download it:</string>
     <string name="download">Download</string>
-    <string name="welcome_let_s_get_you_started">Welcome! Let\'s get you started.</string>
     <string name="hang_tight_almost_there">Hang tight! Almost there.</string>
-    <string name="tap_any_record_hint">Tap any record to view detailed information:</string>
     <string name="title_activity_herd_member_details">HerdMemberDetails</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_overview">Overview</string>
+    <string name="tab_health">Health</string>
+    <string name="tab_treatment">Treatment</string>
     <string name="member_number">Member #%1$d</string>
-    <string name="search_by_tag_number">Search by tag number...</string>
+    <string name="search_by_tag_number">Search by tag number…</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="herd_members">Herd Members</string>
 </resources>

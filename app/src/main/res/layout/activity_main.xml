@@ -4,35 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:layout_marginStart="@dimen/font_small"
+    android:layout_marginEnd="@dimen/font_small" >
 
     <Button
         android:id="@+id/downloadButton"
         android:layout_width="0dp"
         android:layout_height="59dp"
-        android:backgroundTint="@color/colorSecondary"
+        android:backgroundTint="@color/darkGreen"
         android:text="@string/download"
-        android:textColor="@color/neutral_1"
+        android:textColor="@color/nearlyWhite"
         android:textSize="@dimen/font_base"
         app:layout_constraintBaseline_toBaselineOf="@+id/testsqlquery"
         app:layout_constraintEnd_toStartOf="@+id/testsqlquery"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="@+id/welcomeTextView" />
-
-    <TextView
-        android:id="@+id/welcomeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/font_small"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="@dimen/font_small"
-        android:text="@string/welcome_let_s_get_you_started"
-        android:textSize="@dimen/font_h1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/testsqlquery"
@@ -41,7 +29,7 @@
         android:text="TEST SQL QUERY"
         android:textSize="@dimen/font_base"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/welcomeTextView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/downloadButton" />
@@ -50,22 +38,12 @@
         android:id="@+id/herdList"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/font_small"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/downloadButton"
-        app:layout_constraintEnd_toEndOf="@+id/welcomeTextView"
-        app:layout_constraintStart_toStartOf="@+id/welcomeTextView"
-        app:layout_constraintTop_toBottomOf="@+id/tapRecordHintTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:itemCount="11" />
-
-    <TextView
-        android:id="@+id/tapRecordHintTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/font_small"
-        android:text="@string/tap_any_record_hint"
-        app:layout_constraintEnd_toEndOf="@+id/welcomeTextView"
-        app:layout_constraintStart_toStartOf="@+id/welcomeTextView"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
