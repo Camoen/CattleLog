@@ -36,6 +36,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.cfsuman.jetpack.VolleySingleton
 import com.example.cattlelog.herd_member_details.HERD_MEMBER_TAG
+import com.example.cattlelog.herd_member_details.HERD_MEMBER_BIRTHDATE
 import com.example.cattlelog.herd_member_details.HerdMemberDetails
 
 
@@ -83,6 +84,9 @@ class MainActivity : HerdListAdapter.RowListener, AppCompatActivity() {
         val herdMember = herdAdapter.getCattleList().get(position)
         val herdMemberDetailsIntent = Intent(this@MainActivity, HerdMemberDetails::class.java)
         herdMemberDetailsIntent.putExtra(HERD_MEMBER_TAG, herdMember.TagNumber)
+        herdMemberDetailsIntent.putExtra(HERD_MEMBER_BIRTHDATE, herdMember.BirthDate)
+        
+
         startActivity(herdMemberDetailsIntent)
     }
 
@@ -106,8 +110,6 @@ class MainActivity : HerdListAdapter.RowListener, AppCompatActivity() {
             )
         }
 
-//        val instDownloadDatabase = DownloadDatabase()
-//        DownloadDatabase::getDatabaseVersion.call(instDownloadDatabase, true)
         getDatabaseVersion(false)
     }
 
