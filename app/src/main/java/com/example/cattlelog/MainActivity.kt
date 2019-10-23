@@ -85,7 +85,7 @@ class MainActivity : HerdListAdapter.RowListener, AppCompatActivity() {
         val herdMemberDetailsIntent = Intent(this@MainActivity, HerdMemberDetails::class.java)
         herdMemberDetailsIntent.putExtra(HERD_MEMBER_TAG, herdMember.TagNumber)
         herdMemberDetailsIntent.putExtra(HERD_MEMBER_BIRTHDATE, herdMember.BirthDate)
-        
+
 
         startActivity(herdMemberDetailsIntent)
     }
