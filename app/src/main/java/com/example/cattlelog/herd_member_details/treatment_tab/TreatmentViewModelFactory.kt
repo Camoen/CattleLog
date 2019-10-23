@@ -1,4 +1,4 @@
-package com.example.cattlelog.herd
+package com.example.cattlelog.herd_member_details.treatment_tab
 
 import androidx.lifecycle.ViewModel
 import android.app.Application
@@ -16,7 +16,11 @@ class TreatmentViewModelFactory(
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(TreatmentViewModel::class.java)){
-            return TreatmentViewModel(application, tagNumber, birthDate) as T
+            return TreatmentViewModel(
+                application,
+                tagNumber,
+                birthDate
+            ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

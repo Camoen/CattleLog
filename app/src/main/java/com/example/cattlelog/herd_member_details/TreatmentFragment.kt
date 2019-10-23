@@ -9,15 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import com.example.cattlelog.herd.TreatmentViewModel
+import com.example.cattlelog.herd_member_details.treatment_tab.TreatmentViewModel
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cattlelog.herd.TreatmentListAdapter
+import com.example.cattlelog.herd_member_details.treatment_tab.TreatmentListAdapter
 
 import kotlinx.android.synthetic.main.fragment_treatment.*
-import com.example.cattlelog.herd.TreatmentViewModelFactory
+import com.example.cattlelog.herd_member_details.treatment_tab.TreatmentViewModelFactory
 
 
 /**
@@ -51,7 +51,8 @@ class TreatmentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        treatmentAdapter = TreatmentListAdapter(activity!!)
+        treatmentAdapter =
+            TreatmentListAdapter(activity!!)
         treatmentRecyclerView = treatmentList
         treatmentRecyclerView.layoutManager = LinearLayoutManager(activity!!)
         treatmentRecyclerView.setHasFixedSize(true)
@@ -62,7 +63,12 @@ class TreatmentFragment : Fragment() {
 
 
         // treatmentViewModelFactory takes in extra parameters (TagNumber, BirthDate) and passes them to treatmentViewModel
-        treatmentViewModelFactory = TreatmentViewModelFactory(activity!!.application, herdMemberTagNumber, herdMemberBirthDate)
+        treatmentViewModelFactory =
+            TreatmentViewModelFactory(
+                activity!!.application,
+                herdMemberTagNumber,
+                herdMemberBirthDate
+            )
         treatmentViewModel = ViewModelProvider(this, treatmentViewModelFactory).get(TreatmentViewModel::class.java)
         treatmentViewModel.allTreatments.observe(this, Observer { treatmentList ->
             treatmentList?.let { treatmentAdapter.setTreatmentList(it) }
