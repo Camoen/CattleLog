@@ -1,5 +1,6 @@
 package com.example.cattlelog.model.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import com.example.cattlelog.model.entities.Cattle
@@ -17,5 +18,5 @@ interface TreatmentDao {
     fun getAllTreatmentsByBirthDate(birthDate: String): List<Treatment>?
 
     @Query("SELECT * FROM treatment WHERE TagNumber = :tagNumber AND BirthDate = :birthDate")
-    fun getUniqueTreatmentData(tagNumber: Int, birthDate: String): Treatment?
+    fun getUniqueTreatmentData(tagNumber: Int, birthDate: String): LiveData<List<Treatment>>
 }

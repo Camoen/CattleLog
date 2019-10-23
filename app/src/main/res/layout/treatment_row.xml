@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:minHeight="60dp"
+    android:layout_height="wrap_content"
+    android:background="@color/softGreen"
+    android:paddingTop="@dimen/font_large"
+    android:paddingBottom="@dimen/font_large">
+
+    <TextView
+        android:id="@+id/eventDate"
+        style="@style/RecyclerViewCell"/>
+
+    <TextView
+        android:id="@+id/pinkEye"
+        style="@style/RecyclerViewCell"/>
+
+    <TextView
+        android:id="@+id/eyeSide"
+        style="@style/RecyclerViewCell"/>
+
+</LinearLayout>
