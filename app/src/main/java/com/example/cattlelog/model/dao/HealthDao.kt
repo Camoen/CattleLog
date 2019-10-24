@@ -1,8 +1,8 @@
 package com.example.cattlelog.model.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
-import com.example.cattlelog.model.entities.Cattle
 import com.example.cattlelog.model.entities.Health
 
 @Dao
@@ -20,5 +20,5 @@ interface HealthDao {
     fun getAllHealthReportsByEvent(event: String): List<Health>?
 
     @Query("SELECT * FROM health WHERE TagNumber = :tagNumber AND BirthDate = :birthDate")
-    fun getUniqueHealthData(tagNumber: Int, birthDate: String): Health?
+    fun getUniqueHealthData(tagNumber: Int, birthDate: String): LiveData<List<Health>>
 }
