@@ -19,7 +19,9 @@ interface HealthDao {
     @Query("SELECT * FROM health WHERE HealthEvent = :event")
     fun getAllHealthReportsByEvent(event: String): List<Health>?
 
-    @Query("SELECT * FROM health WHERE TagNumber = :tagNumber AND BirthDate = :birthDate " +
+    @Query("SELECT TagNumber, BirthDate, substr(HealthEvent,1,2)||'/'||substr(HealthEvent,3,2)||" +
+            "'/'||substr(HealthEvent,5,2)||substr(HealthEvent,7) as HealthEvent FROM health " +
+            "WHERE TagNumber = :tagNumber AND BirthDate = :birthDate " +
             "ORDER BY (substr(HealthEvent,5,2)||substr(HealthEvent,1,2)||substr(HealthEvent,3,2)) DESC")
     fun getUniqueHealthData(tagNumber: Int, birthDate: String): LiveData<List<Health>>
 }
