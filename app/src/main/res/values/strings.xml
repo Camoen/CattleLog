@@ -10,7 +10,14 @@
     <string name="member_number">Member #%1$d</string>
     <string name="search_by_tag_number">Search by tag number…</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="herd_members">Herd Members</string>
+    <string name="mastitis">Mastitis:</string>
+    <string name="foot_position">Foot Position:</string>
+    <string name="foot">Foot:</string>
+    <string name="scours">Scours:</string>
+    <string name="respiratory">Respiratory:</string>
+    <string name="eye_side">Eye Side:</string>
+    <string name="pink_eye">Pink Eye:</string>
+    <string name="other">Other:</string>
+    <string name="details">Details:</string>
 </resources>

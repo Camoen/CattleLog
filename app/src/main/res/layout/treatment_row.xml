@@ -15,9 +15,9 @@
         tools:text="01/01/2001"
         style="@style/RecyclerViewCell"
         android:layout_marginStart="0dp"
-        android:layout_marginBottom="@dimen/font_small"
+        android:layout_marginBottom="@dimen/font_base"
         android:textAlignment="center"
-        android:textSize="@dimen/font_h1"
+        android:textSize="@dimen/font_medium"
         android:textStyle="bold"/>
 
     <LinearLayout
@@ -27,36 +27,32 @@
 
         <TextView
             android:id="@+id/pinkEyeLabel"
-            tools:text="Pink Eye:"
+            android:text="@string/pink_eye"
             android:textStyle="bold"
             android:textAlignment="textStart"
             style="@style/RecyclerViewCell"
-            android:layout_weight="0.75"
-            android:textSize="@dimen/font_medium" />
+            android:layout_weight="0.75" />
 
         <TextView
             android:id="@+id/pinkEye"
             tools:text="X"
             android:textAlignment="textEnd"
             style="@style/RecyclerViewCell"
-            android:layout_marginEnd="@dimen/font_small"
-            android:textSize="@dimen/font_medium" />
+            android:layout_marginEnd="@dimen/font_small" />
 
         <TextView
             android:id="@+id/eyeSideLabel"
-            tools:text="Eye Side:"
+            android:text="@string/eye_side"
             android:textStyle="bold"
             android:textAlignment="textStart"
             style="@style/RecyclerViewCell"
-            android:layout_weight="0.75"
-            android:textSize="@dimen/font_medium" />
+            android:layout_weight="0.75" />
 
         <TextView
             android:id="@+id/eyeSide"
             tools:text="R"
             android:textAlignment="textEnd"
-            style="@style/RecyclerViewCell"
-            android:textSize="@dimen/font_medium" />
+            style="@style/RecyclerViewCell" />
     </LinearLayout>
 
     <LinearLayout
@@ -66,24 +62,22 @@
 
         <TextView
             android:id="@+id/respiratoryLabel"
-            tools:text="Respiratory:"
+            android:text="@string/respiratory"
             android:textStyle="bold"
             android:textAlignment="textStart"
             style="@style/RecyclerViewCell"
-            android:layout_weight="0.75"
-            android:textSize="@dimen/font_medium" />
+            android:layout_weight="0.75" />
 
         <TextView
             android:id="@+id/respiratory"
             tools:text="X"
             android:textAlignment="textEnd"
             style="@style/RecyclerViewCell"
-            android:layout_marginEnd="@dimen/font_small"
-            android:textSize="@dimen/font_medium" />
+            android:layout_marginEnd="@dimen/font_small" />
 
         <TextView
             android:id="@+id/scoursLabel"
-            tools:text="Scours:"
+            android:text="@string/scours"
             android:textStyle="bold"
             android:textAlignment="textStart"
             style="@style/RecyclerViewCell"
@@ -103,7 +97,7 @@
 
         <TextView
             android:id="@+id/footLabel"
-            tools:text="Foot:"
+            android:text="@string/foot"
             android:textStyle="bold"
             android:textAlignment="textStart"
             style="@style/RecyclerViewCell"
@@ -119,7 +113,7 @@
 
         <TextView
             android:id="@+id/footPositionLabel"
-            tools:text="Foot Position:"
+            android:text="@string/foot_position"
             android:textStyle="bold"
             android:textAlignment="textStart"
             style="@style/RecyclerViewCell"
@@ -139,7 +133,7 @@
 
         <TextView
             android:id="@+id/mastitisLabel"
-            tools:text="Mastitis:"
+            android:text="@string/mastitis"
             android:textStyle="bold"
             android:gravity="start"
             android:textAlignment="gravity"
@@ -155,7 +149,7 @@
 
         <TextView
             android:id="@+id/otherLabel"
-            tools:text="Other:"
+            android:text="@string/other"
             android:textStyle="bold"
             android:textAlignment="textStart"
             style="@style/RecyclerViewCell"
@@ -170,7 +164,7 @@
 
     <TextView
         android:id="@+id/detailsLabel"
-        tools:text="Details:"
+        android:text="@string/details"
         android:textStyle="bold"
         android:textAlignment="textStart"
         style="@style/RecyclerViewCell" />
