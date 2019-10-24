@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:minHeight="60dp"
+    android:layout_height="wrap_content"
+    android:background="@color/softGreen"
+    android:paddingTop="@dimen/font_large"
+    android:paddingBottom="@dimen/font_large">
+
+    <TextView
+        android:id="@+id/healthEvent"
+        style="@style/RecyclerViewCell"
+        android:layout_width="match_parent"
+        android:layout_marginStart="25dp"
+        android:textAlignment="textStart" />
+
+</LinearLayout>

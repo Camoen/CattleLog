@@ -1,22 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:minHeight="60dp"
     android:layout_height="wrap_content"
     android:background="@color/softGreen"
     android:paddingTop="@dimen/font_large"
     android:paddingBottom="@dimen/font_large">
 
+
     <TextView
         android:id="@+id/eventDate"
-        style="@style/RecyclerViewCell"/>
+        tools:text="01/01/2001"
+        style="@style/RecyclerViewCell"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/pinkEye"
+            tools:text="X"
+            style="@style/RecyclerViewCell"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/eyeSide"
+            tools:text="R"
+            style="@style/RecyclerViewCell"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/respiratory"
+            tools:text="X"
+            style="@style/RecyclerViewCell"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/scours"
+            tools:text="X"
+            style="@style/RecyclerViewCell"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/foot"
+            tools:text="Footrot"
+            style="@style/RecyclerViewCell"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/footPosition"
+            tools:text="LH"
+            style="@style/RecyclerViewCell"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/mastitis"
+            tools:text="RFQ"
+            style="@style/RecyclerViewCell"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/other"
+            tools:text="X"
+            style="@style/RecyclerViewCell"
+            android:textSize="20sp" />
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/pinkEye"
-        style="@style/RecyclerViewCell"/>
-
-    <TextView
-        android:id="@+id/eyeSide"
-        style="@style/RecyclerViewCell"/>
+        android:id="@+id/details"
+        style="@style/RecyclerViewCell"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:textAlignment="textStart"
+        android:textSize="20sp"
+        tools:text="AM: Resorb Oral, 3 Sulfa tablets, Banamine IM / Noon: Electrolytes, 2 Sulfa Oral / PM: Entrolyte, 3 Sulfa tablets, Banamine IM" />
 
 </LinearLayout>

@@ -17,9 +17,16 @@ class TreatmentListAdapter internal constructor(
     private var treatmentList = emptyList<Treatment>() // Cached copy of treatments
 
     inner class TreatmentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val treatmentItemView0: TextView = itemView.findViewById(R.id.eventDate)
-        val treatmentItemView1: TextView = itemView.findViewById(R.id.pinkEye)
-        val treatmentItemView2: TextView = itemView.findViewById(R.id.eyeSide)
+        val treatmentEventDate: TextView = itemView.findViewById(R.id.eventDate)
+        val treatmentPinkEye: TextView = itemView.findViewById(R.id.pinkEye)
+        val treatmentEyeSide: TextView = itemView.findViewById(R.id.eyeSide)
+        val treatmentRespiratory: TextView = itemView.findViewById(R.id.respiratory)
+        val treatmentScours: TextView = itemView.findViewById(R.id.scours)
+        val treatmentFoot: TextView = itemView.findViewById(R.id.foot)
+        val treatmentFootPosition: TextView = itemView.findViewById(R.id.footPosition)
+        val treatmentMastitis: TextView = itemView.findViewById(R.id.mastitis)
+        val treatmentOther: TextView = itemView.findViewById(R.id.other)
+        val treatmentDetails: TextView = itemView.findViewById(R.id.details)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TreatmentViewHolder {
@@ -29,9 +36,16 @@ class TreatmentListAdapter internal constructor(
 
     override fun onBindViewHolder(holder: TreatmentViewHolder, position: Int) {
         val current = treatmentList[position]
-        holder.treatmentItemView0.text = current.EventDate
-        holder.treatmentItemView1.text = current.PinkEye
-        holder.treatmentItemView2.text = current.EyeSide
+        holder.treatmentEventDate.text = current.EventDate
+        holder.treatmentPinkEye.text = current.PinkEye
+        holder.treatmentEyeSide.text = current.EyeSide
+        holder.treatmentRespiratory.text = current.Respiratory
+        holder.treatmentScours.text = current.Scours
+        holder.treatmentFoot.text = current.Foot
+        holder.treatmentFootPosition.text = current.FootPosition
+        holder.treatmentMastitis.text = current.Mastitis
+        holder.treatmentOther.text = current.Other
+        holder.treatmentDetails.text = current.Details
     }
 
     internal fun setTreatmentList(treatmentList: List<Treatment>) {

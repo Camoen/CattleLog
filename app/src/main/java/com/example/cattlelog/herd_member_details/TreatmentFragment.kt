@@ -9,15 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import com.example.cattlelog.herd_member_details.treatment_tab.TreatmentViewModel
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cattlelog.herd_member_details.treatment_tab.TreatmentListAdapter
 
-import kotlinx.android.synthetic.main.fragment_treatment.*
+import com.example.cattlelog.R
+import com.example.cattlelog.herd_member_details.treatment_tab.TreatmentListAdapter
+import com.example.cattlelog.herd_member_details.treatment_tab.TreatmentViewModel
 import com.example.cattlelog.herd_member_details.treatment_tab.TreatmentViewModelFactory
+import kotlinx.android.synthetic.main.fragment_treatment.*
 
 
 /**
@@ -45,7 +46,7 @@ class TreatmentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(com.example.cattlelog.R.layout.fragment_treatment, container, false)
+        return inflater.inflate(R.layout.fragment_treatment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,7 +59,7 @@ class TreatmentFragment : Fragment() {
         treatmentRecyclerView.setHasFixedSize(true)
         treatmentRecyclerView.adapter = treatmentAdapter
         val divider = DividerItemDecoration(treatmentRecyclerView.context, DividerItemDecoration.VERTICAL)
-        divider.setDrawable(ContextCompat.getDrawable(activity!!, com.example.cattlelog.R.drawable.divider) as Drawable)
+        divider.setDrawable(ContextCompat.getDrawable(activity!!, R.drawable.divider) as Drawable)
         treatmentRecyclerView.addItemDecoration(divider)
 
 
@@ -73,9 +74,6 @@ class TreatmentFragment : Fragment() {
         treatmentViewModel.allTreatments.observe(this, Observer { treatmentList ->
             treatmentList?.let { treatmentAdapter.setTreatmentList(it) }
         })
-
-
     }
-
 
 }
