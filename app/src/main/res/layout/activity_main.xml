@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:layout_marginStart="@dimen/font_small"
-    android:layout_marginEnd="@dimen/font_small" >
+    tools:context=".MainActivity" >
 
     <Button
         android:id="@+id/downloadButton"
@@ -36,9 +34,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/herdList"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/font_small"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/downloadButton"
         app:layout_constraintEnd_toEndOf="parent"

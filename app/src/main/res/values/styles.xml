@@ -22,12 +22,16 @@
         <item name="android:layout_weight">1.0</item>
         <item name="android:gravity">center</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">@dimen/font_base</item>
+        <item name="android:textSize">@dimen/font_medium</item>
         <item name="android:textColor">@color/darkGray</item>
     </style>
 
     <style name="TabText" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">@dimen/font_base</item>
+    </style>
+
+    <style name="TreatmentRow">
+        <item name="android:layout_marginBottom">@dimen/font_small</item>
     </style>
 
 </resources>

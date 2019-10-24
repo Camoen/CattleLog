@@ -6,95 +6,179 @@
     android:layout_height="wrap_content"
     android:background="@color/softGreen"
     android:paddingTop="@dimen/font_large"
-    android:paddingBottom="@dimen/font_large">
-
+    android:paddingBottom="@dimen/font_large"
+    android:paddingEnd="@dimen/font_small"
+    android:paddingStart="@dimen/font_small">
 
     <TextView
         android:id="@+id/eventDate"
         tools:text="01/01/2001"
         style="@style/RecyclerViewCell"
         android:layout_marginStart="0dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/font_small"
         android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="@dimen/font_h1"
+        android:textStyle="bold"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        style="@style/TreatmentRow" >
+
+        <TextView
+            android:id="@+id/pinkEyeLabel"
+            tools:text="Pink Eye:"
+            android:textStyle="bold"
+            android:textAlignment="textStart"
+            style="@style/RecyclerViewCell"
+            android:layout_weight="0.75"
+            android:textSize="@dimen/font_medium" />
 
         <TextView
             android:id="@+id/pinkEye"
             tools:text="X"
+            android:textAlignment="textEnd"
             style="@style/RecyclerViewCell"
-            android:textSize="20sp" />
+            android:layout_marginEnd="@dimen/font_small"
+            android:textSize="@dimen/font_medium" />
+
+        <TextView
+            android:id="@+id/eyeSideLabel"
+            tools:text="Eye Side:"
+            android:textStyle="bold"
+            android:textAlignment="textStart"
+            style="@style/RecyclerViewCell"
+            android:layout_weight="0.75"
+            android:textSize="@dimen/font_medium" />
 
         <TextView
             android:id="@+id/eyeSide"
             tools:text="R"
+            android:textAlignment="textEnd"
             style="@style/RecyclerViewCell"
-            android:textSize="20sp" />
+            android:textSize="@dimen/font_medium" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        style="@style/TreatmentRow">
+
+        <TextView
+            android:id="@+id/respiratoryLabel"
+            tools:text="Respiratory:"
+            android:textStyle="bold"
+            android:textAlignment="textStart"
+            style="@style/RecyclerViewCell"
+            android:layout_weight="0.75"
+            android:textSize="@dimen/font_medium" />
 
         <TextView
             android:id="@+id/respiratory"
             tools:text="X"
+            android:textAlignment="textEnd"
             style="@style/RecyclerViewCell"
-            android:textSize="20sp" />
+            android:layout_marginEnd="@dimen/font_small"
+            android:textSize="@dimen/font_medium" />
+
+        <TextView
+            android:id="@+id/scoursLabel"
+            tools:text="Scours:"
+            android:textStyle="bold"
+            android:textAlignment="textStart"
+            style="@style/RecyclerViewCell"
+            android:layout_weight="0.75"/>
 
         <TextView
             android:id="@+id/scours"
             tools:text="X"
-            style="@style/RecyclerViewCell"
-            android:textSize="20sp" />
+            android:textAlignment="textEnd"
+            style="@style/RecyclerViewCell" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        style="@style/TreatmentRow">
+
+        <TextView
+            android:id="@+id/footLabel"
+            tools:text="Foot:"
+            android:textStyle="bold"
+            android:textAlignment="textStart"
+            style="@style/RecyclerViewCell"
+            android:layout_weight="1.0" />
 
         <TextView
             android:id="@+id/foot"
             tools:text="Footrot"
+            android:textAlignment="textEnd"
             style="@style/RecyclerViewCell"
-            android:textSize="20sp" />
+            android:layout_weight="0.75"
+            android:layout_marginEnd="@dimen/font_small" />
+
+        <TextView
+            android:id="@+id/footPositionLabel"
+            tools:text="Foot Position:"
+            android:textStyle="bold"
+            android:textAlignment="textStart"
+            style="@style/RecyclerViewCell"
+            android:layout_weight="0.75" />
 
         <TextView
             android:id="@+id/footPosition"
             tools:text="LH"
-            style="@style/RecyclerViewCell"
-            android:textSize="20sp" />
+            android:textAlignment="textEnd"
+            style="@style/RecyclerViewCell" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        style="@style/TreatmentRow">
+
+        <TextView
+            android:id="@+id/mastitisLabel"
+            tools:text="Mastitis:"
+            android:textStyle="bold"
+            android:gravity="start"
+            android:textAlignment="gravity"
+            style="@style/RecyclerViewCell"
+            android:layout_weight="0.75" />
 
         <TextView
             android:id="@+id/mastitis"
             tools:text="RFQ"
+            android:textAlignment="textEnd"
             style="@style/RecyclerViewCell"
-            android:textSize="20sp" />
+            android:layout_marginEnd="@dimen/font_small" />
+
+        <TextView
+            android:id="@+id/otherLabel"
+            tools:text="Other:"
+            android:textStyle="bold"
+            android:textAlignment="textStart"
+            style="@style/RecyclerViewCell"
+            android:layout_weight="0.75" />
 
         <TextView
             android:id="@+id/other"
             tools:text="X"
-            style="@style/RecyclerViewCell"
-            android:textSize="20sp" />
+            android:textAlignment="textEnd"
+            style="@style/RecyclerViewCell" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/detailsLabel"
+        tools:text="Details:"
+        android:textStyle="bold"
+        android:textAlignment="textStart"
+        style="@style/RecyclerViewCell" />
 
     <TextView
         android:id="@+id/details"
         style="@style/RecyclerViewCell"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
         android:textAlignment="textStart"
-        android:textSize="20sp"
         tools:text="AM: Resorb Oral, 3 Sulfa tablets, Banamine IM / Noon: Electrolytes, 2 Sulfa Oral / PM: Entrolyte, 3 Sulfa tablets, Banamine IM" />
 
 </LinearLayout>
