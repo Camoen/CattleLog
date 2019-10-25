@@ -11,10 +11,7 @@ import com.example.cattlelog.model.entities.Treatment
 class TreatmentViewModel(application: Application, tagNumber: Int, birthDate: String) : AndroidViewModel(application) {
 
     // LiveData gives us updated treatments when they change.
-    val allTreatments: LiveData<List<Treatment>>
-
-    init {
-        allTreatments = CattlelogDatabase.getDatabase(application).treatmentDao().getUniqueTreatmentData(tagNumber, birthDate)
-    }
+    val allTreatments: LiveData<List<Treatment>> =
+        CattlelogDatabase.getDatabase(application).treatmentDao().getUniqueTreatmentData(tagNumber, birthDate)
 
 }

@@ -26,4 +26,12 @@
         <item name="android:textColor">@color/darkGray</item>
     </style>
 
+    <style name="TabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/font_base</item>
+    </style>
+
+    <style name="TreatmentRow">
+        <item name="android:layout_marginBottom">@dimen/font_small</item>
+    </style>
+
 </resources>
