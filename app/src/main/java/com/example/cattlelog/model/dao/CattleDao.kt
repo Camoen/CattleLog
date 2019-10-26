@@ -15,7 +15,7 @@ interface CattleDao {
 //    fun getCattleWithTagNumber(tagNumber: Int): List<Cattle>?
 
     @Query("SELECT * FROM cattle WHERE TagNumber = :tagNumber AND BirthDate = :birthDate")
-    fun getUniqueHerdMember(tagNumber: Int, birthDate: String): Cattle?
+    fun getUniqueHerdMember(tagNumber: Int, birthDate: String): LiveData<List<Cattle>>
 
 //    TODO: We can add custom intervals for next expected heats report.  This would take in a day range (3 days into past and 4 days into future, for example)
     // Check the query below to see how it would be formulated.  I put FUTURE (imagine +4) and PAST (imagine 3) as placeholders for the formula required
