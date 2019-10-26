@@ -21,6 +21,7 @@
         android:textStyle="bold"/>
 
     <LinearLayout
+        android:id="@+id/pinkEyeLine"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         style="@style/TreatmentRow" >
@@ -56,6 +57,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/respiratoryLine"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         style="@style/TreatmentRow">
@@ -75,6 +77,13 @@
             style="@style/RecyclerViewCell"
             android:layout_marginEnd="@dimen/font_small" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/scoursLine"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/TreatmentRow">
         <TextView
             android:id="@+id/scoursLabel"
             android:text="@string/scours"
@@ -91,6 +100,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/footLine"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         style="@style/TreatmentRow">
@@ -127,6 +137,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/mastitisLine"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         style="@style/TreatmentRow">
@@ -146,6 +157,13 @@
             android:textAlignment="textEnd"
             style="@style/RecyclerViewCell"
             android:layout_marginEnd="@dimen/font_small" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/otherLine"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/TreatmentRow">
 
         <TextView
             android:id="@+id/otherLabel"

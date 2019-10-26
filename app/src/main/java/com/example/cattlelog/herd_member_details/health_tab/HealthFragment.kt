@@ -1,4 +1,4 @@
-package com.example.cattlelog.herd_member_details
+package com.example.cattlelog.herd_member_details.health_tab
 
 
 import android.graphics.drawable.Drawable
@@ -15,9 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.cattlelog.R
-import com.example.cattlelog.herd_member_details.health_tab.HealthListAdapter
-import com.example.cattlelog.herd_member_details.health_tab.HealthViewModel
-import com.example.cattlelog.herd_member_details.health_tab.HealthViewModelFactory
+import com.example.cattlelog.herd_member_details.HerdMemberDetails
 import kotlinx.android.synthetic.main.fragment_health.*
 
 
