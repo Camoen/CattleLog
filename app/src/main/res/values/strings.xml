@@ -7,6 +7,8 @@
     <string name="tab_overview">Overview</string>
     <string name="tab_health">Health</string>
     <string name="tab_treatment">Treatment</string>
+    <string name="tab_herd">Herd</string>
+    <string name="tab_next_heats">Next Heats</string>
     <string name="member_number">Member #%1$d</string>
     <string name="search_by_tag_number">Search by tag number…</string>
 
