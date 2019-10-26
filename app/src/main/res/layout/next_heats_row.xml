@@ -8,11 +8,11 @@
     android:paddingBottom="@dimen/font_large">
 
     <TextView
-        android:id="@+id/tagNumber"
+        android:id="@+id/nextExpHeatsTagNumber"
         style="@style/RecyclerViewCell"/>
 
     <TextView
-        android:id="@+id/nextExpHeatDate"
+        android:id="@+id/nextExpectedHeat"
         style="@style/RecyclerViewCell"/>
 
     <TextView

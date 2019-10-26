@@ -33,5 +33,5 @@ interface CattleDao {
     @Query("select * from cattle where DATE(NextExpHeat) BETWEEN DATE(datetime('now','localtime', '-3 day')) AND DATE(datetime('now','localtime', '3 day'))\n" +
             "UNION\n" +
             "select * from cattle where DATE(NextExpHeat) BETWEEN DATE(datetime('now','localtime', '18 day')) AND DATE(datetime('now','localtime', '21 day'));")
-    fun getNextExpectedHeatsPreset(): List<Cattle>?
+    fun getNextExpectedHeatsPreset(): LiveData<List<Cattle>>
 }

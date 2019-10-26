@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.herd_fragment.*
 
 class HerdFragment : Fragment(), HerdListAdapter.RowListener {
     private lateinit var herdViewModel: HerdViewModel
-    private lateinit var cattleRecyclerView: RecyclerView
+    private lateinit var herdRecyclerView: RecyclerView
     private lateinit var herdListAdapter: HerdListAdapter
 
     override fun onCreateView(
@@ -35,21 +35,21 @@ class HerdFragment : Fragment(), HerdListAdapter.RowListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        cattleRecyclerView = herdList
+        herdRecyclerView = herdList
         herdListAdapter = HerdListAdapter(
             activity as MainActivity,
             this
         )
-        cattleRecyclerView.setHasFixedSize(true)
-        cattleRecyclerView.adapter = herdListAdapter
-        cattleRecyclerView.layoutManager = LinearLayoutManager(activity as MainActivity)
-        val divider = DividerItemDecoration(cattleRecyclerView.context, DividerItemDecoration.VERTICAL)
+        herdRecyclerView.setHasFixedSize(true)
+        herdRecyclerView.adapter = herdListAdapter
+        herdRecyclerView.layoutManager = LinearLayoutManager(activity as MainActivity)
+        val divider = DividerItemDecoration(herdRecyclerView.context, DividerItemDecoration.VERTICAL)
         divider.setDrawable(
-            ContextCompat.getDrawable(cattleRecyclerView.context,
+            ContextCompat.getDrawable(herdRecyclerView.context,
                 R.drawable.divider
             ) as Drawable
         )
-        cattleRecyclerView.addItemDecoration(divider)
+        herdRecyclerView.addItemDecoration(divider)
 
         herdViewModel = ViewModelProvider(this).get(HerdViewModel::class.java)
         herdViewModel.allHerdMembers.observe(this, Observer { cattleList ->
