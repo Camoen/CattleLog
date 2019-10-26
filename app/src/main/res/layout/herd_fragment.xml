@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".main_activity.herd_tab.HerdFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/herdList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="match_parent"/>
 
 </FrameLayout>

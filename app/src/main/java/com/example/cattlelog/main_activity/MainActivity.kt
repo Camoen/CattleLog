@@ -5,8 +5,6 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
-import android.os.AsyncTask
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,17 +14,11 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
 import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.cattlelog.model.database.CattlelogDatabase
 import java.io.*
 import org.json.JSONObject
-import androidx.core.content.ContextCompat
+import androidx.viewpager.widget.ViewPager
 
 
 import com.android.volley.DefaultRetryPolicy
@@ -35,9 +27,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.cfsuman.jetpack.VolleySingleton
 import com.example.cattlelog.DownloadDatabase
 import com.example.cattlelog.R
-import com.example.cattlelog.herd_member_details.HERD_MEMBER_TAG
-import com.example.cattlelog.herd_member_details.HERD_MEMBER_BIRTHDATE
-import com.example.cattlelog.herd_member_details.HerdMemberDetails
+import com.google.android.material.tabs.TabLayout
 
 
 private const val PERMISSION_CODE = 1000
@@ -47,14 +37,10 @@ const val DB_DOWNLOAD_CODE = 50
 const val PREFS_FILENAME = "com.example.cattlelog.shared_preferences"
 const val DB_VERSION = "database_version"
 
-class MainActivity : HerdListAdapter.RowListener, AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var downloadFileIntent: Intent
     private lateinit var targetDatabaseFile: File
-    private lateinit var herdViewModel: HerdViewModel
-    private lateinit var cattleRecyclerView: RecyclerView
-    private lateinit var herdAdapter: HerdListAdapter
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,57 +48,12 @@ class MainActivity : HerdListAdapter.RowListener, AppCompatActivity() {
 
         targetDatabaseFile = File(filesDir, "${CattlelogDatabase.DATABASE_NAME}.db")
 
-        downloadButton.setOnClickListener {download()}
-        testsqlquery.setOnClickListener {testQuery()}
-
-        cattleRecyclerView = findViewById(R.id.herdList)
-        herdAdapter = HerdListAdapter(this, this)
-        cattleRecyclerView.setHasFixedSize(true)
-        cattleRecyclerView.adapter = herdAdapter
-        cattleRecyclerView.layoutManager = LinearLayoutManager(this)
-        val divider = DividerItemDecoration(cattleRecyclerView.context,DividerItemDecoration.VERTICAL)
-        divider.setDrawable(ContextCompat.getDrawable(applicationContext,
-            R.drawable.divider
-        ) as Drawable)
-        cattleRecyclerView.addItemDecoration(divider)
-
-        herdViewModel = ViewModelProvider(this).get(HerdViewModel::class.java)
-        herdViewModel.allCattle.observe(this, Observer { cattleList ->
-            cattleList?.let { herdAdapter.setCattleList(it) }
-        })
-    }
-
-    override fun onRowClicked(position: Int) {
-        val herdMember = herdAdapter.getCattleList().get(position)
-        val herdMemberDetailsIntent = Intent(this@MainActivity, HerdMemberDetails::class.java)
-        herdMemberDetailsIntent.putExtra(HERD_MEMBER_TAG, herdMember.TagNumber)
-        herdMemberDetailsIntent.putExtra(HERD_MEMBER_BIRTHDATE, herdMember.BirthDate)
-
-
-        startActivity(herdMemberDetailsIntent)
-    }
-
-    // TODO get rid of this later, we shouldn't need it
-    private fun testQuery() {
-        AsyncTask.execute {
-            Log.d(
-                LOG_TAG,
-                "Test Query: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getCattleWithTagNumber(
-                    888888
-                )
-            )
-            Log.d(
-                LOG_TAG,
-                    "Test Query 2: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getNextExpectedHeatsTEST()
-                )
-                // Note that preset will probably not yield any results currently (need updated input files)
-            Log.d(
-                LOG_TAG,
-                "Test Query 3: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getNextExpectedHeatsPreset()
-            )
-        }
-
-        getDatabaseVersion(false)
+        val sectionsPagerAdapter =
+            TabPagerAdapter(this, supportFragmentManager)
+        val viewPager: ViewPager = findViewById(R.id.view_pager)
+        viewPager.adapter = sectionsPagerAdapter
+        val tabs: TabLayout = findViewById(R.id.tabs)
+        tabs.setupWithViewPager(viewPager)
     }
 
     private fun download() {
@@ -175,7 +116,7 @@ class MainActivity : HerdListAdapter.RowListener, AppCompatActivity() {
             // Whenever the user types something in the search bar, we apply the filter.
             // See HerdListAdapter's cattleFilter for how the filtering is actually done.
             override fun onQueryTextChange(newText: String): Boolean {
-                herdAdapter.filter.filter(newText)
+                //herdAdapter.filter.filter(newText)
                 return false
             }
 
@@ -279,5 +220,4 @@ class MainActivity : HerdListAdapter.RowListener, AppCompatActivity() {
         // Add the volley post request to the request queue
         VolleySingleton.getInstance(this).addToRequestQueue(request)
     }
-
 }
