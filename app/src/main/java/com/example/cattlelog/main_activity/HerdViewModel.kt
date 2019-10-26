@@ -1,4 +1,4 @@
-package com.example.cattlelog.herd
+package com.example.cattlelog.main_activity
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

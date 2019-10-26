@@ -11,14 +11,9 @@ import android.os.Bundle
 import android.os.Environment
 import android.util.Log
 import android.widget.Toast
-import com.android.volley.DefaultRetryPolicy
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
-import com.cfsuman.jetpack.VolleySingleton
-import com.example.cattlelog.model.database.CattlelogDatabase
+import com.example.cattlelog.main_activity.TARGET_FILE_KEY
 import com.example.cattlelog.model.database.CattlelogDatabase.Companion.DATABASE_NAME
 import com.example.cattlelog.utility.Downloader
-import org.json.JSONObject
 import java.io.File
 
 

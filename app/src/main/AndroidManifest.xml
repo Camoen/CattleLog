@@ -20,9 +20,9 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".DownloadDatabase" />
         <activity
-            android:name=".MainActivity"
+            android:name=".main_activity.MainActivity"
             android:windowSoftInputMode="adjustNothing"
-            android:label="@string/herd_members">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

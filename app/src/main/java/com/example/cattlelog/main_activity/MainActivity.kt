@@ -1,4 +1,4 @@
-package com.example.cattlelog
+package com.example.cattlelog.main_activity
 
 import android.content.pm.PackageManager
 import android.Manifest
@@ -23,8 +23,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cattlelog.herd.HerdListAdapter
-import com.example.cattlelog.herd.HerdViewModel
 import com.example.cattlelog.model.database.CattlelogDatabase
 import java.io.*
 import org.json.JSONObject
@@ -35,6 +33,8 @@ import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.cfsuman.jetpack.VolleySingleton
+import com.example.cattlelog.DownloadDatabase
+import com.example.cattlelog.R
 import com.example.cattlelog.herd_member_details.HERD_MEMBER_TAG
 import com.example.cattlelog.herd_member_details.HERD_MEMBER_BIRTHDATE
 import com.example.cattlelog.herd_member_details.HerdMemberDetails
@@ -71,7 +71,9 @@ class MainActivity : HerdListAdapter.RowListener, AppCompatActivity() {
         cattleRecyclerView.adapter = herdAdapter
         cattleRecyclerView.layoutManager = LinearLayoutManager(this)
         val divider = DividerItemDecoration(cattleRecyclerView.context,DividerItemDecoration.VERTICAL)
-        divider.setDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.divider) as Drawable)
+        divider.setDrawable(ContextCompat.getDrawable(applicationContext,
+            R.drawable.divider
+        ) as Drawable)
         cattleRecyclerView.addItemDecoration(divider)
 
         herdViewModel = ViewModelProvider(this).get(HerdViewModel::class.java)
@@ -100,7 +102,7 @@ class MainActivity : HerdListAdapter.RowListener, AppCompatActivity() {
                 )
             )
             Log.d(
-                    LOG_TAG,
+                LOG_TAG,
                     "Test Query 2: " + CattlelogDatabase.getDatabase(applicationContext).cattleDao().getNextExpectedHeatsTEST()
                 )
                 // Note that preset will probably not yield any results currently (need updated input files)
@@ -146,7 +148,9 @@ class MainActivity : HerdListAdapter.RowListener, AppCompatActivity() {
         when (requestCode) {
             PERMISSION_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    startActivityForResult(downloadFileIntent, DB_DOWNLOAD_CODE)
+                    startActivityForResult(downloadFileIntent,
+                        DB_DOWNLOAD_CODE
+                    )
                 } else {
                     Toast.makeText(this, "Permission denied.", Toast.LENGTH_LONG).show()
                 }
@@ -169,7 +173,7 @@ class MainActivity : HerdListAdapter.RowListener, AppCompatActivity() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             // Whenever the user types something in the search bar, we apply the filter.
-            // See HerdListAdaptert's cattleFilter for how the filtering is actually done.
+            // See HerdListAdapter's cattleFilter for how the filtering is actually done.
             override fun onQueryTextChange(newText: String): Boolean {
                 herdAdapter.filter.filter(newText)
                 return false
