@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -25,6 +26,7 @@ class NextHeatsFragment : Fragment(), NextHeatsListAdapter.RowListener {
     private lateinit var heatsViewModel: NextHeatsViewModel
     private lateinit var heatsRecyclerView: RecyclerView
     private lateinit var heatsListAdapter: NextHeatsListAdapter
+    private lateinit var searchView: SearchView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +37,8 @@ class NextHeatsFragment : Fragment(), NextHeatsListAdapter.RowListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        searchView = search
+
         heatsRecyclerView = nextExpectedHeatsList
         heatsListAdapter = NextHeatsListAdapter(
             activity as MainActivity,
@@ -54,6 +58,24 @@ class NextHeatsFragment : Fragment(), NextHeatsListAdapter.RowListener {
         heatsViewModel = ViewModelProvider(this).get(NextHeatsViewModel::class.java)
         heatsViewModel.allHeatsMembers.observe(this, Observer { cattleList ->
             cattleList?.let { heatsListAdapter.setCattleList(it) }
+        })
+
+        subscribeToSearches()
+    }
+
+    private fun subscribeToSearches() {
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            // Whenever the user types something in the search bar, we apply the filter.
+            // See HerdListAdaptert's cattleFilter for how the filtering is actually done.
+            override fun onQueryTextChange(newText: String): Boolean {
+                heatsListAdapter.filter.filter(newText)
+                return false
+            }
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
         })
     }
 

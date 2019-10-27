@@ -8,13 +8,8 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.InputType
 import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.widget.Toast
-import androidx.appcompat.widget.SearchView
 import com.example.cattlelog.model.database.CattlelogDatabase
 import java.io.*
 import org.json.JSONObject
@@ -97,35 +92,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    /**
-     * Builds the menu for this activity. See res/menu/cattlelog_menu.xml for all Items that this menu renders.
-     */
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.cattlelog_menu, menu)
-
-        val searchItem: MenuItem? = menu?.findItem(R.id.action_search)
-        val searchView: SearchView = searchItem?.actionView as SearchView
-        searchView.queryHint = getString(R.string.search_by_tag_number)
-        searchView.inputType = InputType.TYPE_CLASS_NUMBER
-        searchView.setIconifiedByDefault(false)
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-
-            // Whenever the user types something in the search bar, we apply the filter.
-            // See HerdListAdapter's cattleFilter for how the filtering is actually done.
-            override fun onQueryTextChange(newText: String): Boolean {
-                //herdAdapter.filter.filter(newText)
-                return false
-            }
-
-            override fun onQueryTextSubmit(query: String): Boolean {
-                return false
-            }
-        })
-
-        return true
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
