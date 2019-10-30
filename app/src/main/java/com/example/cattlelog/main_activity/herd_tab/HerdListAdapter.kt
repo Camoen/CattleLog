@@ -1,4 +1,4 @@
-package com.example.cattlelog.herd
+package com.example.cattlelog.main_activity.herd_tab
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -23,10 +23,10 @@ class HerdListAdapter internal constructor(
 
     inner class CattleViewHolder(itemView: View, rowListener: RowListener) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        val cattleItemView0: TextView = itemView.findViewById(R.id.herdTagNumber)
-        val cattleItemView1: TextView = itemView.findViewById(R.id.herdBirthDate)
-        val cattleItemView2: TextView = itemView.findViewById(R.id.herdBarnName)
-        val rowClickListener: RowListener = rowListener
+        val tagNumber: TextView = itemView.findViewById(R.id.herdTagNumber)
+        val birthDate: TextView = itemView.findViewById(R.id.herdBirthDate)
+        val barnName: TextView = itemView.findViewById(R.id.herdBarnName)
+        private val rowClickListener: RowListener = rowListener
 
         init {
             itemView.setOnClickListener(this)
@@ -47,15 +47,15 @@ class HerdListAdapter internal constructor(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CattleViewHolder {
-        val itemView = inflater.inflate(R.layout.herd_overview_row, parent, false)
+        val itemView = inflater.inflate(R.layout.herd_row, parent, false)
         return CattleViewHolder(itemView, rowClickListener)
     }
 
     override fun onBindViewHolder(holder: CattleViewHolder, position: Int) {
         val current = cattleListFiltered[position]
-        holder.cattleItemView0.text = current.TagNumber.toString()
-        holder.cattleItemView1.text = current.BirthDate
-        holder.cattleItemView2.text = current.BarnName
+        holder.tagNumber.text = current.TagNumber.toString()
+        holder.birthDate.text = current.BirthDate
+        holder.barnName.text = current.BarnName
     }
 
     internal fun setCattleList(cattleList: List<Cattle>) {

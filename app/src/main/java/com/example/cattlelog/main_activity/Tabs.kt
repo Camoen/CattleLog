@@ -1,11 +1,10 @@
-package com.example.cattlelog.herd_member_details
+package com.example.cattlelog.main_activity
 
 import com.example.cattlelog.R
 
 enum class Tab(val position: Int, val title: Int) {
-    OVERVIEW(0, R.string.tab_overview),
-    HEALTH(1, R.string.tab_health),
-    TREATMENT(2, R.string.tab_treatment);
+    HERD(0, R.string.tab_herd),
+    NEXT_HEATS(1, R.string.tab_next_heats);
 
     // Reverse lookup: https://stackoverflow.com/questions/37794850/effective-enums-in-kotlin-with-reverse-lookup
     // Basically lets us use bracket indexing to retrieve the title of each enum entry
