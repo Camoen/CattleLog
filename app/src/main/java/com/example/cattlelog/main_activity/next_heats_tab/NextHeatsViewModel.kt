@@ -8,5 +8,5 @@ import com.example.cattlelog.model.entities.Cattle
 
 class NextHeatsViewModel(application: Application) : AndroidViewModel(application) {
     // TODO: Replace the call to getAllCattle with the next-heats report
-    val allHeatsMembers: LiveData<List<Cattle>> = CattlelogDatabase.getDatabase(application).cattleDao().getAllCattle()
+    val allHeatsMembers: LiveData<List<Cattle>> = CattlelogDatabase.getDatabase(application).cattleDao().getNextExpectedHeatsPreset()
 }

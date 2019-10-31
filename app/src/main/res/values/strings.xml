@@ -9,7 +9,7 @@
     <string name="tab_treatment">Treatment</string>
     <string name="tab_herd">Herd</string>
     <string name="tab_next_heats">Next Heats</string>
-    <string name="member_number">Member #%1$d</string>
+    <string name="member_number">#%1$d</string>
     <string name="search_by_tag_number">Search by tag number…</string>
 
     <string name="herd_members">Herd Members</string>

@@ -2,182 +2,418 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:minHeight="60dp"
     android:layout_height="wrap_content"
-    android:background="@color/softGreen"
-    android:paddingTop="@dimen/font_large"
-    android:paddingBottom="@dimen/font_large"
-    android:paddingEnd="@dimen/font_small"
-    android:paddingStart="@dimen/font_small">
-
-    <TextView
-        android:id="@+id/eventDate"
-        tools:text="01/01/2001"
-        style="@style/RecyclerViewCell"
-        android:layout_marginStart="0dp"
-        android:layout_marginBottom="@dimen/font_base"
-        android:textAlignment="center"
-        android:textSize="@dimen/font_medium"
-        android:textStyle="bold"/>
+    android:background="@color/softGreen">
 
     <LinearLayout
-        android:id="@+id/pinkEyeLine"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        style="@style/TreatmentRow" >
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/pinkEyeLabel"
-            android:text="@string/pink_eye"
-            android:textStyle="bold"
-            android:textAlignment="textStart"
-            style="@style/RecyclerViewCell"
-            android:layout_weight="0.75" />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.35">
 
-        <TextView
-            android:id="@+id/pinkEye"
-            tools:text="X"
-            android:textAlignment="textEnd"
-            style="@style/RecyclerViewCell"
-            android:layout_marginEnd="@dimen/font_small" />
+            <TextView
+                android:id="@+id/eventDate"
+                tools:text="01/01/2001"
+                style="@style/RecyclerViewCell"
+                android:layout_marginStart="0dp"
+                android:layout_marginBottom="@dimen/font_base"
+                android:textAlignment="textStart"
+                android:paddingStart="5dp"
+                android:textSize="@dimen/font_medium"
+                android:textStyle="bold"
+                android:minHeight="@dimen/font_medium"/>
 
-        <TextView
-            android:id="@+id/eyeSideLabel"
-            android:text="@string/eye_side"
-            android:textStyle="bold"
-            android:textAlignment="textStart"
-            style="@style/RecyclerViewCell"
-            android:layout_weight="0.75" />
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/eyeSide"
-            tools:text="R"
-            android:textAlignment="textEnd"
-            style="@style/RecyclerViewCell" />
-    </LinearLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.15"/>
 
-    <LinearLayout
-        android:id="@+id/respiratoryLine"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        style="@style/TreatmentRow">
 
-        <TextView
-            android:id="@+id/respiratoryLabel"
-            android:text="@string/respiratory"
-            android:textStyle="bold"
-            android:textAlignment="textStart"
-            style="@style/RecyclerViewCell"
-            android:layout_weight="0.75" />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50">
 
-        <TextView
-            android:id="@+id/respiratory"
-            tools:text="X"
-            android:textAlignment="textEnd"
-            style="@style/RecyclerViewCell"
-            android:layout_marginEnd="@dimen/font_small" />
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    </LinearLayout>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/pinkEyeLabel"
+                        android:text="@string/pink_eye"
+                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        style="@style/RecyclerViewCell" />
 
-    <LinearLayout
-        android:id="@+id/scoursLine"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        style="@style/TreatmentRow">
-        <TextView
-            android:id="@+id/scoursLabel"
-            android:text="@string/scours"
-            android:textStyle="bold"
-            android:textAlignment="textStart"
-            style="@style/RecyclerViewCell"
-            android:layout_weight="0.75"/>
+                    <TextView
+                        android:id="@+id/pinkEye"
+                        style="@style/RecyclerViewCell"
+                        android:textAlignment="center"
+                        tools:text="X" />
+                </TableRow>
 
-        <TextView
-            android:id="@+id/scours"
-            tools:text="X"
-            android:textAlignment="textEnd"
-            style="@style/RecyclerViewCell" />
-    </LinearLayout>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/eyeSideLabel"
+                        android:text="@string/eye_side"
+                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        style="@style/RecyclerViewCell" />
 
-    <LinearLayout
-        android:id="@+id/footLine"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        style="@style/TreatmentRow">
+                    <TextView
+                        android:id="@+id/eyeSide"
+                        tools:text="R"
+                        android:textAlignment="center"
+                        style="@style/RecyclerViewCell" />
+                </TableRow>
 
-        <TextView
-            android:id="@+id/footLabel"
-            android:text="@string/foot"
-            android:textStyle="bold"
-            android:textAlignment="textStart"
-            style="@style/RecyclerViewCell"
-            android:layout_weight="1.0" />
 
-        <TextView
-            android:id="@+id/foot"
-            tools:text="Footrot"
-            android:textAlignment="textEnd"
-            style="@style/RecyclerViewCell"
-            android:layout_weight="0.75"
-            android:layout_marginEnd="@dimen/font_small" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/respiratoryLabel"
+                        android:text="@string/respiratory"
+                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        style="@style/RecyclerViewCell" />
 
-        <TextView
-            android:id="@+id/footPositionLabel"
-            android:text="@string/foot_position"
-            android:textStyle="bold"
-            android:textAlignment="textStart"
-            style="@style/RecyclerViewCell"
-            android:layout_weight="0.75" />
+                    <TextView
+                        android:id="@+id/respiratory"
+                        tools:text="X"
+                        android:textAlignment="center"
+                        style="@style/RecyclerViewCell" />
+                </TableRow>
 
-        <TextView
-            android:id="@+id/footPosition"
-            tools:text="LH"
-            android:textAlignment="textEnd"
-            style="@style/RecyclerViewCell" />
-    </LinearLayout>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/scoursLabel"
+                        android:text="@string/scours"
+                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        style="@style/RecyclerViewCell"/>
 
-    <LinearLayout
-        android:id="@+id/mastitisLine"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        style="@style/TreatmentRow">
+                    <TextView
+                        android:id="@+id/scours"
+                        tools:text="X"
+                        android:textAlignment="center"
+                        style="@style/RecyclerViewCell" />
+                </TableRow>
 
-        <TextView
-            android:id="@+id/mastitisLabel"
-            android:text="@string/mastitis"
-            android:textStyle="bold"
-            android:gravity="start"
-            android:textAlignment="gravity"
-            style="@style/RecyclerViewCell"
-            android:layout_weight="0.75" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/footLabel"
+                        android:text="@string/foot"
+                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        style="@style/RecyclerViewCell"/>
 
-        <TextView
-            android:id="@+id/mastitis"
-            tools:text="RFQ"
-            android:textAlignment="textEnd"
-            style="@style/RecyclerViewCell"
-            android:layout_marginEnd="@dimen/font_small" />
-    </LinearLayout>
+                    <TextView
+                        android:id="@+id/foot"
+                        tools:text="Footrot"
+                        android:textAlignment="center"
+                        style="@style/RecyclerViewCell" />
+                </TableRow>
 
-    <LinearLayout
-        android:id="@+id/otherLine"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        style="@style/TreatmentRow">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/footPositionLabel"
+                        android:text="@string/foot_position"
+                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        style="@style/RecyclerViewCell"/>
 
-        <TextView
-            android:id="@+id/otherLabel"
-            android:text="@string/other"
-            android:textStyle="bold"
-            android:textAlignment="textStart"
-            style="@style/RecyclerViewCell"
-            android:layout_weight="0.75" />
+                    <TextView
+                        android:id="@+id/footPosition"
+                        tools:text="LH"
+                        android:textAlignment="center"
+                        style="@style/RecyclerViewCell" />
+                </TableRow>
 
-        <TextView
-            android:id="@+id/other"
-            tools:text="X"
-            android:textAlignment="textEnd"
-            style="@style/RecyclerViewCell" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/mastitisLabel"
+                        android:text="@string/mastitis"
+                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        style="@style/RecyclerViewCell"/>
+
+                    <TextView
+                        android:id="@+id/mastitis"
+                        tools:text="RFQ"
+                        android:textAlignment="center"
+                        style="@style/RecyclerViewCell" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/otherLabel"
+                        android:text="@string/other"
+                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        style="@style/RecyclerViewCell"/>
+
+                    <TextView
+                        android:id="@+id/other"
+                        tools:text="X"
+                        android:textAlignment="center"
+                        style="@style/RecyclerViewCell" />
+                </TableRow>
+
+            </TableLayout>
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/pinkEyeLine"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="vertical"-->
+<!--                    style="@style/TreatmentRow" >-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="0.75">-->
+<!--                            <TextView-->
+<!--                                android:id="@+id/pinkEyeLabel"-->
+<!--                                android:text="@string/pink_eye"-->
+<!--                                android:textStyle="bold"-->
+<!--                                android:textAlignment="textStart"-->
+<!--                                style="@style/RecyclerViewCell"/>-->
+<!--                        </RelativeLayout>-->
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="0.25">-->
+<!--                            <TextView-->
+<!--                                android:id="@+id/pinkEye"-->
+<!--                                tools:text="X"-->
+<!--                                style="@style/RecyclerViewCell" />-->
+<!--                        </RelativeLayout>-->
+<!--                    </LinearLayout>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="0.75">-->
+<!--                            <TextView-->
+<!--                                android:id="@+id/eyeSideLabel"-->
+<!--                                android:text="@string/eye_side"-->
+<!--                                android:textStyle="bold"-->
+<!--                                android:textAlignment="textStart"-->
+<!--                                style="@style/RecyclerViewCell" />-->
+<!--                        </RelativeLayout>-->
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="0.25">-->
+<!--                            <TextView-->
+<!--                                android:id="@+id/eyeSide"-->
+<!--                                tools:text="R"-->
+<!--                                style="@style/RecyclerViewCell" />-->
+<!--                        </RelativeLayout>-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/respiratoryLine"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    style="@style/TreatmentRow">-->
+
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="0.75">-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/respiratoryLabel"-->
+<!--                            android:text="@string/respiratory"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textAlignment="textStart"-->
+<!--                            style="@style/RecyclerViewCell" />-->
+<!--                    </RelativeLayout>-->
+
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="0.25">-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/respiratory"-->
+<!--                            tools:text="X"-->
+<!--                            style="@style/RecyclerViewCell" />-->
+<!--                    </RelativeLayout>-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/scoursLine"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    style="@style/TreatmentRow">-->
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="0.75">-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/scoursLabel"-->
+<!--                            android:text="@string/scours"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textAlignment="textStart"-->
+<!--                            style="@style/RecyclerViewCell"/>-->
+<!--                    </RelativeLayout>-->
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="0.25">-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/scours"-->
+<!--                            tools:text="X"-->
+<!--                            style="@style/RecyclerViewCell" />-->
+<!--                    </RelativeLayout>-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/footLine"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="vertical"-->
+<!--                    style="@style/TreatmentRow">-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="0.75">-->
+<!--                            <TextView-->
+<!--                                android:id="@+id/footLabel"-->
+<!--                                android:text="@string/foot"-->
+<!--                                android:textStyle="bold"-->
+<!--                                android:textAlignment="textStart"-->
+<!--                                style="@style/RecyclerViewCell"/>-->
+<!--                        </RelativeLayout>-->
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="0.25">-->
+<!--                            <TextView-->
+<!--                                android:id="@+id/foot"-->
+<!--                                tools:text="Footrot"-->
+<!--                                style="@style/RecyclerViewCell" />-->
+<!--                        </RelativeLayout>-->
+<!--                    </LinearLayout>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="0.75">-->
+<!--                            <TextView-->
+<!--                                android:id="@+id/footPositionLabel"-->
+<!--                                android:text="@string/foot_position"-->
+<!--                                android:textStyle="bold"-->
+<!--                                android:textAlignment="textStart"-->
+<!--                                style="@style/RecyclerViewCell"/>-->
+<!--                        </RelativeLayout>-->
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="0.25">-->
+<!--                            <TextView-->
+<!--                                android:id="@+id/footPosition"-->
+<!--                                tools:text="LH"-->
+<!--                                style="@style/RecyclerViewCell" />-->
+<!--                        </RelativeLayout>-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/mastitisLine"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    style="@style/TreatmentRow">-->
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="0.75">-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/mastitisLabel"-->
+<!--                            android:text="@string/mastitis"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textAlignment="textStart"-->
+<!--                            style="@style/RecyclerViewCell"/>-->
+<!--                    </RelativeLayout>-->
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="0.25">-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/mastitis"-->
+<!--                            tools:text="RFQ"-->
+<!--                            android:textAlignment="textEnd"-->
+<!--                            style="@style/RecyclerViewCell" />-->
+<!--                    </RelativeLayout>-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/otherLine"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    style="@style/TreatmentRow">-->
+
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="0.75">-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/otherLabel"-->
+<!--                            android:text="@string/other"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textAlignment="textStart"-->
+<!--                            style="@style/RecyclerViewCell"/>-->
+<!--                    </RelativeLayout>-->
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="0.25">-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/other"-->
+<!--                            tools:text="X"-->
+<!--                            style="@style/RecyclerViewCell" />-->
+<!--                    </RelativeLayout>-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
+        </RelativeLayout>
+
     </LinearLayout>
 
     <TextView
@@ -185,12 +421,15 @@
         android:text="@string/details"
         android:textStyle="bold"
         android:textAlignment="textStart"
-        style="@style/RecyclerViewCell" />
+        style="@style/RecyclerViewCell"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/details"
         style="@style/RecyclerViewCell"
         android:textAlignment="textStart"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
         tools:text="AM: Resorb Oral, 3 Sulfa tablets, Banamine IM / Noon: Electrolytes, 2 Sulfa Oral / PM: Entrolyte, 3 Sulfa tablets, Banamine IM" />
 
 </LinearLayout>

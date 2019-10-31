@@ -7,16 +7,48 @@
     android:paddingTop="@dimen/font_large"
     android:paddingBottom="@dimen/font_large">
 
-    <TextView
-        android:id="@+id/herdTagNumber"
-        style="@style/RecyclerViewCell"/>
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.15">
 
-    <TextView
-        android:id="@+id/herdBirthDate"
-        style="@style/RecyclerViewCell"/>
+        <TextView
+            android:id="@+id/herdTagNumber"
+            style="@style/RecyclerViewCell"
+            android:textAlignment="center" />
 
-    <TextView
-        android:id="@+id/herdBarnName"
-        style="@style/RecyclerViewCell"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.3">
+
+        <TextView
+            android:id="@+id/herdBirthDate"
+            style="@style/RecyclerViewCell"
+            android:textAlignment="center" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.3">
+
+        <TextView
+            android:id="@+id/herdDHIID"
+            style="@style/RecyclerViewCell"
+            android:textAlignment="center" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.25">
+        <TextView
+            android:id="@+id/herdBarnName"
+            style="@style/RecyclerViewCell"
+            android:textAlignment="center" />
+    </RelativeLayout>
 
 </LinearLayout>

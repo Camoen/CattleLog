@@ -25,6 +25,7 @@ class HerdListAdapter internal constructor(
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val tagNumber: TextView = itemView.findViewById(R.id.herdTagNumber)
         val birthDate: TextView = itemView.findViewById(R.id.herdBirthDate)
+        val dhiID: TextView = itemView.findViewById(R.id.herdDHIID)
         val barnName: TextView = itemView.findViewById(R.id.herdBarnName)
         private val rowClickListener: RowListener = rowListener
 
@@ -55,6 +56,7 @@ class HerdListAdapter internal constructor(
         val current = cattleListFiltered[position]
         holder.tagNumber.text = current.TagNumber.toString()
         holder.birthDate.text = current.BirthDate
+        holder.dhiID.text = current.DHIID
         holder.barnName.text = current.BarnName
     }
 

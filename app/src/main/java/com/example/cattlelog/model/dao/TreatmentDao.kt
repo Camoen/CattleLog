@@ -17,6 +17,6 @@ interface TreatmentDao {
     @Query("SELECT * FROM treatment WHERE BirthDate = :birthDate")
     fun getAllTreatmentsByBirthDate(birthDate: String): List<Treatment>?
 
-    @Query("SELECT * FROM treatment WHERE TagNumber = :tagNumber AND BirthDate = :birthDate")
+    @Query("SELECT * FROM treatment WHERE TagNumber = :tagNumber AND BirthDate = :birthDate ORDER BY RecordNumber DESC")
     fun getUniqueTreatmentData(tagNumber: Int, birthDate: String): LiveData<List<Treatment>>
 }
