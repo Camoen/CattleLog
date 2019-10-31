@@ -49,6 +49,9 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)
+
+        // TODO: May want to run setDatabaseVersion here.  Not sure where the best place to call it is, yet!
+        //setDatabaseVersion(false)
     }
 
     private fun download() {
@@ -99,7 +102,7 @@ class MainActivity : AppCompatActivity() {
         Log.d("onActResult", "reqCode: $requestCode,  resultCode: $resultCode, data: $data")
         if (requestCode == DB_DOWNLOAD_CODE){
             if (resultCode == Activity.RESULT_OK){
-                getDatabaseVersion(true)
+                setDatabaseVersion(true)
             }
         }
     }
@@ -122,9 +125,9 @@ class MainActivity : AppCompatActivity() {
         return false
     }
 
-    // Sets database version after database is successfully downloaded (call it with getDatabaseVersion(true) for this functionality)
-    // Triggers new database download if local database is out of date (call it with getDatabaseVersion(false) for this functionality)
-    fun getDatabaseVersion(download_finished: Boolean) {
+    // Sets database version after database is successfully downloaded (call it with setDatabaseVersion(true) for this functionality)
+    // Triggers new database download if local database is out of date (call it with setDatabaseVersion(false) for this functionality)
+    fun setDatabaseVersion(download_finished: Boolean) {
         var newestDBVersion = ""
         Log.d("dropboxAPI", "entered check file function.")
         Log.d("dropboxAPI", resources.getString(R.string.CattleLog_DropboxAPIKey))

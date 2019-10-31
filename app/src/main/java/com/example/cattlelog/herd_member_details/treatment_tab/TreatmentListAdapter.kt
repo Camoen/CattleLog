@@ -19,26 +19,20 @@ class TreatmentListAdapter internal constructor(
 
     inner class TreatmentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val treatmentEventDate: TextView = itemView.findViewById(R.id.eventDate)
-//        val treatmentPinkEyeLine: LinearLayout = itemView.findViewById(R.id.pinkEyeLine)
         val treatmentPinkEye: TextView = itemView.findViewById(R.id.pinkEye)
         val treatmentPinkEyeLabel: TextView = itemView.findViewById(R.id.pinkEyeLabel)
         val treatmentEyeSide: TextView = itemView.findViewById(R.id.eyeSide)
         val treatmentEyeSideLabel: TextView = itemView.findViewById(R.id.eyeSideLabel)
-//        val treatmentRespiratoryLine: LinearLayout = itemView.findViewById(R.id.respiratoryLine)
         val treatmentRespiratory: TextView = itemView.findViewById(R.id.respiratory)
         val treatmentRespiratoryLabel: TextView = itemView.findViewById(R.id.respiratoryLabel)
-//        val treatmentScoursLine: LinearLayout = itemView.findViewById(R.id.scoursLine)
         val treatmentScours: TextView = itemView.findViewById(R.id.scours)
         val treatmentScoursLabel: TextView = itemView.findViewById(R.id.scoursLabel)
-//        val treatmentFootLine: LinearLayout = itemView.findViewById(R.id.footLine)
         val treatmentFoot: TextView = itemView.findViewById(R.id.foot)
         val treatmentFootLabel: TextView = itemView.findViewById(R.id.footLabel)
         val treatmentFootPosition: TextView = itemView.findViewById(R.id.footPosition)
         val treatmentFootPositionLabel: TextView = itemView.findViewById(R.id.footPositionLabel)
-//        val treatmentMastitisLine: LinearLayout = itemView.findViewById(R.id.mastitisLine)
         val treatmentMastitis: TextView = itemView.findViewById(R.id.mastitis)
         val treatmentMastitisLabel: TextView = itemView.findViewById(R.id.mastitisLabel)
-//        val treatmentOtherLine: LinearLayout = itemView.findViewById(R.id.otherLine)
         val treatmentOther: TextView = itemView.findViewById(R.id.other)
         val treatmentOtherLabel: TextView = itemView.findViewById(R.id.otherLabel)
         val treatmentDetails: TextView = itemView.findViewById(R.id.details)
@@ -64,26 +58,15 @@ class TreatmentListAdapter internal constructor(
         holder.treatmentDetails.text = current.Details
 
 
-        // Set visibility for individual eye fields and entire eye row
-        if (current.PinkEye.isNullOrBlank()) setVisibility(holder.treatmentPinkEyeLabel, holder.treatmentPinkEye)
-        if (current.EyeSide.isNullOrBlank()) setVisibility(holder.treatmentEyeSideLabel, holder.treatmentEyeSide)
-//        if (current.PinkEye.isNullOrBlank() && current.EyeSide.isNullOrBlank()) holder.treatmentPinkEyeLine.visibility = View.GONE
-
-        // Set visibility for individual foot fields and entire foot row
-        if (current.Foot.isNullOrBlank()) setVisibility(holder.treatmentFootLabel, holder.treatmentFoot)
+        if (current.PinkEye.isNullOrBlank())      setVisibility(holder.treatmentPinkEyeLabel, holder.treatmentPinkEye)
+        if (current.EyeSide.isNullOrBlank())      setVisibility(holder.treatmentEyeSideLabel, holder.treatmentEyeSide)
+        if (current.Foot.isNullOrBlank())         setVisibility(holder.treatmentFootLabel, holder.treatmentFoot)
         if (current.FootPosition.isNullOrBlank()) setVisibility(holder.treatmentFootPositionLabel, holder.treatmentFootPosition)
-//        if (current.Foot.isNullOrBlank() && current.FootPosition.isNullOrBlank()) holder.treatmentFootLine.visibility = View.GONE
-
-        // Set visibility for entire row of unpaired treatment attributes
-        if (current.Respiratory.isNullOrBlank()) setVisibility(holder.treatmentRespiratoryLabel, holder.treatmentRespiratory)
-        if (current.Scours.isNullOrBlank()) setVisibility(holder.treatmentScoursLabel, holder.treatmentScours)
-//        if (current.Respiratory.isNullOrBlank()) holder.treatmentRespiratoryLine.visibility = View.GONE
-//        if (current.Scours.isNullOrBlank()) holder.treatmentScoursLine.visibility = View.GONE
-//        if (current.Mastitis.isNullOrBlank()) holder.treatmentMastitisLine.visibility = View.GONE
-        if (current.Mastitis.isNullOrBlank()) setVisibility(holder.treatmentMastitisLabel, holder.treatmentMastitis)
-//        if (current.Other.isNullOrBlank()) holder.treatmentOtherLine.visibility = View.GONE
-        if (current.Other.isNullOrBlank()) setVisibility(holder.treatmentOtherLabel, holder.treatmentOther)
-        if (current.Details.isNullOrBlank()) setVisibility(holder.treatmentDetailsLabel, holder.treatmentDetails)
+        if (current.Respiratory.isNullOrBlank())  setVisibility(holder.treatmentRespiratoryLabel, holder.treatmentRespiratory)
+        if (current.Scours.isNullOrBlank())       setVisibility(holder.treatmentScoursLabel, holder.treatmentScours)
+        if (current.Mastitis.isNullOrBlank())     setVisibility(holder.treatmentMastitisLabel, holder.treatmentMastitis)
+        if (current.Other.isNullOrBlank())        setVisibility(holder.treatmentOtherLabel, holder.treatmentOther)
+        if (current.Details.isNullOrBlank())      setVisibility(holder.treatmentDetailsLabel, holder.treatmentDetails)
 
 
     }
