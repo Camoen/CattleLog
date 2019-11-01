@@ -8,4 +8,7 @@
     <color name="gray">#B1B1B1</color>
     <color name="darkGray">#5A5A5A</color>
     <color name="red">#B40808</color>
+    <color name="darkCerulean">#044e79</color>
+    <color name="lightGray">#d7d3d0</color>
+    <color name="paleCornflowerBlue">#adc9e8</color>
 </resources>

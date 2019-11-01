@@ -110,50 +110,50 @@ class OverviewListAdapter internal constructor(
     override fun onBindViewHolder(holder: OverviewViewHolder, position: Int) {
         val current = overviewList[position]
         holder.animalBirthDate.text = current.BirthDate
-        holder.animalDaysSinceBredHeat.text = current.DaysSinceBredHeat.toString()
-        holder.animalDaysTilDue.text = current.DaysTilDue.toString()
-
-        holder.animalGroupNumber.text = current.GroupNumber.toString()
-        holder.animalTempGroupNumber.text = current.TempGroupNumber.toString()
-        holder.animalReproCode.text = current.ReproCode
-        holder.animalTimesBred.text = current.TimesBred.toString()
-        holder.animalUsrDef1.text = current.UsrDef1
-        holder.animalUsrDef2.text = current.UsrDef2
-        holder.animalUsrDef3.text = current.UsrDef3
-        holder.animalUsrDef4.text = current.UsrDef4
-        holder.animalUsrDef5.text = current.UsrDef5
-        holder.animalUsrDef6.text = current.UsrDef6
-        holder.animalUsrDef7.text = current.UsrDef7
-        holder.animalUsrDef72.text = current.UsrDef7
-        holder.animalUsrDef8.text = current.UsrDef8
-        holder.animalUsrDef9.text = current.UsrDef9
-        holder.animalUsrDef10.text = current.UsrDef10
-        holder.animalDaysTilNextHeat.text = current.DaysTilNextHeat.toString()
-        holder.animalBarnName.text = current.BarnName
-        holder.animalDHIID.text = current.DHIID
-        holder.animalDamIndex.text = current.DamIndex.toString()
-        holder.animalDamIndex2.text = current.DamIndex.toString()
-        holder.animalDamName.text = current.DamName
-        holder.animalSireNameCode.text = current.SireNameCode
-        holder.animalSireNameCode2.text = current.SireNameCode
-        holder.animalTimesBredDate.text = current.TimesBredDate
-        holder.animalDateDue.text = current.DateDue
-        holder.animalServiceSireNameCode.text = current.ServiceSireNameCode
-        holder.animalNextExpHeat.text = current.NextExpHeat
-        holder.animalDonorDamID.text = current.DonorDamID
-        holder.animalFarmID.text = current.FarmID
-        holder.animalDamDHIID.text = current.DamDHI_ID
-        holder.animalPrevBredHeat1.text = current.PrevBredHeat1
-        holder.animalPrevBredHeat2.text = current.PrevBredHeat2
-        holder.animalPrevBredHeat3.text = current.PrevBredHeat3
-        holder.animalWeightBirth.text = current.WeightBirth.toString()
-        holder.animalWeightWean.text = current.WeightWean.toString()
-        holder.animalWeightBred.text = current.WeightBred.toString()
-        holder.animalWeightPuberty.text = current.WeightPuberty.toString()
-        holder.animalWeightCalving.text = current.WeightCalving.toString()
-        holder.animalDaysInCurGroup.text = current.DaysInCurGroup.toString()
-        holder.animalDateLeft.text = current.DateLeft
-        holder.animalReason.text = current.Reason
+        // Only replace the default string if data exists for a particular field.
+        if (current.DaysSinceBredHeat.toString() != "null") holder.animalDaysSinceBredHeat.text = current.DaysSinceBredHeat.toString()
+        if (current.DaysTilDue.toString() != "null") holder.animalDaysTilDue.text = current.DaysTilDue.toString()
+        if (current.GroupNumber.toString() != "null") holder.animalGroupNumber.text = current.GroupNumber.toString()
+        if (current.TempGroupNumber.toString() != "null") holder.animalTempGroupNumber.text = current.TempGroupNumber.toString()
+        if (!current.ReproCode.isNullOrBlank()) holder.animalReproCode.text = current.ReproCode
+        if (current.TimesBred.toString() != "null") holder.animalTimesBred.text = current.TimesBred.toString()
+        if (!current.UsrDef1.isNullOrBlank()) holder.animalUsrDef1.text = current.UsrDef1
+        if (!current.UsrDef2.isNullOrBlank()) holder.animalUsrDef2.text = current.UsrDef2
+        if (!current.UsrDef3.isNullOrBlank()) holder.animalUsrDef3.text = current.UsrDef3
+        if (!current.UsrDef4.isNullOrBlank()) holder.animalUsrDef4.text = current.UsrDef4
+        if (!current.UsrDef5.isNullOrBlank()) holder.animalUsrDef5.text = current.UsrDef5
+        if (!current.UsrDef6.isNullOrBlank()) holder.animalUsrDef6.text = current.UsrDef6
+        if (!current.UsrDef7.isNullOrBlank()) holder.animalUsrDef7.text = current.UsrDef7
+        if (!current.UsrDef7.isNullOrBlank()) holder.animalUsrDef72.text = current.UsrDef7
+        if (!current.UsrDef8.isNullOrBlank()) holder.animalUsrDef8.text = current.UsrDef8
+        if (!current.UsrDef9.isNullOrBlank()) holder.animalUsrDef9.text = current.UsrDef9
+        if (!current.UsrDef10.isNullOrBlank()) holder.animalUsrDef10.text = current.UsrDef10
+        if (current.DaysTilNextHeat.toString() != "null")  holder.animalDaysTilNextHeat.text = current.DaysTilNextHeat.toString()
+        if (!current.BarnName.isNullOrBlank()) holder.animalBarnName.text = current.BarnName
+        if (!current.DHIID.isNullOrBlank()) holder.animalDHIID.text = current.DHIID
+        if (current.DamIndex.toString() != "null") holder.animalDamIndex.text = current.DamIndex.toString()
+        if (current.DamIndex.toString() != "null") holder.animalDamIndex2.text = current.DamIndex.toString()
+        if (!current.DamName.isNullOrBlank()) holder.animalDamName.text = current.DamName
+        if (!current.SireNameCode.isNullOrBlank()) holder.animalSireNameCode.text = current.SireNameCode
+        if (!current.SireNameCode.isNullOrBlank()) holder.animalSireNameCode2.text = current.SireNameCode
+        if (!current.TimesBredDate.isNullOrBlank()) holder.animalTimesBredDate.text = current.TimesBredDate
+        if (!current.DateDue.isNullOrBlank()) holder.animalDateDue.text = current.DateDue
+        if (!current.ServiceSireNameCode.isNullOrBlank()) holder.animalServiceSireNameCode.text = current.ServiceSireNameCode
+        if (!current.NextExpHeat.isNullOrBlank()) holder.animalNextExpHeat.text = current.NextExpHeat
+        if (!current.DonorDamID.isNullOrBlank()) holder.animalDonorDamID.text = current.DonorDamID
+        if (!current.FarmID.isNullOrBlank()) holder.animalFarmID.text = current.FarmID
+        if (!current.DamDHI_ID.isNullOrBlank()) holder.animalDamDHIID.text = current.DamDHI_ID
+        if (!current.PrevBredHeat1.isNullOrBlank()) holder.animalPrevBredHeat1.text = current.PrevBredHeat1
+        if (!current.PrevBredHeat2.isNullOrBlank()) holder.animalPrevBredHeat2.text = current.PrevBredHeat2
+        if (!current.PrevBredHeat3.isNullOrBlank()) holder.animalPrevBredHeat3.text = current.PrevBredHeat3
+        if (current.WeightBirth.toString() != "null") holder.animalWeightBirth.text = current.WeightBirth.toString()
+        if (current.WeightWean.toString() != "null") holder.animalWeightWean.text = current.WeightWean.toString()
+        if (current.WeightBred.toString() != "null") holder.animalWeightBred.text = current.WeightBred.toString()
+        if (current.WeightPuberty.toString() != "null") holder.animalWeightPuberty.text = current.WeightPuberty.toString()
+        if (current.WeightCalving.toString() != "null") holder.animalWeightCalving.text = current.WeightCalving.toString()
+        if (current.DaysInCurGroup.toString() != "null") holder.animalDaysInCurGroup.text = current.DaysInCurGroup.toString()
+        if (!current.DateLeft.isNullOrBlank()) holder.animalDateLeft.text = current.DateLeft
+        if (!current.Reason.isNullOrBlank()) holder.animalReason.text = current.Reason
 
         holder.userDefinedLabel1.text = userFieldsList[0].FieldTitle
         holder.userDefinedLabel2.text = userFieldsList[1].FieldTitle
@@ -194,6 +194,12 @@ class OverviewListAdapter internal constructor(
             holder.animalReason.visibility = View.GONE
             holder.animalDateLeftLabel.visibility = View.GONE
             holder.animalReasonLabel.visibility = View.GONE
+        }
+
+        // This attribute is rarely used and mildly disrupts the aesthetic if displayed, remove whenever possible
+        if (current.UsrDef10.isNullOrBlank()){
+            holder.userDefinedLabel10.visibility = View.GONE
+            holder.animalUsrDef10.visibility = View.GONE
         }
     }
 
