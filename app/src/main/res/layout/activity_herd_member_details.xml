@@ -13,19 +13,22 @@
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/font_small"
             android:gravity="center"
-            android:minHeight="?actionBarSize"
-            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+            android:textSize="26sp" />
+
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
-            app:tabTextAppearance="@style/Tab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/green" />
+            android:background="@color/green"
+            app:tabTextAppearance="@style/Tab" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager

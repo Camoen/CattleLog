@@ -43,4 +43,29 @@
         <item name="android:layout_marginBottom">@dimen/font_small</item>
     </style>
 
+    <style name="OverviewLabelRow">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="UserDefLabel">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1.1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/font_base</item>
+        <item name="android:textColor">@color/darkGray</item>
+    </style>
+
+    <style name="UserDefDescription">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1.9</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/font_base</item>
+        <item name="android:textColor">@color/darkGray</item>
+    </style>
+
 </resources>

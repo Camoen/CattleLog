@@ -8,10 +8,11 @@
     <string name="tab_health">Health</string>
     <string name="tab_treatment">Treatment</string>
     <string name="tab_herd">Herd</string>
-    <string name="tab_next_heats">Next Heats</string>
-    <string name="member_number">#%1$d</string>
+    <string name="tab_next_heats">Heats</string>
+    <string name="member_number">%1$d</string>
     <string name="search_by_tag_number">Search by tag number…</string>
 
+    <!-- Treatments Tab -->
     <string name="herd_members">Herd Members</string>
     <string name="mastitis">Mastitis:</string>
     <string name="foot_position">Foot Position:</string>
@@ -22,4 +23,47 @@
     <string name="pink_eye">Pink Eye:</string>
     <string name="other">Other:</string>
     <string name="details">Details:</string>
+
+    <!-- Overview Tab -->
+    <string name="labelBirthDate">DOB</string>
+    <string name="labelDaysSinceBredHeat">Days Since Bred / Heat</string>
+    <string name="labelDaysTilDue">Days Until Due</string>
+    <string name="labelGroupNumber">Group</string>
+    <string name="labelTempGroupNumber">Temp Group</string>
+    <string name="labelReproCode">Repro Code</string>
+    <string name="labelTimesBred">Times Bred</string>
+    <string name="labelDaysTilNextHeat">Days Until Next Heat</string>
+    <string name="labelBarnName">Barn Name</string>
+    <string name="labelDHIID">Metal Tag / ID</string>
+    <string name="labelDamIndex">Dam</string>
+    <string name="labelDamName">Dam Barn Name</string>
+    <string name="labelSireNameCode">Sire</string>
+    <string name="labelTimesBredDate">Times Bred / Date</string>
+    <string name="labelDateDue">Due Date</string>
+    <string name="labelServiceSireNameCode">Service Sire</string>
+    <string name="labelNextExpHeat">Next Expected Heat Date</string>
+    <string name="labelDonorDamID">Donor Dam ID</string>
+    <string name="labelFarmID">Farm ID / Sire ID</string>
+    <string name="labelDamDHIID">Dam Metal Tag / ID</string>
+    <string name="headerPrevBredHeat">Previous Breeding / Heats</string>
+    <string name="labelPrevBredHeat1">1st</string>
+    <string name="labelPrevBredHeat2">2nd</string>
+    <string name="labelPrevBredHeat3">3rd</string>
+    <string name="headerWeights">Weights</string>
+    <string name="labelWeightBirth">Birth</string>
+    <string name="labelWeightWean">Weaning</string>
+    <string name="labelWeightPuberty">Puberty</string>
+    <string name="labelWeightBred">Breeding</string>
+    <string name="labelWeightCalving">Calving</string>
+    <string name="labelDaysInCurGroup">Days in Group</string>
+
+    <string name="labelDateLeft">Date Left Herd</string>
+    <string name="labelReason">Reason</string>
+    <string name="group">Group</string>
+    <string name="headerGroupIdentifiers">Group Identifiers</string>
+    <string name="headerReproduction">Reproduction</string>
+    <string name="headerIdentity">Identity</string>
+    <string name="user_field_descriptions">User Field Descriptions</string>
+
+
 </resources>
