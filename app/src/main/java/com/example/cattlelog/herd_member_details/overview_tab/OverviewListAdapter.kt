@@ -27,7 +27,6 @@ class OverviewListAdapter internal constructor(
         val animalTempGroupNumber: TextView = itemView.findViewById(R.id.tempGroupNumber)
         val animalReproCode: TextView = itemView.findViewById(R.id.reproCode)
         val animalTimesBred: TextView = itemView.findViewById(R.id.timesBred)
-//        val animalBreed: TextView = itemView.findViewById(R.id.breed)
         val animalUsrDef1: TextView = itemView.findViewById(R.id.userDef1)
         val animalUsrDef2: TextView = itemView.findViewById(R.id.userDef2)
         val animalUsrDef3: TextView = itemView.findViewById(R.id.userDef3)
@@ -51,7 +50,6 @@ class OverviewListAdapter internal constructor(
         val animalDateDue: TextView = itemView.findViewById(R.id.dateDue)
         val animalServiceSireNameCode: TextView = itemView.findViewById(R.id.serviceSireNameCode)
         val animalNextExpHeat: TextView = itemView.findViewById(R.id.nextExpHeat)
-//        val animalAgeInMonthsAtCalving: TextView = itemView.findViewById(R.id.ageInMonthsAtCalving)
         val animalDonorDamID: TextView = itemView.findViewById(R.id.donorDamID)
         val animalFarmID: TextView = itemView.findViewById(R.id.farmID)
         val animalDamDHIID: TextView = itemView.findViewById(R.id.damDHI_ID)
@@ -119,7 +117,6 @@ class OverviewListAdapter internal constructor(
         holder.animalTempGroupNumber.text = current.TempGroupNumber.toString()
         holder.animalReproCode.text = current.ReproCode
         holder.animalTimesBred.text = current.TimesBred.toString()
-//        holder.animalBreed.text = current.Breed
         holder.animalUsrDef1.text = current.UsrDef1
         holder.animalUsrDef2.text = current.UsrDef2
         holder.animalUsrDef3.text = current.UsrDef3
@@ -143,7 +140,6 @@ class OverviewListAdapter internal constructor(
         holder.animalDateDue.text = current.DateDue
         holder.animalServiceSireNameCode.text = current.ServiceSireNameCode
         holder.animalNextExpHeat.text = current.NextExpHeat
-//        holder.animalAgeInMonthsAtCalving.text = current.AgeInMonthsAtCalving.toString()
         holder.animalDonorDamID.text = current.DonorDamID
         holder.animalFarmID.text = current.FarmID
         holder.animalDamDHIID.text = current.DamDHI_ID
@@ -192,7 +188,6 @@ class OverviewListAdapter internal constructor(
         holder.userDefinedDescription9.text = userFieldsList[8].FieldDetails
         holder.userDefinedDescription10.text = userFieldsList[9].FieldDetails
 
-
         // Set visibility for fields that indicate an animal has left the herd
         if (current.Reason.isNullOrBlank()){
             holder.animalDateLeft.visibility = View.GONE
@@ -200,8 +195,6 @@ class OverviewListAdapter internal constructor(
             holder.animalDateLeftLabel.visibility = View.GONE
             holder.animalReasonLabel.visibility = View.GONE
         }
-
-
     }
 
     internal fun setOverviewList(overviewList: List<Cattle>) {

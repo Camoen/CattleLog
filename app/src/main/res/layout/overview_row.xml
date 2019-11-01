@@ -670,15 +670,4 @@
         </TableRow>
 
     </TableLayout>
-
-<!--    <TextView-->
-<!--        android:id="@+id/breed"-->
-<!--        tools:text="X"-->
-<!--        style="@style/RecyclerViewCell" />-->
-<!--    -->
-<!--    <TextView-->
-<!--        android:id="@+id/ageInMonthsAtCalving"-->
-<!--        tools:text="X"-->
-<!--        style="@style/RecyclerViewCell"/>-->
-
 </LinearLayout>
