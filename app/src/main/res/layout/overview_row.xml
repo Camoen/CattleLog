@@ -110,7 +110,7 @@
                 android:textSize="30sp"/>
             <TextView
                 android:id="@+id/timesBredDate"
-                tools:text="2 P 12-22"
+                tools:text="16 H 10-15"
                 style="@style/OverviewDataField"
                 android:paddingStart="5dp"
                 android:textSize="30sp"/>
@@ -124,7 +124,7 @@
         <TableRow>
             <TextView
                 android:id="@+id/serviceSireNameCode"
-                tools:text="91KB5838"
+                tools:text="271KB8919"
                 style="@style/OverviewDataField"
                 android:textSize="30sp"/>
             <TextView
