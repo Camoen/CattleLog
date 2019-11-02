@@ -13,6 +13,19 @@
         app:queryHint="@string/search_by_tag_number"
         app:iconifiedByDefault="false" />
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow style="@style/ListingHeader">
+            <TextView android:text="@string/number" style="@style/ListingColumn" android:layout_weight="0.8"/>
+            <TextView android:text="@string/heat_date" style="@style/ListingColumn" android:layout_weight="0.8"/>
+            <TextView android:text="@string/labelServiceSireNameCode" style="@style/ListingColumn"/>
+            <TextView android:text="@string/bred_date" style="@style/ListingColumn"/>
+        </TableRow>
+
+    </TableLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/nextExpectedHeatsList"
         android:layout_width="match_parent"

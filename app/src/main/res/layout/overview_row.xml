@@ -5,9 +5,47 @@
     android:minHeight="60dp"
     android:layout_height="wrap_content"
     android:background="@color/softGreen"
-    android:paddingTop="5dp"
     android:paddingBottom="5dp"
     tools:ignore="TooManyViews" >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:background="@color/green">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/barnName"
+                android:text="@string/default_value"
+                tools:text="95776"
+                style="@style/OverviewIdentifiers"
+                android:textAlignment="textStart"/>
+
+            <TextView
+                android:id="@+id/dhiID"
+                android:text="@string/default_value"
+                tools:text="1249576"
+                style="@style/OverviewIdentifiers"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/birthDate"
+                android:text="@string/default_value"
+                tools:text="04/22/2019"
+                style="@style/OverviewIdentifiers"
+
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+    </TableLayout>
 
     <TableLayout
         android:layout_width="match_parent"
@@ -18,107 +56,112 @@
         >
 
         <TableRow
+            style="@style/OverviewLabelRow"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/barnName"
-                tools:text="95776"
-                style="@style/RecyclerViewCell"
-                android:paddingStart="5dp"
-                android:textAlignment="textStart"/>
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/birthDate"
-                tools:text="04/22/2019"
-                style="@style/RecyclerViewCell"
-                android:paddingEnd="5dp"
-                android:textAlignment="textEnd" />
-        </TableRow>
-
-
-        <TableRow style="@style/OverviewLabelRow">
             <TextView
                 android:id="@+id/labelDateLeft"
-                android:text="@string/labelDateLeft"
                 android:layout_width="0dp"
                 android:layout_weight="0.85"
+                android:paddingTop="3dp"
+                android:text="@string/labelDateLeft"
                 android:textAlignment="center"
-                android:textColor="@color/red"
-                android:paddingTop="10dp"/>
+                android:textColor="@color/red" />
+
             <TextView
                 android:id="@+id/labelReason"
-                android:text="@string/labelReason"
                 android:layout_width="0dp"
                 android:layout_weight="2.15"
+                android:text="@string/labelReason"
                 android:textAlignment="center"
-                android:textColor="@color/red"/>
+                android:textColor="@color/red" />
         </TableRow>
 
         <TableRow>
             <TextView
                 android:id="@+id/dateLeft"
                 tools:text="10/08/2019"
-                style="@style/RecyclerViewCell"
+                style="@style/OverviewDataField"
                 android:layout_width="0dp"
-                android:layout_weight="0.85"/>
+                android:layout_weight="0.85"
+                android:textAlignment="center"/>
 
             <TextView
                 android:id="@+id/reason"
                 tools:text="Died; heart defect suspected.  Better luck next time old chap."
-                style="@style/RecyclerViewCell"
+                style="@style/OverviewDataField"
                 android:layout_width="0dp"
                 android:layout_weight="2.15"
-                android:paddingBottom="10dp"/>
+                android:paddingBottom="3dp"
+                android:textAlignment="center"/>
         </TableRow>
 
         <TableRow style="@style/OverviewLabelRow">
-            <TextView android:text="@string/labelNextExpHeat"/>
-            <TextView android:text="@string/labelTimesBredDate"/>
+            <TextView android:text="@string/labelNextExpHeat" style="@style/OverviewLabel"/>
+            <TextView android:text="@string/labelTimesBredDate" style="@style/OverviewLabel" android:paddingStart="5dp"/>
         </TableRow>
 
         <TableRow>
             <TextView
                 android:id="@+id/nextExpHeat"
                 tools:text="2019-11-26"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"
+                android:textSize="30sp"/>
             <TextView
                 android:id="@+id/timesBredDate"
-                tools:text="2 P 12-22"
-                style="@style/RecyclerViewCell"/>
+                tools:text="16 H 10-15"
+                style="@style/OverviewDataField"
+                android:paddingStart="5dp"
+                android:textSize="30sp"/>
         </TableRow>
 
         <TableRow style="@style/OverviewLabelRow">
-            <TextView android:text="@string/labelServiceSireNameCode"/>
-            <TextView android:text="@string/labelDateDue"/>
+            <TextView android:text="@string/labelServiceSireNameCode" style="@style/OverviewLabel"/>
+            <TextView android:text="@string/labelDateDue" style="@style/OverviewLabel" android:paddingStart="5dp"/>
         </TableRow>
 
         <TableRow>
             <TextView
                 android:id="@+id/serviceSireNameCode"
-                tools:text="91KB5838"
-                style="@style/RecyclerViewCell"/>
+                tools:text="271KB8919"
+                style="@style/OverviewDataField"
+                android:textSize="30sp"/>
             <TextView
                 android:id="@+id/dateDue"
                 tools:text="2020-02-27"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"
+                android:paddingStart="5dp"
+                android:textSize="30sp"/>
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
+
+        <TableRow style="@style/OverviewLabelRow"
+            android:background="@color/paleCornflowerBlue"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp">
+            <TextView android:text="@string/labelDamIndex" style="@style/OverviewLabel"/>
+            <TextView android:text="@string/labelSireNameCode" style="@style/OverviewLabel" android:paddingStart="5dp"/>
         </TableRow>
 
-        <TableRow style="@style/OverviewLabelRow">
-            <TextView android:text="@string/labelDamIndex"
-                android:background="@color/design_default_color_primary"/>
-            <TextView android:text="@string/labelSireNameCode"
-                android:background="@color/design_default_color_primary"/>
-        </TableRow>
-
-        <TableRow>
+        <TableRow
+            android:background="@color/paleCornflowerBlue"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp">
             <TextView
                 android:id="@+id/damIndex"
                 tools:text="3996"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"/>
             <TextView
                 android:id="@+id/sireNameCode"
                 tools:text="501A1131"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"
+                android:paddingStart="5dp"/>
         </TableRow>
 
     </TableLayout>
@@ -134,117 +177,120 @@
             <TextView
                 android:id="@+id/userDefLabel3"
                 tools:text="G - V - W - DW"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewLabel"/>
 
             <TextView
                 android:id="@+id/userDefLabel1"
                 tools:text="Test - CVX"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewLabel"/>
 
             <TextView
                 android:id="@+id/userDefLabel4"
                 tools:text="Blood"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewLabel"/>
         </TableRow>
 
         <TableRow>
             <TextView
                 android:id="@+id/userDef3"
                 tools:text="DW"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"/>
             <TextView
                 android:id="@+id/userDef1"
                 tools:text="TEST"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"/>
             <TextView
                 android:id="@+id/userDef4"
                 tools:text="NEE"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"/>
         </TableRow>
 
         <TableRow style="@style/OverviewLabelRow">
             <TextView
                 android:id="@+id/userDefLabel2"
                 tools:text="Calving Date"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewLabel"/>
 
             <TextView
                 android:id="@+id/userDefLabel9"
                 tools:text="Calf Score"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewLabel"/>
 
             <TextView
                 android:id="@+id/userDefLabel8"
                 tools:text="SCD"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewLabel"/>
         </TableRow>
 
         <TableRow>
             <TextView
                 android:id="@+id/userDef2"
                 tools:text="MR19"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"/>
             <TextView
                 android:id="@+id/userDef9"
                 tools:text="10.0"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"/>
             <TextView
                 android:id="@+id/userDef8"
                 tools:text="Y"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"/>
         </TableRow>
 
         <TableRow style="@style/OverviewLabelRow">
             <TextView
                 android:id="@+id/userDefLabel5"
                 tools:text="ET Calf  / FZ - IVF"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewLabel"/>
 
             <TextView
                 android:id="@+id/userDefLabel6"
                 tools:text="Donor"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewLabel"/>
 
             <TextView
                 android:id="@+id/userDefLabel7"
                 tools:text="ET Owner / Group #"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewLabel"/>
         </TableRow>
 
         <TableRow>
             <TextView
                 android:id="@+id/userDef5"
                 tools:text="ET"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"/>
             <TextView
                 android:id="@+id/userDef6"
                 tools:text="282  MY27"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"/>
             <TextView
                 android:id="@+id/userDef7"
                 tools:text="DB"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"/>
         </TableRow>
 
         <TableRow style="@style/OverviewLabelRow">
             <TextView
                 android:id="@+id/userDefLabel10"
                 tools:text="Twin"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewLabel" />
+        </TableRow>
 
+        <TableRow>
             <TextView
                 android:id="@+id/userDef10"
                 tools:text="TW"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField" />
         </TableRow>
 
     </TableLayout>
 
 <!--Identity-->
     <TextView
-        android:text="@string/headerIdentity"
+        android:text="@string/headerParentage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        style="@style/OverviewSectionHeader"/>
 
     <TableLayout
         android:layout_width="match_parent"
@@ -253,60 +299,62 @@
         android:paddingStart="5dp"
         android:paddingEnd="5dp">
 
-        <TableRow>
-            <TextView android:text="@string/labelDHIID"/>
-            <TextView
-                android:id="@+id/dhiID"
-                tools:text="1249576"
-                style="@style/RecyclerViewCell"/>
-        </TableRow>
+<!--        <TableRow>-->
+<!--            <TextView android:text="@string/labelDHIID" style="@style/OverviewLabel"-->
+<!--                android:textAlignment="center"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/dhiID"-->
+<!--                tools:text="1249576"-->
+<!--                style="@style/OverviewSubTableDataField"-->
+<!--                android:layout_height="wrap_content"/>-->
+<!--        </TableRow>-->
 
         <TableRow style="@style/OverviewLabelRow">
-            <TextView android:text="@string/labelDamIndex"/>
-            <TextView android:text="@string/labelSireNameCode"/>
+            <TextView android:text="@string/labelDamIndex" style="@style/OverviewLabel"/>
+            <TextView android:text="@string/labelSireNameCode" style="@style/OverviewLabel"/>
         </TableRow>
 
         <TableRow>
             <TextView
                 android:id="@+id/damIndex2"
                 tools:text="3996"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"/>
             <TextView
                 android:id="@+id/sireNameCode2"
                 tools:text="501A1131"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"/>
         </TableRow>
 
         <TableRow style="@style/OverviewLabelRow">
-            <TextView android:text="@string/labelDamName"/>
-            <TextView android:text="@string/labelFarmID"/>
+            <TextView android:text="@string/labelDamName" style="@style/OverviewLabel"/>
+            <TextView android:text="@string/labelFarmID" style="@style/OverviewLabel"/>
         </TableRow>
 
         <TableRow>
             <TextView
                 android:id="@+id/damName"
                 tools:text="JRS39849"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"/>
             <TextView
                 android:id="@+id/farmID"
                 tools:text="259KB1016"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"/>
         </TableRow>
 
         <TableRow style="@style/OverviewLabelRow">
-            <TextView android:text="@string/labelDamDHIID"/>
-            <TextView android:text="@string/labelDonorDamID"/>
+            <TextView android:text="@string/labelDamDHIID" style="@style/OverviewLabel"/>
+            <TextView android:text="@string/labelDonorDamID" style="@style/OverviewLabel"/>
         </TableRow>
 
         <TableRow>
             <TextView
                 android:id="@+id/damDHI_ID"
                 tools:text="58BTL6323"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"/>
             <TextView
                 android:id="@+id/donorDamID"
                 tools:text="FB12868"
-                style="@style/RecyclerViewCell"/>
+                style="@style/OverviewDataField"/>
         </TableRow>
 
     </TableLayout>
@@ -315,7 +363,8 @@
     <TextView
         android:text="@string/headerReproduction"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        style="@style/OverviewSectionHeader"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -326,89 +375,140 @@
 
         <TableLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="0.95"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:stretchColumns="*">
+            android:stretchColumns="*"
+            android:paddingEnd="2.5dp">
 
             <TableRow>
-                <TextView android:text="@string/labelReproCode"/>
+                <TextView android:text="@string/labelReproCode" style="@style/OverviewSubTableLabel"/>
                 <TextView
                     android:id="@+id/reproCode"
                     tools:text="H"
-                    style="@style/RecyclerViewCell"/>
+                    style="@style/OverviewSubTableDataField"
+                    android:textAlignment="textEnd"/>
             </TableRow>
 
             <TableRow>
-                <TextView android:text="@string/labelTimesBred"/>
+                <TextView android:text="@string/labelTimesBred" style="@style/OverviewSubTableLabel"/>
                 <TextView
                     android:id="@+id/timesBred"
                     tools:text="14"
-                    style="@style/RecyclerViewCell"/>
+                    style="@style/OverviewSubTableDataField"
+                    android:textAlignment="textEnd"/>
             </TableRow>
 
             <TableRow>
-                <TextView android:text="@string/labelDaysTilDue"/>
+                <TextView android:text="@string/labelDaysTilDue" style="@style/OverviewSubTableLabel"/>
                 <TextView
                     android:id="@+id/daysTilDue"
-                    tools:text="X"
-                    style="@style/RecyclerViewCell"/>
+                    tools:text="999"
+                    style="@style/OverviewSubTableDataField"
+                    android:textAlignment="textEnd"/>
 
             </TableRow>
 
             <TableRow>
-                <TextView android:text="@string/labelDaysSinceBredHeat"/>
+                <TextView android:text="@string/labelDaysSinceBredHeat" style="@style/OverviewSubTableLabel"/>
                 <TextView
                     android:id="@+id/daysSinceBredHeat"
                     tools:text="246"
-                    style="@style/RecyclerViewCell"/>
+                    style="@style/OverviewSubTableDataField"
+                    android:textAlignment="textEnd"/>
             </TableRow>
 
             <TableRow>
-                <TextView android:text="@string/labelDaysTilNextHeat"/>
+                <TextView android:text="@string/labelDaysTilNextHeat" style="@style/OverviewSubTableLabel"/>
                 <TextView
                     android:id="@+id/daysTilNextHeat"
                     tools:text="20"
-                    style="@style/RecyclerViewCell"/>
+                    style="@style/OverviewSubTableDataField"
+                    android:textAlignment="textEnd"/>
             </TableRow>
 
         </TableLayout>
 
         <TableLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="0.95"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:stretchColumns="*">
+            android:stretchColumns="*"
+            android:paddingStart="2.5dp">
 
             <TableRow>
                 <TextView
                     android:text="@string/headerPrevBredHeat"
-                    android:layout_span="2"/>
+                    style="@style/OverviewSubTableLabel"
+                    android:textAlignment="center"
+                    android:layout_span="4"/>
             </TableRow>
 
             <TableRow>
-                <TextView android:text="@string/labelPrevBredHeat1"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="@string/labelPrevBredHeat1"
+                    style="@style/OverviewSubTableLabel"
+                    android:textAlignment="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.25"/>
                 <TextView
                     android:id="@+id/prevBredHeat1"
                     tools:text="H12-16"
-                    style="@style/RecyclerViewCell"/>
+                    style="@style/OverviewSubTableDataField"
+                    android:textAlignment="textEnd"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
             </TableRow>
 
             <TableRow>
-                <TextView android:text="@string/labelPrevBredHeat2"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="@string/labelPrevBredHeat2"
+                    style="@style/OverviewSubTableLabel"
+                    android:textAlignment="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.25" />
                 <TextView
                     android:id="@+id/prevBredHeat2"
                     tools:text="11-27"
-                    style="@style/RecyclerViewCell"/>
+                    style="@style/OverviewSubTableDataField"
+                    android:textAlignment="textEnd"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
             </TableRow>
 
             <TableRow>
-                <TextView android:text="@string/labelPrevBredHeat3"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="@string/labelPrevBredHeat3"
+                    style="@style/OverviewSubTableLabel"
+                    android:textAlignment="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.25"/>
                 <TextView
                     android:id="@+id/prevBredHeat3"
                     tools:text="H11-20"
-                    style="@style/RecyclerViewCell"/>
+                    style="@style/OverviewSubTableDataField"
+                    android:textAlignment="textEnd"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
             </TableRow>
         </TableLayout>
     </LinearLayout>
@@ -418,7 +518,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:baselineAligned="false">
+        android:baselineAligned="false"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp">
 
 
         <LinearLayout
@@ -426,57 +528,60 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1"
-            android:layout_gravity="start"
-            android:paddingStart="5dp">
+            android:layout_gravity="start">
 <!--            WEIGHTS-->
             <TextView
                 android:text="@string/headerWeights"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                style="@style/OverviewSectionHeader"
+                android:layout_marginEnd="2.5dp"/>
 
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:stretchColumns="*">
+                android:stretchColumns="*"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp">
 
                 <TableRow>
-                    <TextView android:text="@string/labelWeightBirth"/>
+                    <TextView android:text="@string/labelWeightBirth" style="@style/OverviewSubTableLabel"/>
                     <TextView
                         android:id="@+id/weightBirth"
                         tools:text="1234"
-                        style="@style/RecyclerViewCell"/>
+                        style="@style/OverviewSubTableDataField"/>
                 </TableRow>
 
                 <TableRow>
-                    <TextView android:text="@string/labelWeightWean"/>
+                    <TextView android:text="@string/labelWeightWean" style="@style/OverviewSubTableLabel"/>
                     <TextView
                         android:id="@+id/weightWean"
                         tools:text="1234"
-                        style="@style/RecyclerViewCell"/>
+                        style="@style/OverviewSubTableDataField"/>
                 </TableRow>
 
                 <TableRow>
-                    <TextView android:text="@string/labelWeightPuberty"/>
+                    <TextView android:text="@string/labelWeightPuberty" style="@style/OverviewSubTableLabel"/>
                     <TextView
                         android:id="@+id/weightPuberty"
                         tools:text="1234"
-                        style="@style/RecyclerViewCell"/>
+                        style="@style/OverviewSubTableDataField"/>
                 </TableRow>
 
                 <TableRow>
-                    <TextView android:text="@string/labelWeightBred"/>
+                    <TextView android:text="@string/labelWeightBred" style="@style/OverviewSubTableLabel"/>
                     <TextView
                         android:id="@+id/weightBred"
                         tools:text="-"
-                        style="@style/RecyclerViewCell"/>
+                        style="@style/OverviewSubTableDataField"/>
                 </TableRow>
 
                 <TableRow>
-                    <TextView android:text="@string/labelWeightCalving"/>
+                    <TextView android:text="@string/labelWeightCalving" style="@style/OverviewSubTableLabel"/>
                     <TextView
                         android:id="@+id/weightCalving"
                         tools:text="1234"
-                        style="@style/RecyclerViewCell"/>
+                        style="@style/OverviewSubTableDataField"/>
                 </TableRow>
 
             </TableLayout>
@@ -490,67 +595,64 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1"
-            android:layout_gravity="end"
-            android:paddingEnd="5dp">
+            android:layout_gravity="end">
 
 <!--            GROUPS-->
             <TextView
                 android:text="@string/headerGroupIdentifiers"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                style="@style/OverviewSectionHeader"
+                android:layout_marginStart="2.5dp"/>
 
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:stretchColumns="*">
+                android:stretchColumns="*"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp">
 
                 <TableRow>
-                    <TextView android:text="@string/group"/>
+                    <TextView android:text="@string/group" style="@style/OverviewSubTableLabel"/>
                     <TextView
                         android:id="@+id/userDef7_2"
                         tools:text="LVW"
-                        style="@style/RecyclerViewCell"/>
+                        style="@style/OverviewSubTableDataField"/>
                 </TableRow>
 
                 <TableRow>
-                    <TextView android:text="@string/group"/>
+                    <TextView android:text="@string/group" style="@style/OverviewSubTableLabel"/>
                     <TextView
                         android:id="@+id/tempGroupNumber"
                         tools:text="29"
-                        style="@style/RecyclerViewCell"/>
+                        style="@style/OverviewSubTableDataField"/>
                 </TableRow>
 
                 <TableRow>
-                    <TextView android:text="@string/group"/>
+                    <TextView android:text="@string/group" style="@style/OverviewSubTableLabel"/>
                     <TextView
                         android:id="@+id/groupNumber"
                         tools:text="73"
-                        style="@style/RecyclerViewCell" />
+                        style="@style/OverviewSubTableDataField" />
                 </TableRow>
 
                 <TableRow>
-                    <TextView android:text="@string/labelDaysInCurGroup"/>
+                    <TextView android:text="@string/labelDaysInCurGroup" style="@style/OverviewSubTableLabel"/>
                     <TextView
                         android:id="@+id/daysInCurGroup"
                         tools:text="172"
-                        style="@style/RecyclerViewCell"/>
+                        style="@style/OverviewSubTableDataField"/>
                 </TableRow>
-
-
-
             </TableLayout>
-
-
         </LinearLayout>
-
-
     </LinearLayout>
 
 <!--    USER FIELD DESCRIPTIONS-->
     <TextView
         android:text="@string/user_field_descriptions"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        style="@style/OverviewSectionHeader"/>
 
     <TableLayout
         android:layout_width="match_parent"

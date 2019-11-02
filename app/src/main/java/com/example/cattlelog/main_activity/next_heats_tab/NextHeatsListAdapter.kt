@@ -25,7 +25,7 @@ class NextHeatsListAdapter  internal constructor(
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val tagNumber: TextView = itemView.findViewById(R.id.nextExpHeatsTagNumber)
         val nextExpectedHeat: TextView = itemView.findViewById(R.id.nextExpectedHeat)
-        val sireNameCode: TextView = itemView.findViewById(R.id.sireNameCode)
+        val serviceSireNameCode: TextView = itemView.findViewById(R.id.serviceSireNameCode)
         val timesBredDate: TextView = itemView.findViewById(R.id.timesBredDate)
         private val rowClickListener: RowListener = rowListener
 
@@ -44,7 +44,7 @@ class NextHeatsListAdapter  internal constructor(
 
     // Classes will implement this interface to customize what happens when a row is clicked
     public interface RowListener {
-        fun onRowClicked(position: Int);
+        fun onRowClicked(position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NextHeatsViewHolder {
@@ -55,8 +55,8 @@ class NextHeatsListAdapter  internal constructor(
     override fun onBindViewHolder(holder: NextHeatsViewHolder, position: Int) {
         val current = cattleListFiltered[position]
         holder.tagNumber.text = current.TagNumber.toString()
-        holder.nextExpectedHeat.text = current.NextExpHeat
-        holder.sireNameCode.text = current.SireNameCode
+        holder.nextExpectedHeat.text = current.NextExpHeat!!.takeLast(5)
+        holder.serviceSireNameCode.text = current.ServiceSireNameCode
         holder.timesBredDate.text = current.TimesBredDate
     }
 

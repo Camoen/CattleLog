@@ -2,7 +2,7 @@
     <string name="app_name">CattleLog</string>
     <string name="db_URL">https://www.dropbox.com/s/41kchqru8c1ehxi/cattlelog_database.db?dl=1</string>
     <string name="download">Download</string>
-    <string name="hang_tight_almost_there">Hang tight! Almost there.</string>
+    <string name="download_in_progress">Database download in progress.</string>
     <string name="title_activity_herd_member_details">HerdMemberDetails</string>
     <string name="tab_overview">Overview</string>
     <string name="tab_health">Health</string>
@@ -62,8 +62,13 @@
     <string name="group">Group</string>
     <string name="headerGroupIdentifiers">Group Identifiers</string>
     <string name="headerReproduction">Reproduction</string>
-    <string name="headerIdentity">Identity</string>
+    <string name="headerParentage">Parentage</string>
     <string name="user_field_descriptions">User Field Descriptions</string>
+    <string name="default_value">--</string>
+    <string name="number">Number</string>
+    <string name="heat_date">Heat Date</string>
+    <string name="bred_date"># Bred / Date</string>
+    <string name="metalTagID">Metal Tag #</string>
 
 
 </resources>

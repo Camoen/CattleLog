@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         targetDatabaseFile = File(filesDir, "${CattlelogDatabase.DATABASE_NAME}.db")
 
+        // comment out the next 6 lines on initial startup to make a fresh install stop crashing immediately
         val sectionsPagerAdapter =
             TabPagerAdapter(this, supportFragmentManager)
         val viewPager: ViewPager = findViewById(R.id.view_pager)
@@ -51,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         tabs.setupWithViewPager(viewPager)
 
         // TODO: May want to run setDatabaseVersion here.  Not sure where the best place to call it is, yet!
-        //setDatabaseVersion(false)
+        setDatabaseVersion(false)
     }
 
     private fun download() {
