@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cattlelog.R
 import com.example.cattlelog.herd_member_details.HerdMemberDetails
 import kotlinx.android.synthetic.main.fragment_health.*
+import pl.polidea.view.ZoomView
 
 
 /**
@@ -31,6 +32,7 @@ class HealthFragment : Fragment() {
     private lateinit var healthViewModelFactory: HealthViewModelFactory
     private lateinit var healthRecyclerView: RecyclerView
     private lateinit var healthAdapter: HealthListAdapter
+    private lateinit var zoomView: ZoomView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +46,12 @@ class HealthFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_health, container, false)
+
+        val v = inflater.inflate(R.layout.fragment_health, container, false)
+        zoomView = ZoomView(context)
+        zoomView.addView(v)
+
+        return zoomView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

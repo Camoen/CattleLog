@@ -9,18 +9,20 @@
 
     <TextView
         android:id="@+id/nextExpHeatsTagNumber"
-        style="@style/RecyclerViewCell"/>
+        android:layout_weight="0.8"
+        style="@style/ListingCell"/>
 
     <TextView
         android:id="@+id/nextExpectedHeat"
-        style="@style/RecyclerViewCell"/>
+        android:layout_weight="0.8"
+        style="@style/ListingCell"/>
 
     <TextView
-        android:id="@+id/sireNameCode"
-        style="@style/RecyclerViewCell"/>
+        android:id="@+id/serviceSireNameCode"
+        style="@style/ListingCell"/>
 
     <TextView
         android:id="@+id/timesBredDate"
-        style="@style/RecyclerViewCell"/>
+        style="@style/ListingCell"/>
 
 </LinearLayout>

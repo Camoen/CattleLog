@@ -1,5 +1,6 @@
 package com.example.cattlelog.herd_member_details.overview_tab
 
+
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -50,7 +51,6 @@ class OverviewFragment : Fragment() {
         zoomView.addView(v)
 
         return zoomView
-//        return inflater.inflate(R.layout.fragment_overview, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

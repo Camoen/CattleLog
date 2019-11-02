@@ -65,6 +65,10 @@
     <string name="headerParentage">Parentage</string>
     <string name="user_field_descriptions">User Field Descriptions</string>
     <string name="default_value">--</string>
+    <string name="number">Number</string>
+    <string name="heat_date">Heat Date</string>
+    <string name="bred_date"># Bred / Date</string>
+    <string name="metalTagID">Metal Tag #</string>
 
 
 </resources>
