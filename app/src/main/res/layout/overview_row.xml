@@ -106,12 +106,14 @@
             <TextView
                 android:id="@+id/nextExpHeat"
                 tools:text="2019-11-26"
-                style="@style/OverviewDataField"/>
+                style="@style/OverviewDataField"
+                android:textSize="30sp"/>
             <TextView
                 android:id="@+id/timesBredDate"
                 tools:text="2 P 12-22"
                 style="@style/OverviewDataField"
-                android:paddingStart="5dp"/>
+                android:paddingStart="5dp"
+                android:textSize="30sp"/>
         </TableRow>
 
         <TableRow style="@style/OverviewLabelRow">
@@ -123,12 +125,14 @@
             <TextView
                 android:id="@+id/serviceSireNameCode"
                 tools:text="91KB5838"
-                style="@style/OverviewDataField"/>
+                style="@style/OverviewDataField"
+                android:textSize="30sp"/>
             <TextView
                 android:id="@+id/dateDue"
                 tools:text="2020-02-27"
                 style="@style/OverviewDataField"
-                android:paddingStart="5dp"/>
+                android:paddingStart="5dp"
+                android:textSize="30sp"/>
         </TableRow>
     </TableLayout>
 
