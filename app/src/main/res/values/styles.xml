@@ -55,7 +55,7 @@
     <style name="ListingHeader">
         <item name="android:paddingTop">3dp</item>
         <item name="android:paddingBottom">3dp</item>
-        <item name="android:background">@color/mummysTomb</item>
+        <item name="android:background">@color/cambridgeBlue</item>
     </style>
 
     <style name="ListingColumn">
@@ -75,7 +75,7 @@
     <style name="OverviewSectionHeader">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/lime</item>
+        <item name="android:background">@color/etonBlue</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/font_large</item>

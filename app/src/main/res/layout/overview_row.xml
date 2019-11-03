@@ -198,6 +198,7 @@
             <TextView
                 android:id="@+id/userDef1"
                 tools:text="TEST"
+                android:textColor="@color/red"
                 style="@style/OverviewDataField"/>
             <TextView
                 android:id="@+id/userDef4"
@@ -298,16 +299,6 @@
         android:stretchColumns="*"
         android:paddingStart="5dp"
         android:paddingEnd="5dp">
-
-<!--        <TableRow>-->
-<!--            <TextView android:text="@string/labelDHIID" style="@style/OverviewLabel"-->
-<!--                android:textAlignment="center"/>-->
-<!--            <TextView-->
-<!--                android:id="@+id/dhiID"-->
-<!--                tools:text="1249576"-->
-<!--                style="@style/OverviewSubTableDataField"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--        </TableRow>-->
 
         <TableRow style="@style/OverviewLabelRow">
             <TextView android:text="@string/labelDamIndex" style="@style/OverviewLabel"/>
