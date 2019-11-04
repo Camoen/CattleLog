@@ -37,7 +37,7 @@ class OverviewFragment : Fragment() {
         super.onCreate(savedInstanceState)
         herdMemberTagNumber = (activity as HerdMemberDetails).getTagNumber()
         herdMemberBirthDate = (activity as HerdMemberDetails).getBirthDate()
-        Toast.makeText(context, "OverviewFragment received: $herdMemberTagNumber", Toast.LENGTH_LONG).show()
+//        Toast.makeText(context, "OverviewFragment received: $herdMemberTagNumber", Toast.LENGTH_LONG).show()
     }
 
     override fun onCreateView(

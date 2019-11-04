@@ -137,9 +137,9 @@ class OverviewListAdapter internal constructor(
         if (!current.SireNameCode.isNullOrBlank()) holder.animalSireNameCode.text = current.SireNameCode
         if (!current.SireNameCode.isNullOrBlank()) holder.animalSireNameCode2.text = current.SireNameCode
         if (!current.TimesBredDate.isNullOrBlank()) holder.animalTimesBredDate.text = current.TimesBredDate
-        if (!current.DateDue.isNullOrBlank()) holder.animalDateDue.text = current.DateDue
+        if (!current.DateDue.isNullOrBlank()) holder.animalDateDue.text = current.DateDue.takeLast(5)
         if (!current.ServiceSireNameCode.isNullOrBlank()) holder.animalServiceSireNameCode.text = current.ServiceSireNameCode
-        if (!current.NextExpHeat.isNullOrBlank()) holder.animalNextExpHeat.text = current.NextExpHeat
+        if (!current.NextExpHeat.isNullOrBlank()) holder.animalNextExpHeat.text = current.NextExpHeat.takeLast(5)
         if (!current.DonorDamID.isNullOrBlank()) holder.animalDonorDamID.text = current.DonorDamID
         if (!current.FarmID.isNullOrBlank()) holder.animalFarmID.text = current.FarmID
         if (!current.DamDHI_ID.isNullOrBlank()) holder.animalDamDHIID.text = current.DamDHI_ID
