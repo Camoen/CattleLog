@@ -44,7 +44,7 @@ class HerdListAdapter internal constructor(
 
     // Classes will implement this interface to customize what happens when a row is clicked
     public interface RowListener {
-        fun onRowClicked(position: Int);
+        fun onRowClicked(position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CattleViewHolder {
@@ -88,7 +88,9 @@ class HerdListAdapter internal constructor(
                 val filterPattern = constraint.toString().trim()
 
                 for (cattle in cattleListUnfiltered) {
-                    if (cattle.TagNumber.toString().contains(filterPattern)) {
+                    if (cattle.BarnName?.contains(filterPattern, true) == true ||
+                        cattle.DHIID?.contains(filterPattern, true) == true ||
+                        cattle.TagNumber.toString().contains(filterPattern)) {
                         filteredList.add(cattle)
                     }
                 }
