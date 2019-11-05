@@ -1,7 +1,6 @@
 package com.example.cattlelog.herd_member_details
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
@@ -21,7 +20,6 @@ class HerdMemberDetails : AppCompatActivity() {
         setContentView(R.layout.activity_herd_member_details)
         tagNumber = intent?.extras?.getInt(HERD_MEMBER_TAG) as Int
         birthDate = intent?.extras?.getString(HERD_MEMBER_BIRTHDATE) as String
-        Log.d("TEST", "$tagNumber,  $birthDate   <<<<<<<")
         findViewById<TextView>(R.id.title).text = String.format(getString(R.string.member_number), tagNumber)
 
         val sectionsPagerAdapter =

@@ -69,8 +69,8 @@
     <string name="heat_date">Heat Date</string>
     <string name="bred_date"># Bred / Date</string>
     <string name="metalTagID">Metal Tag #</string>
-    <string name="initializing">Initializing…</string>
-    <string name="downloading_data">Downloading data…</string>
+    <string name="initializing">Checking for updates.</string>
+    <string name="downloading_data">Downloading database.</string>
 
 
 </resources>
