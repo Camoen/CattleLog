@@ -1,7 +1,6 @@
 package com.example.cattlelog.herd_member_details
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
