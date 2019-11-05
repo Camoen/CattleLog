@@ -21,7 +21,6 @@ class HerdMemberDetails : AppCompatActivity() {
         setContentView(R.layout.activity_herd_member_details)
         tagNumber = intent?.extras?.getInt(HERD_MEMBER_TAG) as Int
         birthDate = intent?.extras?.getString(HERD_MEMBER_BIRTHDATE) as String
-        Log.d("TEST", "$tagNumber,  $birthDate   <<<<<<<")
         findViewById<TextView>(R.id.title).text = String.format(getString(R.string.member_number), tagNumber)
 
         val sectionsPagerAdapter =
