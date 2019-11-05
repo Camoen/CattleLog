@@ -88,7 +88,8 @@ class NextHeatsListAdapter  internal constructor(
                 val filterPattern = constraint.toString().trim()
 
                 for (cattle in cattleListUnfiltered) {
-                    if (cattle.TagNumber.toString().contains(filterPattern)) {
+                    if (cattle.ServiceSireNameCode?.contains(filterPattern, true) == true ||
+                        cattle.TagNumber.toString().contains(filterPattern)) {
                         filteredList.add(cattle)
                     }
                 }
