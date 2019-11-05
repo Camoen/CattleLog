@@ -41,7 +41,7 @@ public abstract class CattlelogDatabase : RoomDatabase() {
                     context.applicationContext,
                     CattlelogDatabase::class.java,
                     DATABASE_NAME
-                ).createFromFile(databaseFile).build()
+                ).createFromFile(databaseFile).fallbackToDestructiveMigration().build()
 
                 INSTANCE = instance
                 return instance
