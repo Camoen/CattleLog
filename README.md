@@ -20,14 +20,14 @@ A video demonstration of the app is available on YouTube: https://youtu.be/n9yGc
 
 ## CattleLog Features
 ### Main Screen
-The main screen after startup displays a scrollable list of all cattle on the farm, ordered by tag number (denoted “Number”). Specific animals can be searched for by tag number, metal tag number, or barn name.  Search values may be provided by the user either manually or vocally.  The list of cattle is filtered in real time based on the input search value.  Tapping on any row will result in the display of a unique [animal's details](#animal-details).
+The main screen after startup displays a scrollable list of all cattle on the farm, ordered by tag number (denoted “Number”). Specific animals can be searched for by tag number, metal tag number, or barn name.  Search values may be provided by the user either manually or vocally.  The list of cattle is filtered in real time based on the input search value.  Tapping on any row will result in the display of an [animal's details](#animal-details).
 
 | <img src="https://user-images.githubusercontent.com/16565961/69368027-4e1e6100-0c67-11ea-873b-532f674f1732.png" alt="CattleLog - Main Screen" width="66%" height=""> | <img src="https://user-images.githubusercontent.com/16565961/69368103-74dc9780-0c67-11ea-9333-ef59708487c6.png" alt="CattleLog - Main Screen Search" width="66%" height=""> |
 |:---:|:---:|
 | Main Screen | Main Screen Search |
 
 ### Heats List
-Another list view is available under the Heats tab.  This scrollable list displays all cattle with a “next expected heat” date in a given range, as defined by the [Next Expected Heats Query](#next-expected-heats-query).  In this view, results are ordered by next expected heat date, denoted “Heat Date”, and animals can be searched for by tag number or service sire.  The list of cattle is filtered in real time based on the input search value.  Tapping on any row will result in the display of a unique [animal's details](#animal-details).
+Another list view is available under the Heats tab.  This scrollable list displays all cattle with a “next expected heat” date in a given range, as defined by the [Next Expected Heats Query](#next-expected-heats-query).  In this view, results are ordered by next expected heat date, denoted “Heat Date”, and animals can be searched for by tag number or service sire.  The list of cattle is filtered in real time based on the input search value.  Tapping on any row will result in the display of an [animal's details](#animal-details).
 
 <p align="center"><img src="https://user-images.githubusercontent.com/16565961/69368038-58405f80-0c67-11ea-91fa-47cabb0b156d.png" alt="CattleLog - Heats List" width="35%" height=""><br>Heats List (screenshot taken on Nov. 15th)</p>
 
