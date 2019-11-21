@@ -65,7 +65,7 @@ This tab displays an animal's identification details, genetic/heritage data, and
 | Overview Tab (Top) | Overview Tab (Middle) | Overview Tab (Bottom) |
 
 #### Health Tab
-This tab contains a scrollable list of an animal's health events, such as medications, births, weanings, etc.  More detail for some events may be provided in the [Treatments Tab](#treatments-tab).  Data for this tab is provided by an automatically generated CSV report (example provided at https://github.com/Camoen/CattleLog-File-Processor-Public/blob/master/Project%20Files/Report%203.csv).
+This tab contains a scrollable list of an animal's health events, such as medications, births, weanings, etc.  More detail for some events may be provided in the [Treatment Tab](#treatment-tab).  Data for this tab is provided by an automatically generated CSV report (example provided at https://github.com/Camoen/CattleLog-File-Processor-Public/blob/master/Project%20Files/Report%203.csv).
 
 | <img src="https://user-images.githubusercontent.com/16565961/69368130-82921d00-0c67-11ea-938b-eff86b4d530b.png" alt="CattleLog - Animal Details Health Tab " width="66%" height=""> | <img src="https://user-images.githubusercontent.com/16565961/69368135-858d0d80-0c67-11ea-8d3a-2a2ceaf605f1.png" alt="CattleLog - Animal Details Health Tab (cont.)" width="66%" height=""> |
 |:---:|:---:|
