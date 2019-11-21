@@ -69,8 +69,8 @@ This tab contains a scrollable list of an animal's health events, such as medica
 
 | <img src="https://user-images.githubusercontent.com/16565961/69368130-82921d00-0c67-11ea-938b-eff86b4d530b.png" alt="CattleLog - Animal Details Health Tab " width="66%" height=""> | <img src="https://user-images.githubusercontent.com/16565961/69368135-858d0d80-0c67-11ea-8d3a-2a2ceaf605f1.png" alt="CattleLog - Animal Details Health Tab (cont.)" width="66%" height=""> |
 |:---:|:---:|
-| Animal Details Health Tab | Animal Details Health Tab (cont.) |
+| Animal Details - Health Tab | Animal Details - Health Tab (cont.) |
 
 #### Treatment Tab
 This tab contains a scrollable list of an animal's treatments.  This tab may provide a more detailed overview for specific events in the [Health Tab](#health-tab).  Data for this tab is provided by a manually generated XLS workbook (example provided at https://github.com/Camoen/CattleLog-File-Processor-Public/blob/master/Project%20Files/Treatments.xls).
-<p align="center"><img src="https://user-images.githubusercontent.com/16565961/69368138-8756d100-0c67-11ea-8ac7-63f8ebb459ce.png" alt="CattleLog - Animal Details Treatment Tab" width="35%" height=""><br>Animal Details Treatment Tab</p>
+<p align="center"><img src="https://user-images.githubusercontent.com/16565961/69368138-8756d100-0c67-11ea-8ac7-63f8ebb459ce.png" alt="CattleLog - Animal Details Treatment Tab" width="35%" height=""><br>Animal Details - Treatment Tab</p>
