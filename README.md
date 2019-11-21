@@ -5,6 +5,7 @@ If the code in this repository is compiled and executed, it will display data fr
 
 ## Table of Contents
 * [CattleLog Video Demonstration](#cattleLog-video-demonstration)
+* [CattleLog File Processor](#cattlelog-file-processor)
 * [CattleLog Features](#cattlelog-features)
     * [Main Screen](#main-screen)
     * [Heats List](#heats-list)
@@ -17,6 +18,9 @@ If the code in this repository is compiled and executed, it will display data fr
 
 ## CattleLog Video Demonstration
 A video demonstration of the app is available on YouTube: https://youtu.be/n9yGcRzhoyQ
+
+## CattleLog File Processor
+Beyond the development of this Android app, existing farm data was processed, stored in a database format, and uploaded to a remote repository, where it could be accessed from within CattleLog.  This preprocessing functionality was packaged as a reusable executable, called [CattleLog File Processor](https://github.com/Camoen/CattleLog-File-Processor-Public), which allows CattleLog's backend database to be updated as often as necessary.
 
 ## CattleLog Features
 ### Main Screen
