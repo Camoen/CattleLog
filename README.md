@@ -9,6 +9,10 @@ If the code in this repository is compiled and executed, it will display data fr
     * [Main Screen](#main-screen)
     * [Heats List](#heats-list)
         * [Next Expected Heats Query](#next-expected-heats-query)
+    * [Animal Details](#animal-details)
+        * [Overview Tab](#overview-tab)
+        * [Health Tab](#health-tab)
+        * [Treatment Tab](#treatment-tab)
     
 
 ## CattleLog Video Demonstration
@@ -16,14 +20,14 @@ A video demonstration of the app is available on YouTube: https://youtu.be/n9yGc
 
 ## CattleLog Features
 ### Main Screen
-The main screen after startup displays a list of all cattle on the farm, ordered by tag number (denoted “Number”). Specific animals can be searched for by tag number, metal tag number, or barn name.  Search values may be provided by the user either manually or vocally.  The list of cattle is filtered in real time based on the input search value.
+The main screen after startup displays a scrollable list of all cattle on the farm, ordered by tag number (denoted “Number”). Specific animals can be searched for by tag number, metal tag number, or barn name.  Search values may be provided by the user either manually or vocally.  The list of cattle is filtered in real time based on the input search value.  Tapping on any row will result in the display of a unique [animal's details](#animal-details).
 
 | <img src="https://user-images.githubusercontent.com/16565961/69368027-4e1e6100-0c67-11ea-873b-532f674f1732.png" alt="CattleLog - Main Screen" width="66%" height=""> | <img src="https://user-images.githubusercontent.com/16565961/69368103-74dc9780-0c67-11ea-9333-ef59708487c6.png" alt="CattleLog - Main Screen Search" width="66%" height=""> |
 |:---:|:---:|
 | Main Screen | Main Screen Search |
 
 ### Heats List
-Another list view is available under the Heats tab.  This list displays all cattle with a “next expected heat” date in a given range, as defined by the [Next Expected Heats Query](#next-expected-heats-query).  In this view, results are ordered by next expected heat date, denoted “Heat Date”, and animals can be searched for by tag number or service sire.
+Another list view is available under the Heats tab.  This scrollable list displays all cattle with a “next expected heat” date in a given range, as defined by the [Next Expected Heats Query](#next-expected-heats-query).  In this view, results are ordered by next expected heat date, denoted “Heat Date”, and animals can be searched for by tag number or service sire.  The list of cattle is filtered in real time based on the input search value.  Tapping on any row will result in the display of a unique [animal's details](#animal-details).
 
 <p align="center"><img src="https://user-images.githubusercontent.com/16565961/69368038-58405f80-0c67-11ea-91fa-47cabb0b156d.png" alt="CattleLog - Heats List" width="35%" height=""><br>Heats List (screenshot taken on Nov. 15th)</p>
 
@@ -50,3 +54,23 @@ select * from (
       AND DATE(datetime('now','localtime', '21 day'))
 ) ORDER BY DATE(NextExpHeat) ASC;
 ```
+
+
+### Animal Details
+#### Overview Tab
+This tab displays an animal's identification details, genetic/heritage data, and reproduction information.  The tab's layout was based on end user specifications, with the most important data near the top.  Note that the four most important attributes ("Next Expected Heat Date", "Times Bred / Date", "Service Sire", and "Due Date") are larger, for improved readability.  This tab also contains 10 user-defined fields; these fields may be modified in the future, as decided by the farm's record-keeper.  Due to the fluctuating nature of the user-defined fields, a description for each is provided at the bottom of the tab (the descriptions are also easily updated by the farm's record-keeper).  Data for this tab is provided by a combination of three input files (`Report 1.csv`, `Report 2.csv`, and `Treatments.xls`, examples of which are available here: https://github.com/Camoen/CattleLog-File-Processor-Public/tree/master/Project%20Files)
+
+| <img src="https://user-images.githubusercontent.com/16565961/69368107-77d78800-0c67-11ea-80f8-21d7ea098e50.png" alt="CattleLog - Overview Tab Top"> | <img src="https://user-images.githubusercontent.com/16565961/69368116-7b6b0f00-0c67-11ea-9b2b-7c3a6ecf67b8.png" alt="CattleLog - Overview Tab Middle"> | <img src="https://user-images.githubusercontent.com/16565961/69368124-7e65ff80-0c67-11ea-9633-017c90049b5b.png" alt="CattleLog - Overview Tab Bottom"> |
+|:---:|:---:|:---:|
+| Overview Tab (Top) | Overview Tab (Middle) | Overview Tab (Bottom) |
+
+#### Health Tab
+This tab contains a scrollable list of an animal's health events, such as medications, births, weanings, etc.  More detail for some events may be provided in the [Treatments Tab](#treatments-tab).  Data for this tab is provided by an automatically generated CSV report (example provided at https://github.com/Camoen/CattleLog-File-Processor-Public/blob/master/Project%20Files/Report%203.csv).
+
+| <img src="https://user-images.githubusercontent.com/16565961/69368130-82921d00-0c67-11ea-938b-eff86b4d530b.png" alt="CattleLog - Animal Details Health Tab " width="66%" height=""> | <img src="https://user-images.githubusercontent.com/16565961/69368135-858d0d80-0c67-11ea-8d3a-2a2ceaf605f1.png" alt="CattleLog - Animal Details Health Tab (cont.)" width="66%" height=""> |
+|:---:|:---:|
+| Animal Details Health Tab | Animal Details Health Tab (cont.) |
+
+#### Treatment Tab
+This tab contains a scrollable list of an animal's treatments.  This tab may provide a more detailed overview for specific events in the [Health Tab](#health-tab).  Data for this tab is provided by a manually generated XLS workbook (example provided at https://github.com/Camoen/CattleLog-File-Processor-Public/blob/master/Project%20Files/Treatments.xls).
+<p align="center"><img src="https://user-images.githubusercontent.com/16565961/69368138-8756d100-0c67-11ea-8ac7-63f8ebb459ce.png" alt="CattleLog - Animal Details Treatment Tab" width="35%" height=""><br>Animal Details Treatment Tab</p>
