@@ -1,10 +1,12 @@
-# CattleLog
+# CattleLog <img src="https://user-images.githubusercontent.com/16565961/69681054-d1caba00-107a-11ea-927b-71256a011751.jpg" alt="CattleLog - Main Screen" width="10%" height="" align="left">
+<br>
+
 This repository holds the complete code for the CattleLog Android app, albeit with the redaction of all API keys, credentials, and private cattle records. The primary goals of CattleLog are to (1) provide employees of the VanWagner Family Farm with an efficient method of cattle record lookup via an intuitive user interface and (2) display requested cattle records in an aesthetically pleasing, organized manner.
 
 If the code in this repository is compiled and executed, it will display data from a representative, toy database, which is available at https://github.com/Camoen/CattleLog-File-Processor-Public/blob/master/cattlelog_database.db.
 
 ## Table of Contents
-* [CattleLog Video Demonstration](#cattleLog-video-demonstration)
+* [CattleLog Video Demonstration](#cattlelog-video-demonstration)
 * [CattleLog File Processor](#cattlelog-file-processor)
 * [CattleLog Features](#cattlelog-features)
     * [Main Screen](#main-screen)
